@@ -13,6 +13,7 @@ env:
 
 jobs:
   verify:
+    if: "!contains(github.event.head_commit.message, '[build-documents]')"
     name: ${{ matrix.os }} Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
@@ -38,6 +39,7 @@ jobs:
         run: python -m compileall -q hackroi scripts tests interop
 
   viewer:
+    if: "!contains(github.event.head_commit.message, '[build-documents]')"
     name: Offline viewer and delivery
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -69,20 +71,11 @@ jobs:
           node --check viewer/editor.js
           node --check viewer/home.js
           node --check scripts/check_studio.mjs
-          node --check scripts/record_demo.mjs
-          node --check scripts/build_presentation.mjs
           node scripts/check_viewer.mjs
       - name: Verify editor and real mission end to end
         env:
           ARIADNA_UI_OUTPUT: artifacts/ui
         run: node scripts/check_studio.mjs
-      - name: Encode current screencast
-        run: |
-          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
-            sudo apt-get -o Acquire::Retries=3 update -qq
-            sudo apt-get -o Acquire::Retries=3 install -y ffmpeg
-          fi
-          python scripts/finish_recording.py --input artifacts/ui --output artifacts/current_media
       - name: Save browser proof
         if: always()
         uses: actions/upload-artifact@v4
@@ -90,8 +83,9 @@ jobs:
           name: ariadna-3d-browser-proof
           path: |
             artifacts/ui
-            artifacts/current_media
           if-no-files-found: ignore
+      - name: Install PDF verification dependency
+        run: python -m pip install pypdf==6.21.4
       - name: Verify current documents and mission evidence
         run: python scripts/check_documents.py
       - name: Build and verify closed handoff package

@@ -73,6 +73,8 @@ PRINT_PAGES = {'explanatory_note': {'__total__': 20,
            '5 Границы и развитие': 4,
            '6 Источники': 5}}
 
+PUBLIC_NAMES = {'explanatory_note': 'ПЗ', 'essay': 'Эссе', 'run_guide': 'Руководство_оператора', 'test_protocol': 'Протокол_испытаний'}
+
 DOCUMENTS = (
     ('EXPLANATORY_NOTE', 'explanatory_note', 'Пояснительная записка', 'АРИАДНА.09.01.81'),
     ('TEST_PROTOCOL', 'test_protocol', 'Программа и методика испытаний', 'АРИАДНА.09.01.51'),
@@ -294,7 +296,8 @@ def measured_pages(source, pdf):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--output',type=Path,default=ROOT/'submission')
+    p.add_argument('--output',type=Path,default=ROOT/'artifacts/documents')
+    p.add_argument('--publish',action='store_true',help='Copy only final PDFs with Russian names to submission')
     p.add_argument('--pages',type=Path,help='JSON: output stem -> heading/page and __total__')
     p.add_argument('--force',action='store_true')
     p.add_argument('--pdf',action='store_true',help='Export PDF with LibreOffice and converge printed contents/page counts')
@@ -303,6 +306,7 @@ def main():
     args=p.parse_args()
     maps=json.loads(args.pages.read_text(encoding='utf-8')) if args.pages else PRINT_PAGES
     selected=[row for row in DOCUMENTS if not args.only or row[1] in args.only]
+    if args.publish and not args.pdf:p.error('--publish requires --pdf')
     if args.pdf and not args.soffice:
         p.error('--pdf requires LibreOffice; use --soffice /path/to/soffice')
     if args.pdf:
@@ -323,5 +327,6 @@ def main():
             if measured==page_map:break
             page_map=measured
         else:raise ValueError('Pagination did not converge: '+stem)
+        if args.publish:shutil.copyfile(target.with_suffix('.pdf'),ROOT/'submission'/(PUBLIC_NAMES[stem]+'.pdf'))
         print(json.dumps({'document':stem,'pdf':args.pdf,'pages':page_map.get('__total__')},ensure_ascii=False))
 if __name__=='__main__':main()

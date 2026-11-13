@@ -37,7 +37,7 @@
     "hackroi/portable.py": "88a92a776a5ae547a2c3b78d82e314558ffbe251b7c0821bc40418fcab37e0da",
     "hackroi/predicates.py": "1132022ac1ec3ae46270acf51ae21b6ad173002982b3b7356c415f7802b4a578",
     "hackroi/public_model.py": "49bc54bfff01451613e875ce091eb9c2e5acafa59552ad1b61b5aec9bcc0288b",
-    "hackroi/release.py": "b12205735c0b21aa7d380e42fbc143d2c4225c69f410e6204c09453a937958c7",
+    "hackroi/release.py": "bf425c35f43422370881d5bc2958037e7a654f0136c82f659d848f06484cded7",
     "hackroi/research.py": "ae8f6a9f351d213acc4d8fe39dbe50a0da591b2cd9a5b50f0905f28cf781d4cd",
     "hackroi/routing.py": "6808941996f234c95b83e232db6b47493fd0be68e61fb45804d37ddbf16d64d4",
     "hackroi/scenarios.py": "dc9ccaddc8d3f2eff0e2b3e9bbf28852873aed2c0d2ec3f668be509b03ee7110",
@@ -45,5 +45,7 @@
     "hackroi/simulation.py": "31c16c2eb6570f04732c2a7a9f8d3edf010d1b161cab01896e47ed4905a26840",
     "hackroi/studio.py": "e4a6400af1f20762565e3e8914557981cdd9b93a4eb93435f3b5f8cfaf495ada",
     "hackroi/viewer_pack.py": "0ac0e2b78ae3f8d18bbb4e0d608b1179c83ba00f37e3fffdfea18f4de46e4b3a"
-  }
+  },
+  "packaging_revision": "Russian PDF filenames; optional user-provided video and presentation; mission modules unchanged",
+  "implementation_baseline": "0e58865b50b3b26bdb03e073facaa87f98a1f26a"
 }

@@ -99,4 +99,4 @@ class ReleaseTests(unittest.TestCase):
             root=Path(tmp);self.fixture(root);media=root/'final';media.mkdir()
             for name in MEDIA_FILES:(media/name).write_bytes(b'\x00binary\xff'+name.encode())
             result=build(root,root/'out.zip',media=media)
-            self.assertTrue(result['screencast']);self.assertTrue(verify(root/'out.zip')['material_status']['documents'])
+            self.assertFalse(result['screencast']);self.assertTrue(verify(root/'out.zip')['material_status']['documents'])

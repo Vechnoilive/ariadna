@@ -6,42 +6,33 @@ import re
 import sys
 import tomllib
 import zipfile
-from xml.etree import ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from hackroi import __version__
 from scripts.build_documents import DATE, REVISION, DOCUMENTS
-NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
 
 def check():
     media=ROOT/'submission'
-    for name in ('explanatory_note','test_protocol','run_guide','essay'):
-        with zipfile.ZipFile(media/(name+'.docx')) as archive:
-            xml=ET.fromstring(archive.read('word/document.xml'))
-            text=' '.join(xml.itertext())
-            assert __version__ in text,(name,'version')
-            assert 'Заречкин Артём Алексеевич' in text,(name,'author')
-            assert 'Б24-507' in text,(name,'group')
-            assert 'Листов' in text,(name,'sheet count')
-            assert DATE in text,(name,'revision date')
-            source=next(source for source,stem,_,_ in DOCUMENTS if stem==name)
-            for heading in re.findall(r'^## (.+)$',(ROOT/'docs'/(source+'.md')).read_text(encoding='utf-8'),flags=re.M):
-                assert heading in text,(name,'missing source section',heading)
-            if name!='essay':assert 'двумер' in text.lower(),(name,'2D branches')
-            assert '19 с' in text and ('31 с' in text or '31-й' in text),(name,'satellite pair')
-            subject=ET.fromstring(archive.read('docProps/core.xml'))
-            assert REVISION[8:]+'.'+REVISION[5:7]+'.'+REVISION[:4] in ''.join(subject.itertext()),(name,'metadata date')
-            if name!='essay':assert 'Содержание' in text,(name,'contents')
-            page=xml.find('.//w:pgSz',NS);assert page is not None
-            assert abs(int(page.get('{'+NS['w']+'}w'))-11906)<=2
-            assert abs(int(page.get('{'+NS['w']+'}h'))-16838)<=2
-            margin=xml.find('.//w:pgMar',NS)
-            for edge,value in [('left',1701),('right',850),('top',1134),('bottom',1134)]:
-                assert abs(int(margin.get('{'+NS['w']+'}'+edge))-value)<=2,(name,edge)
-        assert (media/(name+'.pdf')).read_bytes().startswith(b'%PDF-'),(name,'PDF')
-    link=(media/'screencast').read_text(encoding='utf-8').strip()
-    assert re.fullmatch(r'https://[^\s]+',link),'screencast must retain its external link'
+    from pypdf import PdfReader
+    from scripts.build_documents import PUBLIC_NAMES
+    normalize=lambda value:' '.join(value.split())
+    for source,stem,_,_ in DOCUMENTS:
+        path=media/(PUBLIC_NAMES[stem]+'.pdf')
+        assert path.read_bytes().startswith(b'%PDF-'),path.name
+        reader=PdfReader(path)
+        pages=[normalize(page.extract_text() or '') for page in reader.pages]
+        text=' '.join(pages)
+        for expected in (__version__, 'Заречкин Артём Алексеевич', 'Б24-507', DATE):
+            assert expected in text,(path.name,expected)
+        for heading in re.findall(r'^## (.+)$',(ROOT/'docs'/(source+'.md')).read_text(encoding='utf-8'),flags=re.M):
+            assert normalize(heading) in text,(path.name,heading)
+        for page in reader.pages:
+            assert abs(float(page.mediabox.width)-595.28)<2 and abs(float(page.mediabox.height)-841.89)<2,path.name
+        assert all(len(t)>30 for t in pages),(path.name,'empty page')
+        assert '19 с' in text and ('31 с' in text or '31-й' in text),(path.name,'satellite pair')
+    link=media/'Видео.txt'
+    if link.exists():assert re.fullmatch(r'https://[^\s]+',link.read_text(encoding='utf-8').strip())
     report=json.loads((ROOT/'experiments/results/verification_2026-11-12.json').read_text(encoding='utf-8'))
     assert report['program_version']==__version__
     assert report['tests']['status']=='passed' and report['tests']['run']==200
@@ -69,15 +60,7 @@ def check():
     field=[r for r in report['results'] if r['domain']=='field']
     for mission in {r['mission'] for r in field}:
         assert len({r['map_sha256'] for r in field if r['mission']==mission})==1
-    presentation=media/'defense.pptx'
-    if presentation.is_file():
-        with zipfile.ZipFile(presentation) as archive:
-            slides=[n for n in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
-            assert len(slides)==12,'presentation slide count'
-            slide_text=' '.join(' '.join(ET.fromstring(archive.read(n)).itertext()) for n in slides)
-            for expected in ('206/206','24 + 2','ОРБИТАЛЬНЫЙ МОСТ','ДВУМЕРНЫЕ ВЕТВИ','110 м','75 м','31 с'):
-                assert expected in slide_text,('presentation content',expected)
-            assert archive.testzip() is None
+    presentation=media/'Презентация.pptx'
     return {'status':'passed','documents':4,'historical_runs':24,'cosmic_runs':2,'tests_reported':206,
-            'revision':REVISION,'screencast':'external_link','presentation':'included' if presentation.is_file() else 'separate','external_teams_tested':0}
+            'revision':REVISION,'screencast':'included' if (media/'Скринкаст.mp4').is_file() else 'external_link' if link.is_file() else 'not_provided','presentation':'included' if presentation.is_file() else 'separate','external_teams_tested':0}
 if __name__=='__main__':print(json.dumps(check(),ensure_ascii=False))

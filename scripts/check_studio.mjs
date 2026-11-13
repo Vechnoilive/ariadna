@@ -24,7 +24,7 @@ async function checkApartmentWidth(page, label) {
 try{
  const url=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Studio startup: '+diagnostics)),15000);lines.on('line',line=>{const match=line.match(/http:\/\/127\.0\.0\.1:\d+/);if(match){clearTimeout(timer);resolve(match[0]);}});child.on('exit',code=>reject(Error('Studio exited '+code+': '+diagnostics)));});
  browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader'],...(process.env.ARIADNA_BROWSER?{executablePath:process.env.ARIADNA_BROWSER}:{})});
- context=await browser.newContext({viewport:{width:1440,height:1100},...(output?{recordVideo:{dir:output,size:{width:1440,height:1100}}}:{})});recordingStarted=Date.now();page=await context.newPage();mark('Ариадна 0.9.0. Полевые миссии и редактор карт. Запуск «Лесной переправы» из интерфейса.');page.on('pageerror',e=>errors.push(e.message));
+ context=await browser.newContext({viewport:{width:1440,height:1100}});recordingStarted=Date.now();page=await context.newPage();mark('Ариадна 0.9.0. Полевые миссии и редактор карт. Запуск «Лесной переправы» из интерфейса.');page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url+'/#/mission');await page.locator('#tour-skip').click();
  assert.deepEqual(await page.locator('#episode option').evaluateAll(xs=>xs.map(x=>x.value)),['forest','quarry','city','snow','delta','cosmic']);await page.locator('#run-scenario').click();await page.waitForFunction(()=>window.ARIADNA_EDITOR.state().busy);
  const forestJob=await page.evaluate(()=>window.ARIADNA_EDITOR.state().job);
@@ -171,4 +171,4 @@ try{
  checks.push('apartment_guided_tour', 'apartment_orbit_zoom_selection_and_impact', 'apartment_campaign_webgl', 'apartment_devices', 'apartment_dag_and_fork', 'apartment_responsive', 'apartment_live_http_and_evidence');
  assert.deepEqual(errors,[]);console.log(JSON.stringify({status:'passed',checks,summary:value.summary,console_errors:errors}));
 }catch(error){if(page&&output)await page.screenshot({path:path.join(output,'studio-failure.png'),fullPage:true}).catch(()=>{});throw error;}
-finally{const video=page?.video();if(captions.length)captions.at(-1).end=(Date.now()-recordingStarted)/1000;if(context)await context.close();if(output&&video){const source=await video.path();await fs.copyFile(source,path.join(output,'studio-tour.webm'));await fs.writeFile(path.join(output,'captions.json'),JSON.stringify(captions));}if(browser)await browser.close();child.kill('SIGTERM');lines.close();await fs.rm(temporary,{recursive:true,force:true});}
+finally{if(context)await context.close();if(browser)await browser.close();child.kill('SIGTERM');lines.close();await fs.rm(temporary,{recursive:true,force:true});}

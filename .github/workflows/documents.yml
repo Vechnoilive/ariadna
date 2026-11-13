@@ -1,0 +1,57 @@
+name: Build submission documents
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/EXPLANATORY_NOTE.md'
+      - 'docs/TEST_PROTOCOL.md'
+      - 'docs/RUN_GUIDE.md'
+      - 'docs/ESSAY.md'
+      - 'scripts/build_documents.py'
+      - 'pyproject.toml'
+      - '.github/workflows/documents.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install document tools
+        run: |
+          python -m pip install python-docx==1.2.0 pypdf==6.21.4
+          sudo apt-get -o Acquire::Retries=3 update -qq
+          sudo apt-get -o Acquire::Retries=3 install -y libreoffice-writer fonts-liberation poppler-utils
+      - name: Build and verify current PDFs
+        run: |
+          python scripts/build_documents.py --output artifacts/documents --pdf --publish
+          python scripts/check_documents.py
+          python scripts/build_release.py --output artifacts/submission.zip --media submission --evidence submission/evidence.zip --manifest MANIFEST.json
+          python scripts/verify_release.py artifacts/submission.zip
+          python scripts/verify_release.py --manifest MANIFEST.json
+      - name: Commit generated PDFs and inventory
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- submission MANIFEST.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build current submission PDFs'
+            git push origin HEAD:main
+          fi
+      - name: Validate the resulting main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run checks.yml --ref main

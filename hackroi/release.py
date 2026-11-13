@@ -12,9 +12,9 @@ SOURCE_DIRS = ('hackroi', 'scripts', 'tests', 'interop', 'contracts', 'examples'
 SOURCE_FILES = ('README.md', 'pyproject.toml', '.gitattributes', '.gitignore')
 OPTIONAL_SOURCE_FILES = ('package.json', 'start.bat')
 SUFFIXES = {'.py', '.json', '.jsonl', '.md', '.html', '.css', '.js', '.mjs', '.toml', '.yml', '.jpg', '.png', '.webp', '.gltf', '.glb'}
-MEDIA_FILES = ('explanatory_note.docx', 'explanatory_note.pdf', 'test_protocol.docx', 'test_protocol.pdf', 'run_guide.docx', 'run_guide.pdf', 'essay.docx', 'essay.pdf', 'screencast')
-ASSET_FILES = ('scene.png', 'flood.png', 'pressure.png', 'peer.png')
-EXTRA_MEDIA = ('cosmic_evidence.zip', 'missions_evidence.zip', 'campaign_evidence.zip', 'verification_evidence.zip', 'defense.pptx', 'screencast.mp4', 'screencast.vtt')
+MEDIA_FILES = ('ПЗ.pdf', 'Протокол_испытаний.pdf', 'Руководство_оператора.pdf', 'Эссе.pdf')
+ASSET_FILES = ()
+EXTRA_MEDIA = ('cosmic_evidence.zip', 'missions_evidence.zip', 'campaign_evidence.zip', 'verification_evidence.zip', 'Презентация.pptx', 'Скринкаст.mp4', 'Видео.txt')
 MAX_FILES = 2000
 MAX_BYTES = 256*1024*1024
 
@@ -90,7 +90,7 @@ def build(root, output, media=None, evidence=None):
              for name, path in sorted(inputs.items())}
     version = tomllib.loads((root/'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
     manifest = {'format': FORMAT, 'version': version, 'files': files,
-                'material_status': {'documents': bool(media), 'screencast': bool(media), 'screencast_kind': ('file' if media and (media/'screencast.mp4').is_file() else 'external_link' if media else None), 'presentation': 'included' if media and (media/'defense.pptx').is_file() else 'separate', 'raw_evidence': bool(evidence)},
+                'material_status': {'documents': bool(media), 'screencast': bool(media and ((media/'Скринкаст.mp4').is_file() or (media/'Видео.txt').is_file())), 'screencast_kind': ('file' if media and (media/'Скринкаст.mp4').is_file() else 'external_link' if media and (media/'Видео.txt').is_file() else None), 'presentation': 'included' if media and (media/'Презентация.pptx').is_file() else 'separate', 'raw_evidence': bool(evidence)},
                 'entrypoint': 'python scripts/start_local.py --open', 'reproduce': 'python scripts/run_stage6.py', 'offline_viewer': 'viewer/index.html',
                 'external_teams_tested': 0, 'submission_channel': 'unconfirmed'}
     payload = (json.dumps(manifest, ensure_ascii=False, indent=2)+'\n').encode('utf-8')
