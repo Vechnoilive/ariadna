@@ -1,6 +1,6 @@
 # Материалы зависимости и генеративные инструменты Ариадны
 
-Версия программы 0.9.0. Редакция документа от 12.11.2026. Разработчик: Заречкин Артём Алексеевич, группа Б24-507.
+Версия программы 0.9.0. Редакция документа от 13.11.2026. Разработчик: Заречкин Артём Алексеевич, группа Б24-507.
 
 ## 1 Зависимости выполнения и сборки
 
@@ -8,7 +8,7 @@ Python-миссии, HTTP, журналы и сборка ZIP использую
 
 Интерфейс включает локальную сборку Three.js 0.180.0, OrbitControls, SVGRenderer и Projector. Лицензия MIT сохранена в viewer/vendor/THREE-LICENSE.md и сборке. CDN для запуска не требуется. Для пересборки package.json фиксирует three 0.180.0 и esbuild 0.25.12: npm install --ignore-scripts, затем npm run build:three. Node.js не нужен для обычной миссии.
 
-Документы собираются опциональным python-docx; PDF экспортируются LibreOffice, проверяются Poppler. Браузерные проверки используют Playwright и Chromium, запись видео — FFmpeg. Презентация и видео готовятся и передаются автором отдельно. Издательские и проверочные инструменты не являются зависимостями контроллера.
+Документы собираются опциональным python-docx и pypdf; PDF экспортируются LibreOffice, проверяются Poppler. Браузерные проверки используют Playwright и Chromium, запись видео — FFmpeg. Презентация включена в submission/defense.pptx и обновляется scripts/build_presentation.mjs с помощью авторского runtime Artifact Tool. Видео доступно по внешней ссылке в submission/screencast. Издательские и проверочные инструменты не являются зависимостями контроллера.
 
 ## 2 Происхождение изображений и геометрии
 
@@ -53,3 +53,7 @@ Use case: stylized-concept. Asset type: square seamless albedo material for real
 
 Use case: stylized-concept. Asset type: seamless tree bark albedo texture for real-time 3D rescue forest. One square tileable pine bark surface with vertical dark brown and warm gray ridges, subtle moss in crevices, realistic restrained material detail, no lighting baked in. Flat orthographic close surface scan, uniform diffuse illumination, no shadows, no perspective, no branch, no whole tree, no landscape, no text, no borders. Entire image filled by continuous bark material; all edges tile seamlessly. 1024x1024 square.
 
+
+## 5 Схемы ветвей для презентации
+
+submission/assets/cosmic-frontier.png и cosmic-meta.png получены штатным viewer/branch-map.js из измеренных кадров viewer/cosmic-data.js: t = 10 с, начало ветвления t = 4 с, один fork_checkpoint_sha256. Схемы не являются генеративными иллюстрациями. Их пересоздаёт scripts/build_presentation.mjs с помощью SVG-адаптера и sharp в авторском runtime. Основная миссия остаётся трёхмерной.

@@ -1,17 +1,77 @@
 """Build the four current DOCX documents. Optional dependency: python-docx."""
 import argparse
+from datetime import date, datetime, timezone
 import json
 from pathlib import Path
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
+import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from hackroi import __version__
 AUTHOR = 'Заречкин Артём Алексеевич'
 GROUP = 'Б24-507'
-DATE = '13 ноября 2026 года'
-PRINT_PAGES = {'explanatory_note': {'__total__': 20, 'Аннотация': 2, '1 Введение': 4, '2 Назначение и постановка задачи': 4, '3 Предметная область и миссии': 5, '4 Архитектура среды и управления': 5, '5 Онтология агентов и объектов': 6, '6 Пространство время связь и физика': 7, '7 Сценарии и игровые модели': 8, '8 Метасценарный контроллер и прогноз': 9, '9 Протокол взаимодействия': 11, '10 Ограничения доверие и неопределённость': 12, '11 Журналирование и аудит': 12, '12 Контрольные образцы и программа экспериментов': 13, '13 Результаты испытаний': 13, '14 Ограничения отказы и границы применимости': 14, '15 Ожидаемые технические и экономические показатели': 15, '16 Заключение': 15, '17 Список использованных источников': 15, 'Приложение А Запуск и протокольные примеры': 17, 'Приложение Б Карта обязательных разделов и свидетельств': 18, 'Приложение В Генеративные инструменты и материалы': 19, 'Приложение Г Космический агент и сравнение ветвей': 20}, 'test_protocol': {'__total__': 9, 'Аннотация': 2, '1 Объект и цель испытаний': 3, '2 Требования и проверяемые свойства': 3, '3 Условия и средства': 3, '4 Порядок и методы': 4, '5 Результаты проверки кода и поставки': 5, '6 Результаты домашних миссий': 5, '7 Результаты полевых миссий': 6, '8 Исторические и перекрёстные испытания': 7, '9 Свидетельства и вывод': 7, '10 Источники': 8, '11 Проверка космической категории и двумерных ветвей': 9}, 'run_guide': {'__total__': 7, 'Аннотация': 2, '1 Назначение программы': 3, '2 Условия выполнения': 3, '3 Запуск и завершение': 3, '4 Работа с интерфейсом': 4, '5 Раздельный запуск и получение журналов': 4, '6 Воспроизводимые серии и документы': 5, '7 Сообщения оператору': 6, '8 Космический ретранслятор и схемы ветвей': 7}, 'essay': {'__total__': 5, '1 Задача совместного действия': 2, '2 Практические области применения': 2, '3 Что даёт сравнение планов': 3, '4 Как измерять существенный выигрыш': 4, '5 Границы и развитие': 4, '6 Источники': 5}}
+REVISION = tomllib.loads((ROOT/'pyproject.toml').read_text(encoding='utf-8'))['tool']['ariadna']['documents']['revision']
+MONTHS = ('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря')
+revision_date = date.fromisoformat(REVISION)
+DATE = f'{revision_date.day} {MONTHS[revision_date.month-1]} {revision_date.year} года'
+PRINT_PAGES = {'explanatory_note': {'__total__': 20,
+                      'Аннотация': 2,
+                      '1 Введение': 4,
+                      '2 Назначение и постановка задачи': 4,
+                      '3 Предметная область и миссии': 5,
+                      '4 Архитектура среды и управления': 5,
+                      '5 Онтология агентов и объектов': 6,
+                      '6 Пространство время связь и физика': 7,
+                      '7 Сценарии и игровые модели': 8,
+                      '8 Метасценарный контроллер и прогноз': 9,
+                      '9 Протокол взаимодействия': 11,
+                      '10 Ограничения доверие и неопределённость': 12,
+                      '11 Журналирование и аудит': 12,
+                      '12 Контрольные образцы и программа экспериментов': 13,
+                      '13 Результаты испытаний': 13,
+                      '14 Ограничения отказы и границы применимости': 14,
+                      '15 Ожидаемые технические и экономические показатели': 15,
+                      '16 Заключение': 15,
+                      '17 Список использованных источников': 15,
+                      'Приложение А Запуск и протокольные примеры': 17,
+                      'Приложение Б Карта обязательных разделов и свидетельств': 18,
+                      'Приложение В Генеративные инструменты и материалы': 19,
+                      'Приложение Г Космический агент и сравнение ветвей': 20},
+ 'test_protocol': {'__total__': 9,
+                   'Аннотация': 2,
+                   '1 Объект и цель испытаний': 3,
+                   '2 Требования и проверяемые свойства': 3,
+                   '3 Условия и средства': 3,
+                   '4 Порядок и методы': 4,
+                   '5 Результаты проверки кода и поставки': 5,
+                   '6 Результаты домашних миссий': 5,
+                   '7 Результаты полевых миссий': 6,
+                   '8 Исторические и перекрёстные испытания': 7,
+                   '9 Свидетельства и вывод': 7,
+                   '10 Источники': 8,
+                   '11 Проверка космической категории и двумерных ветвей': 9},
+ 'run_guide': {'__total__': 7,
+               'Аннотация': 2,
+               '1 Назначение программы': 3,
+               '2 Условия выполнения': 3,
+               '3 Запуск и завершение': 3,
+               '4 Работа с интерфейсом': 4,
+               '5 Раздельный запуск и получение журналов': 4,
+               '6 Воспроизводимые серии и документы': 5,
+               '7 Сообщения оператору': 6,
+               '8 Космический ретранслятор и схемы ветвей': 7},
+ 'essay': {'__total__': 5,
+           '1 Задача совместного действия': 2,
+           '2 Практические области применения': 2,
+           '3 Что даёт сравнение планов': 3,
+           '4 Как измерять существенный выигрыш': 4,
+           '5 Границы и развитие': 4,
+           '6 Источники': 5}}
 
 DOCUMENTS = (
     ('EXPLANATORY_NOTE', 'explanatory_note', 'Пояснительная записка', 'АРИАДНА.09.01.81'),
@@ -166,8 +226,10 @@ def build_one(source, output, title, designation, page_map=None):
     for sec_text in sections:
         heading,body=sec_text.split('\n',1)
         if heading=='Аннотация' and not essay:continue
-        if heading.startswith('Приложение') or heading.startswith(('11 Проверка космической','8 Космический ретранслятор')):doc.add_page_break()
-        doc.add_heading(heading,1)
+        if heading.startswith('Приложение') or heading.startswith('11 Проверка космической'):doc.add_page_break()
+        section_heading=doc.add_heading(heading,1)
+        if heading.startswith('8 Космический ретранслятор'):
+            section_heading.paragraph_format.page_break_before=True
         lines=body.strip().splitlines();i=0;block=[]
         def flush():
             if block:paragraph(' '.join(block));block.clear()
@@ -194,11 +256,40 @@ def build_one(source, output, title, designation, page_map=None):
         flush()
     doc.core_properties.title='Ариадна '+title
     doc.core_properties.author=AUTHOR
-    doc.core_properties.subject='Метарой 1.0; программа '+__version__+'; редакция 12.11.2026'
+    doc.core_properties.subject='Метарой 1.0; программа '+__version__+'; редакция '+revision_date.strftime('%d.%m.%Y')
+    doc.core_properties.created = doc.core_properties.modified = datetime.combine(revision_date, datetime.min.time(), timezone.utc)
     doc.core_properties.keywords=designation
     output.parent.mkdir(parents=True,exist_ok=True)
     doc.save(output)
     return output
+
+
+def export_pdf(docx, executable):
+    with tempfile.TemporaryDirectory(prefix='ariadna-office-') as profile:
+        result = subprocess.run([executable, '-env:UserInstallation='+Path(profile).as_uri(),
+                                 '--headless', '--convert-to', 'pdf:writer_pdf_Export',
+                                 '--outdir', str(docx.parent), str(docx)],
+                                capture_output=True, text=True, timeout=120)
+    pdf = docx.with_suffix('.pdf')
+    if result.returncode or not pdf.is_file():
+        raise RuntimeError('PDF export failed: '+result.stderr[-1500:])
+    return pdf
+
+
+def measured_pages(source, pdf):
+    from pypdf import PdfReader
+    normalize = lambda value: ' '.join(value.split())
+    pages = [normalize(page.extract_text()) for page in PdfReader(pdf).pages]
+    headings = re.findall(r'^## (.+)$', source.read_text(encoding='utf-8'), flags=re.M)
+    body_start = 2 if source.stem == 'ESSAY' else 4 if source.stem == 'EXPLANATORY_NOTE' else 3
+    result = {'__total__': len(pages)}
+    for heading in headings:
+        first = 2 if heading == 'Аннотация' else body_start
+        matches = [i for i, text in enumerate(pages, 1) if i >= first and normalize(heading) in text]
+        if not matches:
+            raise ValueError('Heading missing from PDF: '+heading)
+        result[heading] = matches[0]
+    return result
 
 
 def main():
@@ -206,10 +297,31 @@ def main():
     p.add_argument('--output',type=Path,default=ROOT/'submission')
     p.add_argument('--pages',type=Path,help='JSON: output stem -> heading/page and __total__')
     p.add_argument('--force',action='store_true')
+    p.add_argument('--pdf',action='store_true',help='Export PDF with LibreOffice and converge printed contents/page counts')
+    p.add_argument('--soffice',default=shutil.which('soffice'),help='Path to LibreOffice soffice executable')
+    p.add_argument('--only',nargs='+',choices=[row[1] for row in DOCUMENTS],help='Rebuild only the selected documents')
     args=p.parse_args()
     maps=json.loads(args.pages.read_text(encoding='utf-8')) if args.pages else PRINT_PAGES
-    for source,stem,title,designation in DOCUMENTS:
+    selected=[row for row in DOCUMENTS if not args.only or row[1] in args.only]
+    if args.pdf and not args.soffice:
+        p.error('--pdf requires LibreOffice; use --soffice /path/to/soffice')
+    if args.pdf:
+        from pypdf import PdfReader  # Optional authoring dependency; fail before replacing outputs.
+    for source,stem,title,designation in selected:
         target=args.output/(stem+'.docx')
-        if target.exists() and not args.force:raise ValueError('Refusing to overwrite: '+str(target)+'; use --force')
-        print(build_one(ROOT/'docs'/(source+'.md'),target,title,designation,maps.get(stem)))
+        if any(path.exists() for path in (target, target.with_suffix('.pdf'))) and not args.force:
+            raise ValueError('Refusing to overwrite: '+str(target)+'; use --force')
+    for source,stem,title,designation in selected:
+        target=args.output/(stem+'.docx')
+        source_path=ROOT/'docs'/(source+'.md')
+        page_map=maps.get(stem, {})
+        for attempt in range(4):
+            build_one(source_path,target,title,designation,page_map)
+            if not args.pdf:break
+            target.with_suffix('.pdf').unlink(missing_ok=True)
+            measured=measured_pages(source_path,export_pdf(target,args.soffice))
+            if measured==page_map:break
+            page_map=measured
+        else:raise ValueError('Pagination did not converge: '+stem)
+        print(json.dumps({'document':stem,'pdf':args.pdf,'pages':page_map.get('__total__')},ensure_ascii=False))
 if __name__=='__main__':main()

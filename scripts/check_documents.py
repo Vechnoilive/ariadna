@@ -4,11 +4,13 @@ import json
 from pathlib import Path
 import re
 import sys
+import tomllib
 import zipfile
 from xml.etree import ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from hackroi import __version__
+from scripts.build_documents import DATE, REVISION, DOCUMENTS
 NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 
 
@@ -22,6 +24,14 @@ def check():
             assert 'Заречкин Артём Алексеевич' in text,(name,'author')
             assert 'Б24-507' in text,(name,'group')
             assert 'Листов' in text,(name,'sheet count')
+            assert DATE in text,(name,'revision date')
+            source=next(source for source,stem,_,_ in DOCUMENTS if stem==name)
+            for heading in re.findall(r'^## (.+)$',(ROOT/'docs'/(source+'.md')).read_text(encoding='utf-8'),flags=re.M):
+                assert heading in text,(name,'missing source section',heading)
+            if name!='essay':assert 'двумер' in text.lower(),(name,'2D branches')
+            assert '19 с' in text and ('31 с' in text or '31-й' in text),(name,'satellite pair')
+            subject=ET.fromstring(archive.read('docProps/core.xml'))
+            assert REVISION[8:]+'.'+REVISION[5:7]+'.'+REVISION[:4] in ''.join(subject.itertext()),(name,'metadata date')
             if name!='essay':assert 'Содержание' in text,(name,'contents')
             page=xml.find('.//w:pgSz',NS);assert page is not None
             assert abs(int(page.get('{'+NS['w']+'}w'))-11906)<=2
@@ -37,6 +47,9 @@ def check():
     assert report['tests']['status']=='passed' and report['tests']['run']==200
     assert len(report['results'])==24
     current=json.loads((ROOT/'experiments/results/verification_2026-11-13.json').read_text(encoding='utf-8'))
+    assert current['program_version']==__version__ and current['revision']==REVISION
+    assert json.loads((ROOT/'package.json').read_text())['version']==__version__
+    assert tomllib.loads((ROOT/'pyproject.toml').read_text())['project']['version']==__version__
     assert current['tests']['status']=='passed' and current['tests']['run']==206
     assert current['historical_report_sha256']==hashlib.sha256((ROOT/'experiments/results/verification_2026-11-12.json').read_bytes()).hexdigest()
     for relative,digest in current['runtime_source_sha256'].items():
@@ -56,6 +69,13 @@ def check():
     field=[r for r in report['results'] if r['domain']=='field']
     for mission in {r['mission'] for r in field}:
         assert len({r['map_sha256'] for r in field if r['mission']==mission})==1
-    return {'status':'passed','documents':4,'verification_runs':24,'tests_reported':206,
-            'screencast':'external_link','presentation':'separate','external_teams_tested':0}
+    with zipfile.ZipFile(media/'defense.pptx') as archive:
+        slides=[n for n in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
+        assert len(slides)==12,'presentation slide count'
+        slide_text=' '.join(' '.join(ET.fromstring(archive.read(n)).itertext()) for n in slides)
+        for expected in ('206/206','24 + 2','ОРБИТАЛЬНЫЙ МОСТ','ДВУМЕРНЫЕ ВЕТВИ','110 м','75 м','31 с'):
+            assert expected in slide_text,('presentation content',expected)
+        assert archive.testzip() is None
+    return {'status':'passed','documents':4,'historical_runs':24,'cosmic_runs':2,'tests_reported':206,
+            'revision':REVISION,'screencast':'external_link','presentation':'included','external_teams_tested':0}
 if __name__=='__main__':print(json.dumps(check(),ensure_ascii=False))

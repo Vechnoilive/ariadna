@@ -63,6 +63,7 @@ jobs:
         run: |
           node --check viewer/data-loader.js
           node --check viewer/app.js
+          node --check viewer/branch-map.js
           node --check viewer/map.js
           node --check viewer/tour.js
           node --check viewer/editor.js
@@ -95,5 +96,7 @@ jobs:
         run: python scripts/check_documents.py
       - name: Build and verify closed handoff package
         run: |
-          python scripts/build_release.py --output artifacts/ariadna.zip --media submission --evidence submission/evidence.zip
+          python scripts/build_release.py --output artifacts/ariadna.zip --media submission --evidence submission/evidence.zip --manifest artifacts/generated-MANIFEST.json
           python scripts/verify_release.py artifacts/ariadna.zip
+          cmp MANIFEST.json artifacts/generated-MANIFEST.json
+          python scripts/verify_release.py --manifest MANIFEST.json
