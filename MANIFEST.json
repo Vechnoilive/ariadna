@@ -447,12 +447,12 @@
       "bytes": 869
     },
     "scripts/check_studio.mjs": {
-      "sha256": "fccd113674db74a3c852c0d77dd05e1c2501ca2c0049938a263912e5154bea75",
-      "bytes": 21264
+      "sha256": "70ded99123f376f552d75bba38b6dd81326fb70c3f77521cac96114207534f15",
+      "bytes": 21406
     },
     "scripts/check_viewer.mjs": {
-      "sha256": "4695c99e1cb9861e9f6f281de47f283b013b34a2e6966b8091d09308f0119389",
-      "bytes": 14741
+      "sha256": "d52a9377ae46130752d6415ab25eeb54e462d6700bc30668407ea872e21ca78d",
+      "bytes": 15463
     },
     "scripts/finish_recording.py": {
       "sha256": "f05d970e0a5d30bc5cfd8dffa6c60b8a0ea34f2520ef48635002a27e1a3589fe",
