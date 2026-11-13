@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+artifacts/
+*.egg-info/
+.coverage
+.DS_Store
+node_modules/
+
+.openai/
+viewer/__qa.html

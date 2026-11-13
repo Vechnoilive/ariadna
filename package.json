@@ -1,0 +1,13 @@
+{
+  "name": "ariadna-studio",
+  "private": true,
+  "version": "0.9.0",
+  "scripts": {
+    "dev": "python3 scripts/start_local.py",
+    "build:three": "node scripts/build_three.mjs"
+  },
+  "devDependencies": {
+    "three": "0.180.0",
+    "esbuild": "0.25.12"
+  }
+}

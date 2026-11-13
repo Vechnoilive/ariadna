@@ -1,0 +1,112 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Лесное побережье",
+  "seed": 42,
+  "max_steps": 120,
+  "cohorts": 2,
+  "random_events": true,
+  "objects": [
+    {
+      "kind": "tree",
+      "position": [
+        12,
+        24,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        20,
+        20,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        13,
+        38,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        36,
+        40,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        22,
+        51,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        36,
+        58,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        15,
+        60,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        29,
+        72,
+        0
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        29,
+        23,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        74,
+        24,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underground",
+      "position": [
+        28,
+        26,
+        -5
+      ],
+      "priority": 2
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        76,
+        27,
+        -5
+      ],
+      "priority": 2
+    }
+  ]
+}

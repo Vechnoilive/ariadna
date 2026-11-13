@@ -1,0 +1,176 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Красный каньон",
+  "seed": 109,
+  "max_steps": 180,
+  "cohorts": 3,
+  "random_events": true,
+  "terrain": "quarry",
+  "conditions": "operation",
+  "geography": "quarry",
+  "objects": [
+    {
+      "kind": "rock",
+      "position": [
+        21,
+        47,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        33,
+        75,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        39,
+        25,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        10,
+        47,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        23,
+        90,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        19,
+        75,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        8,
+        84,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        5,
+        68,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        37,
+        91,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        45,
+        32,
+        0
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        24,
+        35,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        9,
+        55,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        40,
+        82,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "underground",
+      "position": [
+        30,
+        29,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underground",
+      "position": [
+        9,
+        33,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        78,
+        33,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        91,
+        75,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        76,
+        38,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        87,
+        77,
+        -5
+      ],
+      "priority": 3
+    }
+  ]
+}

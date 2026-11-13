@@ -1,0 +1,176 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Белая тишина",
+  "seed": 701,
+  "max_steps": 180,
+  "cohorts": 2,
+  "random_events": true,
+  "terrain": "snow",
+  "conditions": "operation",
+  "geography": "snow",
+  "objects": [
+    {
+      "kind": "rock",
+      "position": [
+        19,
+        86,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        20,
+        57,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        8,
+        89,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        45,
+        73,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        29,
+        83,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        16,
+        20,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        4,
+        25,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        36,
+        71,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        6,
+        48,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        8,
+        31,
+        0
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        9,
+        54,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        22,
+        78,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        39,
+        87,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "underground",
+      "position": [
+        30,
+        30,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underground",
+      "position": [
+        9,
+        34,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        79,
+        34,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        74,
+        70,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        76,
+        46,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        94,
+        75,
+        -5
+      ],
+      "priority": 3
+    }
+  ]
+}

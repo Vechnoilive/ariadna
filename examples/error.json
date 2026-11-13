@@ -1,0 +1,13 @@
+{
+  "protocol_version": "1.0",
+  "request_id": "example_bad",
+  "episode_id": "episode_fb5e6a25361584b8",
+  "error": {
+    "code": "INVALID_COMMAND",
+    "message": "Действие недоступно агенту",
+    "details": {
+      "agent_id": "scout_A",
+      "action": "teleport"
+    }
+  }
+}

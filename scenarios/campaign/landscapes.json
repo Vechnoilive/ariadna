@@ -1,0 +1,721 @@
+{
+  "forest": {
+    "cuts": [
+      [
+        0,
+        34,
+        8,
+        40
+      ],
+      [
+        15,
+        34,
+        34,
+        40
+      ],
+      [
+        41,
+        34,
+        49.999,
+        40
+      ]
+    ],
+    "bridges": [
+      {
+        "min": [
+          8,
+          34,
+          0
+        ],
+        "max": [
+          15,
+          40,
+          0
+        ]
+      },
+      {
+        "min": [
+          34,
+          34,
+          0
+        ],
+        "max": [
+          41,
+          40,
+          0
+        ]
+      }
+    ],
+    "features": [
+      {
+        "id": "forest_reef",
+        "kind": "reef",
+        "min": [
+          65,
+          26,
+          -15
+        ],
+        "max": [
+          70,
+          52,
+          2
+        ]
+      },
+      {
+        "id": "forest_ridge",
+        "kind": "cliff",
+        "min": [
+          21,
+          63,
+          0
+        ],
+        "max": [
+          28,
+          75,
+          10
+        ]
+      }
+    ],
+    "events": [
+      {
+        "time": 6.0,
+        "type": "agent_degradation",
+        "targets": [
+          "boat"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 15.0,
+        "type": "restricted_zone_appeared",
+        "targets": [],
+        "parameters": {
+          "min": [
+            8,
+            34,
+            0
+          ],
+          "max": [
+            15,
+            40,
+            3
+          ]
+        }
+      },
+      {
+        "time": 22.0,
+        "type": "agent_failure",
+        "targets": [
+          "land"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 25.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            43,
+            85,
+            0
+          ],
+          "priority": 8
+        }
+      },
+      {
+        "time": 18.0,
+        "type": "contradictory_information",
+        "targets": [],
+        "parameters": {}
+      }
+    ]
+  },
+  "quarry": {
+    "cuts": [],
+    "bridges": [],
+    "features": [
+      {
+        "id": "mesa_west",
+        "kind": "cliff",
+        "min": [
+          10,
+          18,
+          0
+        ],
+        "max": [
+          16,
+          39,
+          18
+        ]
+      },
+      {
+        "id": "mesa_middle",
+        "kind": "cliff",
+        "min": [
+          29,
+          32,
+          0
+        ],
+        "max": [
+          36,
+          58,
+          21
+        ]
+      },
+      {
+        "id": "mesa_north",
+        "kind": "cliff",
+        "min": [
+          10,
+          62,
+          0
+        ],
+        "max": [
+          23,
+          70,
+          16
+        ]
+      },
+      {
+        "id": "quarry_breakwater",
+        "kind": "reef",
+        "min": [
+          65,
+          21,
+          -15
+        ],
+        "max": [
+          70,
+          55,
+          3
+        ]
+      },
+      {
+        "id": "quarry_tunnel",
+        "kind": "tunnel_wall",
+        "min": [
+          17,
+          10,
+          -12
+        ],
+        "max": [
+          21,
+          25,
+          -1
+        ]
+      }
+    ],
+    "events": [
+      {
+        "time": 8.0,
+        "type": "agent_degradation",
+        "targets": [
+          "boat"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 16.0,
+        "type": "restricted_zone_appeared",
+        "targets": [],
+        "parameters": {
+          "min": [
+            36,
+            58,
+            0
+          ],
+          "max": [
+            44,
+            64,
+            10
+          ]
+        }
+      },
+      {
+        "time": 23.0,
+        "type": "agent_failure",
+        "targets": [
+          "land"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 19.0,
+        "type": "infrastructure_failure",
+        "targets": [
+          "infra_0"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 27.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            32,
+            33,
+            -5
+          ],
+          "priority": 8
+        }
+      }
+    ]
+  },
+  "city": {
+    "cuts": [],
+    "bridges": [],
+    "features": [
+      {
+        "id": "block_a",
+        "kind": "building",
+        "min": [
+          9,
+          20,
+          0
+        ],
+        "max": [
+          19,
+          30,
+          10
+        ]
+      },
+      {
+        "id": "block_b",
+        "kind": "building",
+        "min": [
+          29,
+          19,
+          0
+        ],
+        "max": [
+          41,
+          30,
+          13
+        ]
+      },
+      {
+        "id": "block_c",
+        "kind": "building",
+        "min": [
+          9,
+          42,
+          0
+        ],
+        "max": [
+          19,
+          55,
+          14
+        ]
+      },
+      {
+        "id": "block_d",
+        "kind": "building",
+        "min": [
+          29,
+          43,
+          0
+        ],
+        "max": [
+          41,
+          55,
+          11
+        ]
+      },
+      {
+        "id": "block_e",
+        "kind": "building",
+        "min": [
+          19,
+          68,
+          0
+        ],
+        "max": [
+          32,
+          80,
+          10
+        ]
+      },
+      {
+        "id": "port_wall",
+        "kind": "reef",
+        "min": [
+          70,
+          30,
+          -15
+        ],
+        "max": [
+          74,
+          65,
+          2
+        ]
+      },
+      {
+        "id": "metro_wall",
+        "kind": "tunnel_wall",
+        "min": [
+          12,
+          15,
+          -12
+        ],
+        "max": [
+          17,
+          29,
+          -1
+        ]
+      }
+    ],
+    "events": [
+      {
+        "time": 5.0,
+        "type": "connectivity_loss",
+        "targets": [
+          "infra_0",
+          "infra_2"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 11.0,
+        "type": "resource_shortage",
+        "targets": [
+          "land"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 17.0,
+        "type": "contradictory_information",
+        "targets": [],
+        "parameters": {}
+      },
+      {
+        "time": 28.0,
+        "type": "agent_failure",
+        "targets": [
+          "land_1"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 24.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            43,
+            84,
+            0
+          ],
+          "priority": 8
+        }
+      }
+    ]
+  },
+  "snow": {
+    "cuts": [
+      [
+        26,
+        24,
+        49.999,
+        64
+      ]
+    ],
+    "bridges": [],
+    "features": [
+      {
+        "id": "polar_cliff",
+        "kind": "cliff",
+        "min": [
+          12,
+          31,
+          0
+        ],
+        "max": [
+          20,
+          48,
+          13
+        ]
+      },
+      {
+        "id": "iceberg_south",
+        "kind": "iceberg",
+        "min": [
+          62,
+          22,
+          -15
+        ],
+        "max": [
+          70,
+          42,
+          4
+        ]
+      },
+      {
+        "id": "iceberg_north",
+        "kind": "iceberg",
+        "min": [
+          82,
+          48,
+          -15
+        ],
+        "max": [
+          90,
+          65,
+          5
+        ]
+      },
+      {
+        "id": "iceberg_west",
+        "kind": "iceberg",
+        "min": [
+          55,
+          72,
+          -15
+        ],
+        "max": [
+          62,
+          83,
+          3
+        ]
+      },
+      {
+        "id": "station_ruin",
+        "kind": "building",
+        "min": [
+          8,
+          69,
+          0
+        ],
+        "max": [
+          18,
+          77,
+          6
+        ]
+      }
+    ],
+    "events": [
+      {
+        "time": 5.0,
+        "type": "agent_degradation",
+        "targets": [
+          "air"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 11.0,
+        "type": "agent_degradation",
+        "targets": [
+          "boat"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 16.0,
+        "type": "stale_information",
+        "targets": [],
+        "parameters": {}
+      },
+      {
+        "time": 22.0,
+        "type": "infrastructure_failure",
+        "targets": [
+          "infra_0"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 24.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            94,
+            83,
+            0
+          ],
+          "priority": 8
+        }
+      }
+    ]
+  },
+  "delta": {
+    "cuts": [
+      [
+        0,
+        30,
+        29,
+        35
+      ],
+      [
+        37,
+        30,
+        49.999,
+        35
+      ],
+      [
+        0,
+        62,
+        8,
+        68
+      ],
+      [
+        16,
+        62,
+        49.999,
+        68
+      ]
+    ],
+    "bridges": [
+      {
+        "min": [
+          29,
+          30,
+          0
+        ],
+        "max": [
+          37,
+          35,
+          0
+        ]
+      },
+      {
+        "min": [
+          8,
+          62,
+          0
+        ],
+        "max": [
+          16,
+          68,
+          0
+        ]
+      }
+    ],
+    "features": [
+      {
+        "id": "delta_south_jetty",
+        "kind": "reef",
+        "min": [
+          64,
+          12,
+          -15
+        ],
+        "max": [
+          70,
+          30,
+          2
+        ]
+      },
+      {
+        "id": "delta_north_jetty",
+        "kind": "reef",
+        "min": [
+          64,
+          38,
+          -15
+        ],
+        "max": [
+          70,
+          62,
+          2
+        ]
+      },
+      {
+        "id": "delta_outer_jetty",
+        "kind": "reef",
+        "min": [
+          82,
+          44,
+          -15
+        ],
+        "max": [
+          88,
+          84,
+          3
+        ]
+      },
+      {
+        "id": "delta_metro",
+        "kind": "tunnel_wall",
+        "min": [
+          15,
+          13,
+          -12
+        ],
+        "max": [
+          20,
+          25,
+          -1
+        ]
+      }
+    ],
+    "events": [
+      {
+        "time": 7.0,
+        "type": "agent_degradation",
+        "targets": [
+          "boat"
+        ],
+        "parameters": {}
+      },
+      {
+        "time": 13.0,
+        "type": "hazard_appeared",
+        "targets": [],
+        "parameters": {
+          "min": [
+            28,
+            44,
+            0
+          ],
+          "max": [
+            43,
+            55,
+            3
+          ]
+        }
+      },
+      {
+        "time": 20.0,
+        "type": "mission_priority_change",
+        "targets": [],
+        "parameters": {}
+      },
+      {
+        "time": 23.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            91,
+            39,
+            0
+          ],
+          "priority": 8
+        }
+      },
+      {
+        "time": 31.0,
+        "type": "target_detected",
+        "targets": [],
+        "parameters": {
+          "position": [
+            94,
+            89,
+            -5
+          ],
+          "priority": 8
+        }
+      },
+      {
+        "time": 26.0,
+        "type": "contradictory_information",
+        "targets": [],
+        "parameters": {}
+      }
+    ]
+  }
+}

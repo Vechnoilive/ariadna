@@ -1,0 +1,26 @@
+{
+  "grass": {
+    "file": "assets/grass.jpg",
+    "sha256": "7e37ffbf9eef03f0bfc67474cf29d9eeb3e369573bc325607a530c7922f9167b"
+  },
+  "stone": {
+    "file": "assets/stone.jpg",
+    "sha256": "ef22c9f612b41dacc6d6c81f2c9d1ce5e384a0202497913437f2f205f3091a16"
+  },
+  "bark": {
+    "file": "assets/bark.jpg",
+    "sha256": "3efa9ef4f55e3d25f301c4e1258e1cfdf76e05deaf7a1c7a1e2221d1116a6cce"
+  },
+  "sand": {
+    "file": "assets/sand.jpg",
+    "sha256": "c6a129884ce73bae332bc45d1b945dcecf164e47b619c4199f84c49febffbce1"
+  },
+  "snow": {
+    "file": "assets/snow.jpg",
+    "sha256": "c04c7dd4706e935908b1c0547178ee8af1c3539930388b84114ab566c6a1f921"
+  },
+  "concrete": {
+    "file": "assets/concrete.jpg",
+    "sha256": "961b127abc8e92b16dda5d8c5c3e1ea0de5cc824fbb705ca0bdb3117fbc1ad19"
+  }
+}

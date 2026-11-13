@@ -1,0 +1,201 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Последний маяк",
+  "seed": 2027,
+  "max_steps": 180,
+  "cohorts": 3,
+  "random_events": true,
+  "terrain": "delta",
+  "conditions": "operation",
+  "geography": "delta",
+  "objects": [
+    {
+      "kind": "rock",
+      "position": [
+        10,
+        77,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        9,
+        19,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        45,
+        59,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        29,
+        41,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        21,
+        54,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        43,
+        27,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        31,
+        82,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        18,
+        38,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        27,
+        58,
+        0
+      ]
+    },
+    {
+      "kind": "rock",
+      "position": [
+        10,
+        53,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        36,
+        71,
+        0
+      ]
+    },
+    {
+      "kind": "tree",
+      "position": [
+        18,
+        45,
+        0
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        42,
+        48,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        24,
+        80,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        9,
+        91,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "underground",
+      "position": [
+        29,
+        29,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underground",
+      "position": [
+        10,
+        34,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        76,
+        27,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        93,
+        66,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        77,
+        91,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        76,
+        47,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        93,
+        75,
+        -5
+      ],
+      "priority": 3
+    }
+  ]
+}

@@ -1,0 +1,1291 @@
+{
+  "format": "ariadna.verification.v1",
+  "checked_on": "2026-11-12",
+  "program_version": "0.9.0",
+  "implementation_archive": "HackRoi-main (8).zip",
+  "implementation_archive_sha256": "ef04b238206f4591dd151479fdb1d8a5740f1420213fe2730be3e85c07179d6c",
+  "commit_sha": null,
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "run": 200,
+    "failures": 0,
+    "errors": 0,
+    "status": "passed"
+  },
+  "ui_browser_retested": false,
+  "external_teams_tested": 0,
+  "official_score": null,
+  "results": [
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "leak",
+      "initial_sha256": "ba187d5a018a5ada7fec8ce2a1951a50566951a4c532e4675215cad7439212ef",
+      "metrics": {
+        "energy_used": 0.389868976072,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 22
+      },
+      "mode": "portable",
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "seed": 42,
+      "source_sha256": {
+        "controller.jsonl": "5ddf3283ee8918d0d18ca93fcf17b807c9709119632d291d6c6870d8f702caf9",
+        "environment.jsonl": "1e168d9de7cf627e5e52c075cc73d24d13abcf1c1b82d7e75a359fe43f2a6a2d",
+        "map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d"
+      },
+      "status": "success",
+      "time": 22.0,
+      "evidence_prefix": "apartment/leak/portable/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "leak",
+      "initial_sha256": "ba187d5a018a5ada7fec8ce2a1951a50566951a4c532e4675215cad7439212ef",
+      "metrics": {
+        "energy_used": 1.22915,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.16666666666666666,
+        "step_count": 80
+      },
+      "mode": "fixed",
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "seed": 42,
+      "source_sha256": {
+        "controller.jsonl": "6356a8898a7c1186f3521a912b457590cfb159c35d0b3f4ee5082e06aeedb4b8",
+        "environment.jsonl": "e247bf0069a8bdfb8932dbf738a54f4cfdad905a36233c42829fb7e6baa5cf08",
+        "map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d"
+      },
+      "status": "time_limit",
+      "time": 80.0,
+      "evidence_prefix": "apartment/leak/fixed/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "leak",
+      "initial_sha256": "ba187d5a018a5ada7fec8ce2a1951a50566951a4c532e4675215cad7439212ef",
+      "metrics": {
+        "energy_used": 1.22915,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.16666666666666666,
+        "step_count": 80
+      },
+      "mode": "reactive",
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "seed": 42,
+      "source_sha256": {
+        "controller.jsonl": "1b444d05d22a012034d17e088fb695cb4ef446255a30b5911df40c111ea6e037",
+        "environment.jsonl": "902ceaf2772340f1b2a0414b5a244ad094d254f02b59399ca95ac3b02da1aabf",
+        "map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d"
+      },
+      "status": "time_limit",
+      "time": 80.0,
+      "evidence_prefix": "apartment/leak/reactive/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "blackout",
+      "initial_sha256": "2949396f3de74ab69958e3222cdbcc3096869527761db4223824388a89492858",
+      "metrics": {
+        "energy_used": 0.518546755305,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 27
+      },
+      "mode": "portable",
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "switch",
+        "synthesize"
+      ],
+      "seed": 109,
+      "source_sha256": {
+        "controller.jsonl": "bd8f5904aa8ca106444f048c956c5d44cc18efea28cc64fb1b9d01b9ce41ee21",
+        "environment.jsonl": "29693b346d290f2eca8042c4346e92cce29cf9d7504bd146aabd9d40df85df6c",
+        "map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01"
+      },
+      "status": "success",
+      "time": 27.0,
+      "evidence_prefix": "apartment/blackout/portable/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "blackout",
+      "initial_sha256": "2949396f3de74ab69958e3222cdbcc3096869527761db4223824388a89492858",
+      "metrics": {
+        "energy_used": 0.9679,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.08333333333333333,
+        "step_count": 80
+      },
+      "mode": "fixed",
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "seed": 109,
+      "source_sha256": {
+        "controller.jsonl": "a6fd755cbba9b459c98915ce2810469daf2bab2a705229b70a4b09a1fc5557f9",
+        "environment.jsonl": "d17a403a1374ba27b15d35bcb7b3659c2767e82784ab648591e93ad17a9cdf03",
+        "map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01"
+      },
+      "status": "time_limit",
+      "time": 80.0,
+      "evidence_prefix": "apartment/blackout/fixed/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "blackout",
+      "initial_sha256": "2949396f3de74ab69958e3222cdbcc3096869527761db4223824388a89492858",
+      "metrics": {
+        "energy_used": 0.9679,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.08333333333333333,
+        "step_count": 80
+      },
+      "mode": "reactive",
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "seed": 109,
+      "source_sha256": {
+        "controller.jsonl": "f08193e7b39d99266f3486dd2b2dc95e5f52f80ae97d72b85ec872d964688538",
+        "environment.jsonl": "8b35272060497385824ee77d816d6e778fd96d40ae5374c13e9a66d92df817da",
+        "map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01"
+      },
+      "status": "time_limit",
+      "time": 80.0,
+      "evidence_prefix": "apartment/blackout/reactive/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "privacy",
+      "initial_sha256": "6dcbc7f68b10272b720f1dcda917a7355022a2b57b98ecfbea2409475107aeb7",
+      "metrics": {
+        "energy_used": 0.259849801929,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.14285714285714285,
+        "step_count": 9
+      },
+      "mode": "portable",
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "safe_stop",
+        "switch"
+      ],
+      "seed": 307,
+      "source_sha256": {
+        "controller.jsonl": "51d9a9ef04b5b2fb15e78750c02b347334e6e981b121a6113dc1e3e4b104b2ca",
+        "environment.jsonl": "a2669d38da2424fb4e8d767a38dc944a5e607a000560883c4e58155ed32180eb",
+        "map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814"
+      },
+      "status": "safe_stopped",
+      "time": 9.0,
+      "evidence_prefix": "apartment/privacy/portable/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "privacy",
+      "initial_sha256": "6dcbc7f68b10272b720f1dcda917a7355022a2b57b98ecfbea2409475107aeb7",
+      "metrics": {
+        "energy_used": 0.2294,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.14285714285714285,
+        "step_count": 9
+      },
+      "mode": "fixed",
+      "operations": [
+        "keep",
+        "safe_stop",
+        "select"
+      ],
+      "seed": 307,
+      "source_sha256": {
+        "controller.jsonl": "0b16bb0d3dbed96ad2ccb923ad1cccef801773749032773e9bc7ca2d3781ec73",
+        "environment.jsonl": "4af2703934b51b792fcf95e2921e950e6c89e20e0f74a25b182ec3eccbde7052",
+        "map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814"
+      },
+      "status": "safe_stopped",
+      "time": 9.0,
+      "evidence_prefix": "apartment/privacy/fixed/"
+    },
+    {
+      "domain": "apartment",
+      "audit": "passed",
+      "case": "privacy",
+      "initial_sha256": "6dcbc7f68b10272b720f1dcda917a7355022a2b57b98ecfbea2409475107aeb7",
+      "metrics": {
+        "energy_used": 0.2294,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.14285714285714285,
+        "step_count": 9
+      },
+      "mode": "reactive",
+      "operations": [
+        "keep",
+        "safe_stop",
+        "select"
+      ],
+      "seed": 307,
+      "source_sha256": {
+        "controller.jsonl": "0bbfa392d3f8d8719d0524ddcf7b52e1c113ecfdd5b4fd8b8783f87a233483ee",
+        "environment.jsonl": "d8438dd5bca85ccd2870be1c6531ee0787f21b36f54b5c999aa50b3f0dd03cb7",
+        "map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814"
+      },
+      "status": "safe_stopped",
+      "time": 9.0,
+      "evidence_prefix": "apartment/privacy/reactive/"
+    },
+    {
+      "domain": "field",
+      "mission": "forest",
+      "seed": 42,
+      "controller": "portable",
+      "status": "success",
+      "time": 57.0,
+      "metrics": {
+        "energy_used": 3.79233223581,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 57
+      },
+      "audit": "passed",
+      "heading_changes": 49,
+      "paths_metres": {
+        "air": 264.82338,
+        "land": 56.559,
+        "tunnel": 43.0135,
+        "boat": 85.70992,
+        "sub": 45.52417,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 167.25403,
+        "land_1": 140.97849,
+        "tunnel_1": 47.89949,
+        "boat_1": 118.32517,
+        "sub_1": 92.67776
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "contradictory_information",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "switch"
+      ],
+      "map_sha256": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+      "seconds": 62.033,
+      "files": {
+        "map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+        "environment.jsonl": "dccc85e1eb4b72dc3fcf2c2d9e2558826fe24ebf183da318333ea4f90eed2f24",
+        "controller.jsonl": "dd5971a6d0fc3e8bd99463cfe8fcf0d5c7b5aca29dfae0c8fc519721427a6beb"
+      },
+      "evidence_prefix": "field/forest_42_portable/"
+    },
+    {
+      "domain": "field",
+      "mission": "forest",
+      "seed": 42,
+      "controller": "fixed",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 3.635650434577,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.5365853658536586,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 39,
+      "paths_metres": {
+        "air": 8.24621,
+        "land": 12.0,
+        "tunnel": 24.0,
+        "boat": 36.0,
+        "sub": 28.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 240.0,
+        "tunnel_1": 27.89949,
+        "boat_1": 29.05539,
+        "sub_1": 31.34847
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "contradictory_information",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+      "seconds": 18.321,
+      "files": {
+        "map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+        "environment.jsonl": "8042eb0815ea7ec53864b3b1c4d072bdce3aaa8564f4eb6bef7e5cb7cdcad5ad",
+        "controller.jsonl": "c864e8a7a9aa0e25bba9c151b83348575b86ed53c9e09b8bf3c6226b6577208b"
+      },
+      "evidence_prefix": "field/forest_42_fixed/"
+    },
+    {
+      "domain": "field",
+      "mission": "forest",
+      "seed": 42,
+      "controller": "reactive",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 3.635650434577,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.5365853658536586,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 40,
+      "paths_metres": {
+        "air": 8.24621,
+        "land": 12.0,
+        "tunnel": 24.0,
+        "boat": 36.0,
+        "sub": 28.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 239.7278,
+        "tunnel_1": 27.89949,
+        "boat_1": 29.05539,
+        "sub_1": 31.34847
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "contradictory_information",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+      "seconds": 18.011,
+      "files": {
+        "map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+        "environment.jsonl": "5245b7e2ff820b0d8bdfa1ddb96c34226fbe684d80b70ec3daf04f4df792c40d",
+        "controller.jsonl": "ebd21e1c9f428255f31d56fc03cc00633da165a52f08b4776d472cf475e159a9"
+      },
+      "evidence_prefix": "field/forest_42_reactive/"
+    },
+    {
+      "domain": "field",
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "portable",
+      "status": "success",
+      "time": 48.0,
+      "metrics": {
+        "energy_used": 4.725975781732,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 48
+      },
+      "audit": "passed",
+      "heading_changes": 72,
+      "paths_metres": {
+        "air": 196.71507,
+        "land": 42.0,
+        "tunnel": 61.55937,
+        "boat": 87.97074,
+        "sub": 66.57128,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 161.06888,
+        "land_1": 92.97762,
+        "tunnel_1": 15.42924,
+        "boat_1": 52.59689,
+        "sub_1": 84.84575,
+        "air_2": 201.63368,
+        "land_2": 91.30457,
+        "tunnel_2": 18.0944,
+        "boat_2": 141.43555,
+        "sub_2": 31.07107
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "infrastructure_failure",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "switch"
+      ],
+      "map_sha256": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+      "seconds": 54.533,
+      "files": {
+        "map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+        "environment.jsonl": "7a9bfb0ebf2224b7d8d5789ec377db6b1c0cc6895ded61561fd252194df58104",
+        "controller.jsonl": "559b35897b0dec6d99414dcf339956b94fb3218a2afca503ded1d680133ff9e2"
+      },
+      "evidence_prefix": "field/quarry_109_portable/"
+    },
+    {
+      "domain": "field",
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "fixed",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 5.546975457477,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.7317073170731707,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 47,
+      "paths_metres": {
+        "air": 10.04988,
+        "land": 60.0,
+        "tunnel": 87.32613,
+        "boat": 33.70787,
+        "sub": 23.29763,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 51.0,
+        "tunnel_1": 88.0,
+        "boat_1": 30.0,
+        "sub_1": 31.16228,
+        "air_2": 36.0,
+        "land_2": 59.1079,
+        "tunnel_2": 87.07107,
+        "boat_2": 40.0,
+        "sub_2": 38.0
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "infrastructure_failure",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+      "seconds": 21.374,
+      "files": {
+        "map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+        "environment.jsonl": "3bcbd60a12f69a588d01f932eef55ad6590f133e4395fda48b0bf5d99963b904",
+        "controller.jsonl": "7d9e00f6e34472d0f79a493e3a0398e136c8eb506fcf005d01f4aa1980fb9328"
+      },
+      "evidence_prefix": "field/quarry_109_fixed/"
+    },
+    {
+      "domain": "field",
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "reactive",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 5.79119015197,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.7317073170731707,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 46,
+      "paths_metres": {
+        "air": 10.04988,
+        "land": 54.0,
+        "tunnel": 107.87981,
+        "boat": 33.70787,
+        "sub": 23.29763,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 44.0,
+        "tunnel_1": 114.0,
+        "boat_1": 30.0,
+        "sub_1": 31.16228,
+        "air_2": 36.0,
+        "land_2": 62.1079,
+        "tunnel_2": 109.07107,
+        "boat_2": 40.0,
+        "sub_2": 38.0
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "infrastructure_failure",
+        "restricted_zone_appeared",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+      "seconds": 20.154,
+      "files": {
+        "map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+        "environment.jsonl": "0074a2d853bf78e3cb923b2b4b7945789408af644f64695c33cb904e7dee3727",
+        "controller.jsonl": "5dcaf524a596a4bebe3ed19452f66a30f72bc4558825e6c0e3f523b26513bfa8"
+      },
+      "evidence_prefix": "field/quarry_109_reactive/"
+    },
+    {
+      "domain": "field",
+      "mission": "city",
+      "seed": 307,
+      "controller": "portable",
+      "status": "success",
+      "time": 44.0,
+      "metrics": {
+        "energy_used": 3.327389539875,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 44
+      },
+      "audit": "passed",
+      "heading_changes": 37,
+      "paths_metres": {
+        "air": 106.5437,
+        "land": 39.0,
+        "tunnel": 32.94227,
+        "boat": 52.24829,
+        "sub": 36.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 110.97051,
+        "land_1": 56.62796,
+        "tunnel_1": 13.94987,
+        "boat_1": 43.09646,
+        "sub_1": 78.67047,
+        "air_2": 109.63002,
+        "land_2": 65.50421,
+        "tunnel_2": 8.0,
+        "boat_2": 64.0,
+        "sub_2": 47.10497
+      },
+      "events": [
+        "agent_failure",
+        "connectivity_loss",
+        "contradictory_information",
+        "resource_shortage",
+        "target_detected"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify"
+      ],
+      "map_sha256": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+      "seconds": 46.221,
+      "files": {
+        "map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+        "environment.jsonl": "f9951b8d25a6cc7e30b39f063f6ea8184328ae8c775cd388795a9b3ef84efaf2",
+        "controller.jsonl": "2a0c1cb132a5915ef6053c21b3bc0565b95383c90c409336107f8a5679f425fd"
+      },
+      "evidence_prefix": "field/city_307_portable/"
+    },
+    {
+      "domain": "field",
+      "mission": "city",
+      "seed": 307,
+      "controller": "fixed",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 5.291794822901,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.34146341463414637,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 93,
+      "paths_metres": {
+        "air": 7.54983,
+        "land": 18.0,
+        "tunnel": 22.0,
+        "boat": 40.0,
+        "sub": 50.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 36.0,
+        "land_1": 30.0,
+        "tunnel_1": 29.94987,
+        "boat_1": 44.0,
+        "sub_1": 56.0,
+        "air_2": 42.0,
+        "land_2": 249.0,
+        "tunnel_2": 32.0,
+        "boat_2": 40.0,
+        "sub_2": 53.47391
+      },
+      "events": [
+        "agent_failure",
+        "connectivity_loss",
+        "contradictory_information",
+        "resource_shortage",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+      "seconds": 21.38,
+      "files": {
+        "map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+        "environment.jsonl": "efe502ad24754700c7dd3d728ba3fdc8e10bb2cb0d654b51cc203a1810f6fa51",
+        "controller.jsonl": "18986403311f56d10c21f0ef2a8af97878a92c08e83d0e782c393f5f9fa0ef31"
+      },
+      "evidence_prefix": "field/city_307_fixed/"
+    },
+    {
+      "domain": "field",
+      "mission": "city",
+      "seed": 307,
+      "controller": "reactive",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 6.043794822901,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.34146341463414637,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 109,
+      "paths_metres": {
+        "air": 7.54983,
+        "land": 18.0,
+        "tunnel": 22.0,
+        "boat": 40.0,
+        "sub": 50.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 36.0,
+        "land_1": 30.0,
+        "tunnel_1": 29.94987,
+        "boat_1": 44.0,
+        "sub_1": 56.0,
+        "air_2": 42.0,
+        "land_2": 474.0,
+        "tunnel_2": 32.0,
+        "boat_2": 40.0,
+        "sub_2": 53.47391
+      },
+      "events": [
+        "agent_failure",
+        "connectivity_loss",
+        "contradictory_information",
+        "resource_shortage",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+      "seconds": 21.441,
+      "files": {
+        "map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+        "environment.jsonl": "b368147c68666a282f7ebcd5a790faa607dde7abb41c42bfdfe046d51d24706f",
+        "controller.jsonl": "a7b2b7184970af2011c0cc056417283057ab935c37870bd55db1e1d108855557"
+      },
+      "evidence_prefix": "field/city_307_reactive/"
+    },
+    {
+      "domain": "field",
+      "mission": "snow",
+      "seed": 701,
+      "controller": "portable",
+      "status": "success",
+      "time": 46.0,
+      "metrics": {
+        "energy_used": 3.093250377043,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 46
+      },
+      "audit": "passed",
+      "heading_changes": 30,
+      "paths_metres": {
+        "air": 99.27073,
+        "land": 71.04497,
+        "tunnel": 41.18664,
+        "boat": 84.59864,
+        "sub": 82.0846,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 152.68563,
+        "land_1": 77.38374,
+        "tunnel_1": 47.35782,
+        "boat_1": 98.40203,
+        "sub_1": 53.63331
+      },
+      "events": [
+        "agent_degradation",
+        "infrastructure_failure",
+        "stale_information",
+        "target_detected"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "switch"
+      ],
+      "map_sha256": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+      "seconds": 37.033,
+      "files": {
+        "map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+        "environment.jsonl": "22d4ff8d6683772c8d115440a88b81001b406fccce2a765f60dbaedf56abf59b",
+        "controller.jsonl": "1fddbe7bc7411a35e65f6a15ac88b36fa7f037faced37384723bc36e75a5e0ba"
+      },
+      "evidence_prefix": "field/snow_701_portable/"
+    },
+    {
+      "domain": "field",
+      "mission": "snow",
+      "seed": 701,
+      "controller": "fixed",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 6.690156578228,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.7560975609756098,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 213,
+      "paths_metres": {
+        "air": 10.77033,
+        "land": 251.0,
+        "tunnel": 54.0,
+        "boat": 156.39488,
+        "sub": 169.28088,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 255.0,
+        "tunnel_1": 53.35782,
+        "boat_1": 245.42456,
+        "sub_1": 176.46664
+      },
+      "events": [
+        "agent_degradation",
+        "infrastructure_failure",
+        "stale_information",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+      "seconds": 16.615,
+      "files": {
+        "map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+        "environment.jsonl": "c6f5d1528dcf2e592e79606ccfaab4f1b6d6cefda8baa788b1ce02163b608122",
+        "controller.jsonl": "66d498c9f88e6e01494e8b40b02cb080dc8bd59b878d4a5e18dc1d54adc16fff"
+      },
+      "evidence_prefix": "field/snow_701_fixed/"
+    },
+    {
+      "domain": "field",
+      "mission": "snow",
+      "seed": 701,
+      "controller": "reactive",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 7.004957042724,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.7560975609756098,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 204,
+      "paths_metres": {
+        "air": 10.77033,
+        "land": 257.0,
+        "tunnel": 54.0,
+        "boat": 156.39488,
+        "sub": 177.48463,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 245.99847,
+        "tunnel_1": 53.35782,
+        "boat_1": 245.42456,
+        "sub_1": 186.46664
+      },
+      "events": [
+        "agent_degradation",
+        "infrastructure_failure",
+        "stale_information",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+      "seconds": 16.515,
+      "files": {
+        "map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+        "environment.jsonl": "5dc1f9c3e77598e677e2a4c583fd851aa7319332d25919078a16391f9e9a382e",
+        "controller.jsonl": "c5b6215ead124565a9a2490d21844b35f45c12bf25c1325e366879fed9ffd4cf"
+      },
+      "evidence_prefix": "field/snow_701_reactive/"
+    },
+    {
+      "domain": "field",
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "portable",
+      "status": "success",
+      "time": 55.0,
+      "metrics": {
+        "energy_used": 4.794654290988,
+        "messages_delivered": 2,
+        "messages_dropped": 1,
+        "messages_sent": 3,
+        "mission_completion": 1.0,
+        "step_count": 55
+      },
+      "audit": "passed",
+      "heading_changes": 62,
+      "paths_metres": {
+        "air": 151.91169,
+        "land": 96.2894,
+        "tunnel": 65.0,
+        "boat": 81.04378,
+        "sub": 91.38516,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 136.94113,
+        "land_1": 50.04375,
+        "tunnel_1": 25.09902,
+        "boat_1": 12.0,
+        "sub_1": 69.04669,
+        "air_2": 141.3124,
+        "land_2": 85.05456,
+        "tunnel_2": 19.10557,
+        "boat_2": 126.88243,
+        "sub_2": 97.20908
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "hazard_appeared",
+        "mission_priority_change",
+        "target_detected"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "switch"
+      ],
+      "map_sha256": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+      "seconds": 74.407,
+      "files": {
+        "map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+        "environment.jsonl": "3cceea5220915484c39ecf13f236cc4ccb9d8d0cb53391f5d57ec2c31e7b3f61",
+        "controller.jsonl": "5cc3dc13675b83039954e72fc5c929c137e25d00044dc9c0e2975103b30d21bf"
+      },
+      "evidence_prefix": "field/delta_2027_portable/"
+    },
+    {
+      "domain": "field",
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "fixed",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 6.505899417712,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.4230769230769231,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 79,
+      "paths_metres": {
+        "air": 9.38083,
+        "land": 28.78299,
+        "tunnel": 10.0,
+        "boat": 86.0,
+        "sub": 136.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 48.0,
+        "tunnel_1": 24.0,
+        "boat_1": 107.04536,
+        "sub_1": 126.0,
+        "air_2": 42.0,
+        "land_2": 51.0,
+        "tunnel_2": 24.0,
+        "boat_2": 97.9447,
+        "sub_2": 129.20465
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "hazard_appeared",
+        "mission_priority_change",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+      "seconds": 24.445,
+      "files": {
+        "map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+        "environment.jsonl": "c91db175fe150ad6586b704744dccfb598bed0b1549b0efac3a795d106e21cfb",
+        "controller.jsonl": "90085c147c41c4273dfd96a27b91ec7e119e6c6212ce7803ad48abea06ece35b"
+      },
+      "evidence_prefix": "field/delta_2027_fixed/"
+    },
+    {
+      "domain": "field",
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "reactive",
+      "status": "time_limit",
+      "time": 180.0,
+      "metrics": {
+        "energy_used": 8.120906261304,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.6923076923076923,
+        "step_count": 180
+      },
+      "audit": "passed",
+      "heading_changes": 100,
+      "paths_metres": {
+        "air": 9.38083,
+        "land": 28.78299,
+        "tunnel": 10.0,
+        "boat": 146.0,
+        "sub": 183.10947,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 30.0,
+        "land_1": 48.0,
+        "tunnel_1": 24.0,
+        "boat_1": 219.04536,
+        "sub_1": 246.0,
+        "air_2": 42.0,
+        "land_2": 51.0,
+        "tunnel_2": 24.0,
+        "boat_2": 211.21985,
+        "sub_2": 183.20465
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "hazard_appeared",
+        "mission_priority_change",
+        "target_detected"
+      ],
+      "operations": [
+        "keep",
+        "select"
+      ],
+      "map_sha256": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+      "seconds": 24.563,
+      "files": {
+        "map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+        "environment.jsonl": "1c23a1bc8832f7409b622d6dc49c0dd61fc83ca100bda9bba4ebc14bac1840d2",
+        "controller.jsonl": "bd7edf766c878f4a366fd690e4f61f237417817d2406e3dbc6eb19604b5d91a5"
+      },
+      "evidence_prefix": "field/delta_2027_reactive/"
+    }
+  ],
+  "runtime_source_sha256": {
+    "hackroi/__init__.py": "c07a7420b09747b9dd1e83e1f99eeb47f543b437ed50a690da24d4f6a8f2e3d6",
+    "hackroi/__main__.py": "476ed02c827afe1c2783167930fd1511613aa87b6984141a8dbca872d5bdb3af",
+    "hackroi/adapters.py": "b70b6fff759c84ff77ee83004fea2574b0e112f5d9c58047173c9738ae8f05c7",
+    "hackroi/audit.py": "53705563627f632f52c4a86c201d6e73183651a4ec171c27b36127db2f9419b3",
+    "hackroi/baselines.py": "be785ba4b9b6a69eb1295e9eb5c3e9275e2fecce8368aca0b8408e52ef1406ca",
+    "hackroi/beliefs.py": "0a91c1635b3d2aedc51f79da76baaa3daf4a9a9ce4f1ee40ebaf27c5e1a56100",
+    "hackroi/client.py": "a4a8db457f08e9d2f502a7acbed128eb365879d484cadf1226f913d0a4a49770",
+    "hackroi/compute.py": "f5f413e018d4ec2990f14900f859d3e490dc45f1ea945f5d801fd8b46ca173a2",
+    "hackroi/contracts.py": "08f20bfeeaf993cece94234889f5d8748832ad863d04ff89f6e007ab7af7744f",
+    "hackroi/controller.py": "f695b5dc02163e5b8fb8ea8b01cf22fbbb16eee12998cfc562a3acff3c02587a",
+    "hackroi/counterfactual.py": "bfca183c3b7bb77bb5034d371792ed11cccf9b5f6e92b14da10e149ad43c4258",
+    "hackroi/custom_maps.py": "295fddea5eed7507427fc42ab078ab79e863c6fabcd9f7bf9e4694fe6f2c950f",
+    "hackroi/dossier.py": "1e49a612ff115b07fb473e8352058945d4a87d4fbc8554b71b9ed62441268b0c",
+    "hackroi/environment.py": "fddf9004e49db4fcdb4dd44e4911e08b594b80d20ca8833f149a47adf44ce358",
+    "hackroi/forecast.py": "729e3c66ae7894be36ba1e4103031b940a75f2ff79a5c9a04a618ce93268b801",
+    "hackroi/forecast_policy.py": "2b76d85b6dae420ad7335007459c75f8869d37785434842549c9c97a2148d60b",
+    "hackroi/home.py": "89dd3f4b967790a94d7b23863aa55786d64854ef355fada2e904418424e2d264",
+    "hackroi/http.py": "01fbcb2964cb9bae1a5ae6b22042dc78022b41cc70b7447d454526160f4077a2",
+    "hackroi/journal.py": "f20e2cd78d8f9751655ab132ef7736668258e25da150f27a19eed82945d96fed",
+    "hackroi/landscapes.py": "de46171945f40c234a06b0f24c6a90a3bcc7e41324249b3b267213ee87078328",
+    "hackroi/layouts.py": "fad32475d4d0820027432e596a93a98fc1034d3230ee976004249ae124b641c7",
+    "hackroi/metacontroller.py": "13750068ee4a5111a5deaaa4a23f0059efd59c66319c25a84795adf88e047a10",
+    "hackroi/physics.py": "6bfc2ac4a2007096338be0ff50fb57a393c5f228dd5d67ee521fe9d3f4d2770a",
+    "hackroi/portable.py": "88a92a776a5ae547a2c3b78d82e314558ffbe251b7c0821bc40418fcab37e0da",
+    "hackroi/predicates.py": "1132022ac1ec3ae46270acf51ae21b6ad173002982b3b7356c415f7802b4a578",
+    "hackroi/public_model.py": "7acbb2a3ab2a532032439977b1e0e637d7e0876f0e148a2fe58465d9e819775a",
+    "hackroi/research.py": "ae8f6a9f351d213acc4d8fe39dbe50a0da591b2cd9a5b50f0905f28cf781d4cd",
+    "hackroi/routing.py": "6808941996f234c95b83e232db6b47493fd0be68e61fb45804d37ddbf16d64d4",
+    "hackroi/scenarios.py": "dc9ccaddc8d3f2eff0e2b3e9bbf28852873aed2c0d2ec3f668be509b03ee7110",
+    "hackroi/showcase.py": "17ba89f246540bd1aebe2705620841b0d71f1ac67a450977269adff7fe332294",
+    "hackroi/simulation.py": "d30011be0f5bc987447a04729834fcb3e2326b8ca5e49608f67b0c7da976ce99",
+    "hackroi/studio.py": "e4a6400af1f20762565e3e8914557981cdd9b93a4eb93435f3b5f8cfaf495ada",
+    "hackroi/viewer_pack.py": "0ac0e2b78ae3f8d18bbb4e0d608b1179c83ba00f37e3fffdfea18f4de46e4b3a",
+    "interop/faults.py": "63722ac338873bed769134319b32b856c16f281c3e526b3e9f7828b727a02193",
+    "interop/peer.py": "d6e5fa8ff289b794c1e00111f04ed9dbb6c593d7fac2a65126d064e9aa9aaed6",
+    "interop/public_model_profile.json": "a8adf81f779978cba5f3a3743d27ee250be81ec8418396cb2dd98a863c9fc093",
+    "contracts/close.schema.json": "5e1da60c8466c1ae75960849afb104234d0bc6ff54e9201df40bc02f6f3dcbad",
+    "contracts/decision.schema.json": "4871fc8c4b09612346d28ea73678f354309462f4913453c307cec882c9a4debd",
+    "contracts/error.schema.json": "d538010c7ad5399d25cebc274d27821f75779a10d3f18892ee76cd8f38e44265",
+    "contracts/observation.schema.json": "ff7c56e0dce4e4de674ac5b4e3e7e7243267587b7b8723c25c3dc20f9a32e2c5",
+    "contracts/reset.schema.json": "53fadfba75d17cf5713027b0f42bf3c785cb67d0a9b6243ed812c401dbe8b4ba",
+    "contracts/reset_response.schema.json": "4212b1ccff3ac0fa0d55c566848c7fe0d9261071e26f43e212a54e5b43bdfff9",
+    "contracts/response.schema.json": "0992b1481f791af0d4d015a665da62715d94b9391e7f5a23abfc78f127634e45",
+    "scenarios/campaign/deployments.json": "1131fc60c49d1c4ab257fff8ba0c6f774417fb6e9ffad453e90b80e3cdad13a8",
+    "scenarios/campaign/landscapes.json": "eb3ed8538518904e08b0ddb60e8e076a58e26edad19fe5b42be560ceed10a911",
+    "scenarios/library.json": "ff3a1ee812f063e168b8bb5e82458f8a398d6d9a0a6acd69a18f9a0b1757f991",
+    "scenarios/missions/catalog.json": "0620826328e6dc54c206f4026e7c217edf97d1b70aa7c68d29ca5fd71bda30e9",
+    "scenarios/missions/city.json": "6c8898f8e5cf855e623475269c5cfea0031cbb7fa1bb0e321a6230eeaea64087",
+    "scenarios/missions/delta.json": "93e147dd9ab9f9bbba173ae1726c615f56074144077dd05f3e23c86471c34feb",
+    "scenarios/missions/forest.json": "2ff6a18e8cae0320eaeb45a8bfc16c27c54e30535df659e1f985f713f634d44b",
+    "scenarios/missions/quarry.json": "f14e34a14948b79c8520b201a2410e4cb2052b4d5eb8d0e8743e1a72fdd8128b",
+    "scenarios/missions/snow.json": "b52672680f243eab9d1b638029e54bf2d71239623dad8213309e4760e6101c95"
+  },
+  "source_scope": "Mission runtime, scenario data, contracts and local interoperability fixture; packaging module release.py excluded.",
+  "evidence_files": {
+    "apartment/blackout/fixed/controller.jsonl": "a6fd755cbba9b459c98915ce2810469daf2bab2a705229b70a4b09a1fc5557f9",
+    "apartment/blackout/fixed/environment.jsonl": "d17a403a1374ba27b15d35bcb7b3659c2767e82784ab648591e93ad17a9cdf03",
+    "apartment/blackout/fixed/map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01",
+    "apartment/blackout/fixed/summary.json": "2baf6aae99f7fcdd649dfb37d281ee8b7a9f9763253ae1e9a157a068c4ce9b10",
+    "apartment/blackout/portable/controller.jsonl": "bd8f5904aa8ca106444f048c956c5d44cc18efea28cc64fb1b9d01b9ce41ee21",
+    "apartment/blackout/portable/environment.jsonl": "29693b346d290f2eca8042c4346e92cce29cf9d7504bd146aabd9d40df85df6c",
+    "apartment/blackout/portable/map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01",
+    "apartment/blackout/portable/summary.json": "c4c05315df0417c9337f3198f20c080513d66573e09b057579c1862be1092cea",
+    "apartment/blackout/reactive/controller.jsonl": "f08193e7b39d99266f3486dd2b2dc95e5f52f80ae97d72b85ec872d964688538",
+    "apartment/blackout/reactive/environment.jsonl": "8b35272060497385824ee77d816d6e778fd96d40ae5374c13e9a66d92df817da",
+    "apartment/blackout/reactive/map.json": "24b17086edde477eab2731bd8841ae4383ce3f9d61554bfefac9109117f85d01",
+    "apartment/blackout/reactive/summary.json": "758fb711c16d1251d9638a97fde4a4390657a7d65edeac84e086b32498e20921",
+    "apartment/impact/environment.jsonl": "023903f33212afe28367bfa9616730e8c1f05cfabc792dba7d1e296f3d6aee9b",
+    "apartment/impact/map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d",
+    "apartment/leak/fixed/controller.jsonl": "6356a8898a7c1186f3521a912b457590cfb159c35d0b3f4ee5082e06aeedb4b8",
+    "apartment/leak/fixed/environment.jsonl": "e247bf0069a8bdfb8932dbf738a54f4cfdad905a36233c42829fb7e6baa5cf08",
+    "apartment/leak/fixed/map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d",
+    "apartment/leak/fixed/summary.json": "16871d53653dc988a9a7cf19b0cc2dae5f65d087be968500f732fd8e7b9e3241",
+    "apartment/leak/fork/branches.json": "765e0029ab0eb82f838ca35b72f74575efbb68fd4b3470056b43e7220a251e15",
+    "apartment/leak/fork/branches.md": "40fb9f3a128fd7eb009c0c570a0f89ff694bc6caec6beedf99ea4d8893b6a6bb",
+    "apartment/leak/fork/frontier/environment.jsonl": "8c225bafa326a4101410bca1b0436eb6e92ae9811b36637c536b5f7273ad9244",
+    "apartment/leak/fork/frontier/interventions.jsonl": "b89043122714dc436c72dc1938c7d77938a9ca2ebe42402a42ff675696bd62d4",
+    "apartment/leak/fork/frontier/replay.json": "613858ed328327fd13b95ee8a33de1682623e4bfa0f40857da1de8ef26caf5d8",
+    "apartment/leak/fork/meta/environment.jsonl": "99d773397576b3c73cdf0c33702797609b2f867e7cea4ce5978841214f7758e2",
+    "apartment/leak/fork/meta/interventions.jsonl": "dd3768da0f604013c404622032d5ce5a9252ae756ed509db32d65b59beab9e2f",
+    "apartment/leak/fork/meta/replay.json": "aa48cf72afd5c0ee9d7773aac56cfbba557db8f2caf24a482b11a837db1c9cef",
+    "apartment/leak/fork/nearby/environment.jsonl": "ca7b87a22475031446d668a0083a6a07b748304cf42f9b8afb1b200ac1d0b8df",
+    "apartment/leak/fork/nearby/interventions.jsonl": "371b1353a46987f9597a8bd9f49dd9f5ef07cb942fc28c817c5e26c1af503eb1",
+    "apartment/leak/fork/nearby/replay.json": "0be247e305ac9f8325e710e350e1e1271a215009c18da8dfd705c8aa47b449d8",
+    "apartment/leak/fork/reserve/environment.jsonl": "c6cd2f19dd4d2dccfa2a996871b8551a142477a162cb0901f821dc7506007be7",
+    "apartment/leak/fork/reserve/interventions.jsonl": "1dd1862e83b6b5dc19c0b1cf13bed32a0f31894b42c45f0216ae6cf0be9e18f4",
+    "apartment/leak/fork/reserve/replay.json": "62bc9bd19837e2664eceadc7ebb128b0964e8d3b5126b69853b285dd69b46383",
+    "apartment/leak/portable/controller.jsonl": "5ddf3283ee8918d0d18ca93fcf17b807c9709119632d291d6c6870d8f702caf9",
+    "apartment/leak/portable/environment.jsonl": "1e168d9de7cf627e5e52c075cc73d24d13abcf1c1b82d7e75a359fe43f2a6a2d",
+    "apartment/leak/portable/map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d",
+    "apartment/leak/portable/summary.json": "fbfc38f18ef88ad530d1f8fc9d3a18a64d8f555ee5e48ef762575a5e09be74d0",
+    "apartment/leak/reactive/controller.jsonl": "1b444d05d22a012034d17e088fb695cb4ef446255a30b5911df40c111ea6e037",
+    "apartment/leak/reactive/environment.jsonl": "902ceaf2772340f1b2a0414b5a244ad094d254f02b59399ca95ac3b02da1aabf",
+    "apartment/leak/reactive/map.json": "4b73a6ba85c38d15caa47579a06c553af8f6d362ade8cfbc39b73cd70023881d",
+    "apartment/leak/reactive/summary.json": "c862a62fc717e59888b5ea660dfd3cba2919d0f46c4e4413009e0d1bb9ab3601",
+    "apartment/privacy/fixed/controller.jsonl": "0b16bb0d3dbed96ad2ccb923ad1cccef801773749032773e9bc7ca2d3781ec73",
+    "apartment/privacy/fixed/environment.jsonl": "4af2703934b51b792fcf95e2921e950e6c89e20e0f74a25b182ec3eccbde7052",
+    "apartment/privacy/fixed/map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814",
+    "apartment/privacy/fixed/summary.json": "8a545e678f761629f1542f28625c09dd5717899f545deeec27044cbad4ff6aee",
+    "apartment/privacy/portable/controller.jsonl": "51d9a9ef04b5b2fb15e78750c02b347334e6e981b121a6113dc1e3e4b104b2ca",
+    "apartment/privacy/portable/environment.jsonl": "a2669d38da2424fb4e8d767a38dc944a5e607a000560883c4e58155ed32180eb",
+    "apartment/privacy/portable/map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814",
+    "apartment/privacy/portable/summary.json": "d55e8cea86f9125ee000765015cb216495284dd77808c384fe20d9cc80ab6450",
+    "apartment/privacy/reactive/controller.jsonl": "0bbfa392d3f8d8719d0524ddcf7b52e1c113ecfdd5b4fd8b8783f87a233483ee",
+    "apartment/privacy/reactive/environment.jsonl": "d8438dd5bca85ccd2870be1c6531ee0787f21b36f54b5c999aa50b3f0dd03cb7",
+    "apartment/privacy/reactive/map.json": "47f8df87bbd3fad382d6107e2e1d945915f10fbe96a2056095b0cd64b8678814",
+    "apartment/privacy/reactive/summary.json": "ab0c66f7a42c2b2b33422dd9ab6277ed07df9301d5f1fee863b8533ed7d22c24",
+    "field/city_307_fixed/controller.jsonl": "18986403311f56d10c21f0ef2a8af97878a92c08e83d0e782c393f5f9fa0ef31",
+    "field/city_307_fixed/environment.jsonl": "efe502ad24754700c7dd3d728ba3fdc8e10bb2cb0d654b51cc203a1810f6fa51",
+    "field/city_307_fixed/map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+    "field/city_307_fixed/summary.json": "6afbaca4b9655d2793eb607a57749d6bcad17c850610f3ea41edcd9cc4322a48",
+    "field/city_307_portable/controller.jsonl": "2a0c1cb132a5915ef6053c21b3bc0565b95383c90c409336107f8a5679f425fd",
+    "field/city_307_portable/environment.jsonl": "f9951b8d25a6cc7e30b39f063f6ea8184328ae8c775cd388795a9b3ef84efaf2",
+    "field/city_307_portable/map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+    "field/city_307_portable/summary.json": "47e198d6dd9fd7510b9aaabd3fff67d61f3b412e094d073ff18d480379ef30e6",
+    "field/city_307_reactive/controller.jsonl": "a7b2b7184970af2011c0cc056417283057ab935c37870bd55db1e1d108855557",
+    "field/city_307_reactive/environment.jsonl": "b368147c68666a282f7ebcd5a790faa607dde7abb41c42bfdfe046d51d24706f",
+    "field/city_307_reactive/map.json": "68981750e7cbf48d75bb405dd62367315adef8b41041f0664ff003b8b12605f6",
+    "field/city_307_reactive/summary.json": "b9853bc25c126848f21b17c33f2c1e4b6165464ce592d6abf2fef901002a1854",
+    "field/delta_2027_fixed/controller.jsonl": "90085c147c41c4273dfd96a27b91ec7e119e6c6212ce7803ad48abea06ece35b",
+    "field/delta_2027_fixed/environment.jsonl": "c91db175fe150ad6586b704744dccfb598bed0b1549b0efac3a795d106e21cfb",
+    "field/delta_2027_fixed/map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+    "field/delta_2027_fixed/summary.json": "74101fa0c7e1f3ecebf21c745091e90b1d68daf7d6f4ef16144f9a4d78bb080d",
+    "field/delta_2027_portable/controller.jsonl": "5cc3dc13675b83039954e72fc5c929c137e25d00044dc9c0e2975103b30d21bf",
+    "field/delta_2027_portable/environment.jsonl": "3cceea5220915484c39ecf13f236cc4ccb9d8d0cb53391f5d57ec2c31e7b3f61",
+    "field/delta_2027_portable/map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+    "field/delta_2027_portable/summary.json": "6603c368650c5bc0d6b5528ccde58d1aa66ed7ebdcd1cd122502f35fb15eb0ea",
+    "field/delta_2027_reactive/controller.jsonl": "bd7edf766c878f4a366fd690e4f61f237417817d2406e3dbc6eb19604b5d91a5",
+    "field/delta_2027_reactive/environment.jsonl": "1c23a1bc8832f7409b622d6dc49c0dd61fc83ca100bda9bba4ebc14bac1840d2",
+    "field/delta_2027_reactive/map.json": "04ccebd04458faaa97377e08946b3db7c49f76a80de621da44dad6d88158db08",
+    "field/delta_2027_reactive/summary.json": "17c09b343ab72c6f59e8c2c75de55a11442c03335c934ef42728abf8854191f9",
+    "field/forest_42_fixed/controller.jsonl": "c864e8a7a9aa0e25bba9c151b83348575b86ed53c9e09b8bf3c6226b6577208b",
+    "field/forest_42_fixed/environment.jsonl": "8042eb0815ea7ec53864b3b1c4d072bdce3aaa8564f4eb6bef7e5cb7cdcad5ad",
+    "field/forest_42_fixed/map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+    "field/forest_42_fixed/summary.json": "d09bd4a5fc98a835fda3a8acb2757e1144c38580dfb3d4c146f65be4aa2de6af",
+    "field/forest_42_portable/controller.jsonl": "dd5971a6d0fc3e8bd99463cfe8fcf0d5c7b5aca29dfae0c8fc519721427a6beb",
+    "field/forest_42_portable/environment.jsonl": "dccc85e1eb4b72dc3fcf2c2d9e2558826fe24ebf183da318333ea4f90eed2f24",
+    "field/forest_42_portable/map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+    "field/forest_42_portable/summary.json": "020c4dccb34ffc1b474eb38102e69f0ef7ba101271a3aa6534d2db2a76856796",
+    "field/forest_42_reactive/controller.jsonl": "ebd21e1c9f428255f31d56fc03cc00633da165a52f08b4776d472cf475e159a9",
+    "field/forest_42_reactive/environment.jsonl": "5245b7e2ff820b0d8bdfa1ddb96c34226fbe684d80b70ec3daf04f4df792c40d",
+    "field/forest_42_reactive/map.json": "8e18bf535e058d4507a23e3d6d35aa7480213f47181b90ccc06ca24bb0f2a843",
+    "field/forest_42_reactive/summary.json": "64035dd5031d62a60c4b1593d8b73ac5fb3a51bdd42fcf24c758e14ca10718d3",
+    "field/quarry_109_fixed/controller.jsonl": "7d9e00f6e34472d0f79a493e3a0398e136c8eb506fcf005d01f4aa1980fb9328",
+    "field/quarry_109_fixed/environment.jsonl": "3bcbd60a12f69a588d01f932eef55ad6590f133e4395fda48b0bf5d99963b904",
+    "field/quarry_109_fixed/map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+    "field/quarry_109_fixed/summary.json": "4d138e941f0d529482ae3f4cbcd232adb5f270157afe51ab2d65829d8a11bd11",
+    "field/quarry_109_portable/controller.jsonl": "559b35897b0dec6d99414dcf339956b94fb3218a2afca503ded1d680133ff9e2",
+    "field/quarry_109_portable/environment.jsonl": "7a9bfb0ebf2224b7d8d5789ec377db6b1c0cc6895ded61561fd252194df58104",
+    "field/quarry_109_portable/map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+    "field/quarry_109_portable/summary.json": "a6365dc386c26d4316744565d3c47b3bb0b374b8897dc625414ce6b4c6a96710",
+    "field/quarry_109_reactive/controller.jsonl": "5dcaf524a596a4bebe3ed19452f66a30f72bc4558825e6c0e3f523b26513bfa8",
+    "field/quarry_109_reactive/environment.jsonl": "0074a2d853bf78e3cb923b2b4b7945789408af644f64695c33cb904e7dee3727",
+    "field/quarry_109_reactive/map.json": "f4de51983a122a52246d23a806f55f67b9f2124e24f4da845844ea38e6ac82dc",
+    "field/quarry_109_reactive/summary.json": "2b3f99210ec37da658743926a3d14672470320d26a1b145e6c75a31da5c139dc",
+    "field/snow_701_fixed/controller.jsonl": "66d498c9f88e6e01494e8b40b02cb080dc8bd59b878d4a5e18dc1d54adc16fff",
+    "field/snow_701_fixed/environment.jsonl": "c6f5d1528dcf2e592e79606ccfaab4f1b6d6cefda8baa788b1ce02163b608122",
+    "field/snow_701_fixed/map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+    "field/snow_701_fixed/summary.json": "ad822d1d42483a1edaf50054cc595b968c31ff4369fa8089afd72c633b0c33f9",
+    "field/snow_701_portable/controller.jsonl": "1fddbe7bc7411a35e65f6a15ac88b36fa7f037faced37384723bc36e75a5e0ba",
+    "field/snow_701_portable/environment.jsonl": "22d4ff8d6683772c8d115440a88b81001b406fccce2a765f60dbaedf56abf59b",
+    "field/snow_701_portable/map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+    "field/snow_701_portable/summary.json": "2b99ec77abe1fccc40ef53befe9d0a70142a0650c0e6aeecaa6fc3cb77d7e694",
+    "field/snow_701_reactive/controller.jsonl": "c5b6215ead124565a9a2490d21844b35f45c12bf25c1325e366879fed9ffd4cf",
+    "field/snow_701_reactive/environment.jsonl": "5dc1f9c3e77598e677e2a4c583fd851aa7319332d25919078a16391f9e9a382e",
+    "field/snow_701_reactive/map.json": "07b6767bdb63854d73d7864a40f7706d63b280440d0b04eb4d8c1e3f199ac3c1",
+    "field/snow_701_reactive/summary.json": "30dd31e9ee360550325c98eed7298fcb540dd975ca0f2b4306c6c132b52e3f1a",
+    "field/summary.json": "d036db3aa975307fafe99e9cd2582470b84fd5b643f751d116cc7687a5b7cf60",
+    "logs/test_initial.log": "da02aa10d99aa32d7e2a2ccce0ec7757c6154b244969c790a9247a089884d6d1",
+    "logs/home_runs.log": "a331bc2d004d9f99dc66c9fd5da418d7a4f0cf61e5054cc7b54c0e10a767c93e",
+    "logs/field_runs.log": "8e41e2ef22c7f74d598feb742d9c2cdaece6ad54b8a692e3aa9f6fc4d55dc561",
+    "logs/delivery_initial.log": "fe1abc545246ab96315a03fa97c229e474d53e36193062651c1f4f550676cb84"
+  },
+  "evidence_sha256": "384241543ce625ef27327dab927f7cdfe65e6890294f3de414db3fd4a916551f"
+}

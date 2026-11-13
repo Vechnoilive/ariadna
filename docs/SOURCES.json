@@ -1,0 +1,42 @@
+{
+  "format": "ariadna.sources.v1",
+  "checked_on": "2026-11-12",
+  "documents": [
+    {
+      "title": "Постановка задачи, 21 страница",
+      "url": "https://drive.google.com/file/d/1IaIiw23UbbQgZnZQLAQyoI0gTn7nCVMn/view",
+      "sha256": "801127b8d6106dc0e57e0a137a30b33d1a7ac09013e2e1ea32e300eb381a6a56",
+      "bytes": 295518
+    },
+    {
+      "title": "Формальная спецификация v1.0, 26 страниц",
+      "url": "https://drive.google.com/file/d/14yl1uAg7isxc4tBRw3NlwDHWW3FYx1Fs/view",
+      "sha256": "cd94792d62494bef2aec2e5198fc66ab5149c3790dc78489f79c9a70bdee8793",
+      "bytes": 161787
+    }
+  ],
+  "implementation_reference": {
+    "archive": "HackRoi-main (8).zip",
+    "sha256": "ef04b238206f4591dd151479fdb1d8a5740f1420213fe2730be3e85c07179d6c",
+    "program_version": "0.9.0",
+    "commit_sha": null
+  },
+  "standards": [
+    {
+      "number": "ГОСТ 19.105-78",
+      "url": "https://protect.gost.ru/gost/details/500f8c05-0b04-40fc-a049-4212eae807c3"
+    },
+    {
+      "number": "ГОСТ 19.404-79",
+      "url": "https://protect.gost.ru/gost/details/0db608d7-ffa8-41e4-b58b-e406b308b92a"
+    },
+    {
+      "number": "ГОСТ 19.301-79",
+      "url": "https://protect.gost.ru/gost/details/b25e0645-091a-425b-8558-3e0c3ce37315"
+    },
+    {
+      "number": "ГОСТ 19.505-79",
+      "url": "https://protect.gost.ru/gost/details/07fec7b0-024f-407f-b5a8-7ebfe7cfa0a9"
+    }
+  ]
+}

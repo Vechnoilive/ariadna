@@ -1,0 +1,411 @@
+{
+  "format": "ariadna.research_branches.v1",
+  "decision_id": "decision_beee781d06025667dc587026",
+  "horizon": 6,
+  "continuation": "frozen public intents with safety checks; no further headquarters selection",
+  "source_environment_sha256": "3b803a033b8e4e32963605b602253ac001058904b376b0658c7cddbaab6607ce",
+  "source_controller_sha256": "5d7ed10769c5f4163800b995f4d053fdd6808be41839c27a6e1eb71c5558f7ad",
+  "private_access_scope": "offline own-world research harness only",
+  "branches": [
+    {
+      "candidate_id": "meta",
+      "selected_in_real_episode": false,
+      "fork_checkpoint_sha256": "9b0f0e3ef0adfef31eabc0b8d82d54235a59bd611ff9bce392d491599ece5115",
+      "public_observation_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "steps_observed": 6,
+      "status": "running",
+      "actual_curve": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.056313708499,
+          "connectivity": 1.0
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.101313708499,
+          "connectivity": 1.0
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.131568542495,
+          "connectivity": 1.0
+        },
+        {
+          "step": 4,
+          "completion": 0.0,
+          "energy": 0.148568542495,
+          "connectivity": 1.0
+        },
+        {
+          "step": 5,
+          "completion": 0.0,
+          "energy": 0.165568542495,
+          "connectivity": 1.0
+        },
+        {
+          "step": 6,
+          "completion": 0.0,
+          "energy": 0.182568542495,
+          "connectivity": 1.0
+        }
+      ],
+      "nominal_forecast": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.056313708,
+          "connectivity": 1.0,
+          "information_proxy": 0.20979021
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.101313708,
+          "connectivity": 1.0,
+          "information_proxy": 0.373426573
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.131568542,
+          "connectivity": 1.0,
+          "information_proxy": 0.468298368
+        },
+        {
+          "step": 4,
+          "completion": 0.0,
+          "energy": 0.148568542,
+          "connectivity": 1.0,
+          "information_proxy": 0.501631702
+        },
+        {
+          "step": 5,
+          "completion": 0.0,
+          "energy": 0.165568542,
+          "connectivity": 1.0,
+          "information_proxy": 0.534965035
+        },
+        {
+          "step": 6,
+          "completion": 0.0,
+          "energy": 0.182568542,
+          "connectivity": 1.0,
+          "information_proxy": 0.568298368
+        }
+      ],
+      "actual_completion_gain": 0.0,
+      "actual_energy": 0.182568542495,
+      "final_metrics": {
+        "mission_completion": 0.0,
+        "step_count": 6,
+        "energy_used": 0.182568542495,
+        "messages_sent": 0,
+        "messages_dropped": 0,
+        "messages_delivered": 0
+      }
+    },
+    {
+      "candidate_id": "frontier",
+      "selected_in_real_episode": false,
+      "fork_checkpoint_sha256": "9b0f0e3ef0adfef31eabc0b8d82d54235a59bd611ff9bce392d491599ece5115",
+      "public_observation_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "steps_observed": 6,
+      "status": "running",
+      "actual_curve": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.159,
+          "connectivity": 1.0
+        },
+        {
+          "step": 4,
+          "completion": 0.0,
+          "energy": 0.192,
+          "connectivity": 1.0
+        },
+        {
+          "step": 5,
+          "completion": 0.0,
+          "energy": 0.225,
+          "connectivity": 1.0
+        },
+        {
+          "step": 6,
+          "completion": 0.0,
+          "energy": 0.258,
+          "connectivity": 1.0
+        }
+      ],
+      "nominal_forecast": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0,
+          "information_proxy": 0.212121212
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0,
+          "information_proxy": 0.415151515
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.159,
+          "connectivity": 1.0,
+          "information_proxy": 0.548484848
+        },
+        {
+          "step": 4,
+          "completion": 0.0,
+          "energy": 0.192,
+          "connectivity": 1.0,
+          "information_proxy": 0.648484848
+        },
+        {
+          "step": 5,
+          "completion": 0.0,
+          "energy": 0.225,
+          "connectivity": 1.0,
+          "information_proxy": 0.748484848
+        },
+        {
+          "step": 6,
+          "completion": 0.0,
+          "energy": 0.258,
+          "connectivity": 1.0,
+          "information_proxy": 0.848484848
+        }
+      ],
+      "actual_completion_gain": 0.0,
+      "actual_energy": 0.258,
+      "final_metrics": {
+        "mission_completion": 0.0,
+        "step_count": 6,
+        "energy_used": 0.258,
+        "messages_sent": 0,
+        "messages_dropped": 0,
+        "messages_delivered": 0
+      }
+    },
+    {
+      "candidate_id": "nearby",
+      "selected_in_real_episode": true,
+      "fork_checkpoint_sha256": "9b0f0e3ef0adfef31eabc0b8d82d54235a59bd611ff9bce392d491599ece5115",
+      "public_observation_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "steps_observed": 6,
+      "status": "running",
+      "actual_curve": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.155,
+          "connectivity": 1.0
+        },
+        {
+          "step": 4,
+          "completion": 0.08333333333333333,
+          "energy": 0.184,
+          "connectivity": 1.0
+        },
+        {
+          "step": 5,
+          "completion": 0.08333333333333333,
+          "energy": 0.208,
+          "connectivity": 1.0
+        },
+        {
+          "step": 6,
+          "completion": 0.08333333333333333,
+          "energy": 0.232,
+          "connectivity": 1.0
+        }
+      ],
+      "nominal_forecast": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0,
+          "information_proxy": 0.212121212
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0,
+          "information_proxy": 0.415151515
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.155,
+          "connectivity": 1.0,
+          "information_proxy": 0.515151515
+        },
+        {
+          "step": 4,
+          "completion": 0.083333333,
+          "energy": 0.184,
+          "connectivity": 1.0,
+          "information_proxy": 0.581818182
+        },
+        {
+          "step": 5,
+          "completion": 0.083333333,
+          "energy": 0.208,
+          "connectivity": 1.0,
+          "information_proxy": 0.648484848
+        },
+        {
+          "step": 6,
+          "completion": 0.083333333,
+          "energy": 0.232,
+          "connectivity": 1.0,
+          "information_proxy": 0.715151515
+        }
+      ],
+      "actual_completion_gain": 0.083333333,
+      "actual_energy": 0.232,
+      "final_metrics": {
+        "mission_completion": 0.08333333333333333,
+        "step_count": 6,
+        "energy_used": 0.232,
+        "messages_sent": 0,
+        "messages_dropped": 0,
+        "messages_delivered": 0
+      }
+    },
+    {
+      "candidate_id": "reserve",
+      "selected_in_real_episode": false,
+      "fork_checkpoint_sha256": "9b0f0e3ef0adfef31eabc0b8d82d54235a59bd611ff9bce392d491599ece5115",
+      "public_observation_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "steps_observed": 6,
+      "status": "running",
+      "actual_curve": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.155,
+          "connectivity": 1.0
+        },
+        {
+          "step": 4,
+          "completion": 0.08333333333333333,
+          "energy": 0.184,
+          "connectivity": 1.0
+        },
+        {
+          "step": 5,
+          "completion": 0.08333333333333333,
+          "energy": 0.208,
+          "connectivity": 1.0
+        },
+        {
+          "step": 6,
+          "completion": 0.08333333333333333,
+          "energy": 0.232,
+          "connectivity": 1.0
+        }
+      ],
+      "nominal_forecast": [
+        {
+          "step": 1,
+          "completion": 0.0,
+          "energy": 0.057,
+          "connectivity": 1.0,
+          "information_proxy": 0.212121212
+        },
+        {
+          "step": 2,
+          "completion": 0.0,
+          "energy": 0.114,
+          "connectivity": 1.0,
+          "information_proxy": 0.415151515
+        },
+        {
+          "step": 3,
+          "completion": 0.0,
+          "energy": 0.155,
+          "connectivity": 1.0,
+          "information_proxy": 0.515151515
+        },
+        {
+          "step": 4,
+          "completion": 0.083333333,
+          "energy": 0.184,
+          "connectivity": 1.0,
+          "information_proxy": 0.581818182
+        },
+        {
+          "step": 5,
+          "completion": 0.083333333,
+          "energy": 0.208,
+          "connectivity": 1.0,
+          "information_proxy": 0.648484848
+        },
+        {
+          "step": 6,
+          "completion": 0.083333333,
+          "energy": 0.232,
+          "connectivity": 1.0,
+          "information_proxy": 0.715151515
+        }
+      ],
+      "actual_completion_gain": 0.083333333,
+      "actual_energy": 0.232,
+      "final_metrics": {
+        "mission_completion": 0.08333333333333333,
+        "step_count": 6,
+        "energy_used": 0.232,
+        "messages_sent": 0,
+        "messages_dropped": 0,
+        "messages_delivered": 0
+      }
+    }
+  ]
+}

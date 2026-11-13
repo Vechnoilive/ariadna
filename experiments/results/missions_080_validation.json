@@ -1,0 +1,268 @@
+{
+  "version": "0.8.0",
+  "results": [
+    {
+      "mission": "forest",
+      "seed": 1009,
+      "controller": "portable",
+      "status": "success",
+      "time": 21.0,
+      "metrics": {
+        "energy_used": 1.523094091602,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 21
+      },
+      "audit": "passed",
+      "heading_changes": 9,
+      "paths_metres": {
+        "air": 63.59798,
+        "land": 43.073,
+        "tunnel": 31.83788,
+        "boat": 43.41649,
+        "sub": 37.1336,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 62.30589,
+        "land_1": 52.3311,
+        "tunnel_1": 22.0,
+        "boat_1": 34.64621,
+        "sub_1": 16.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "infrastructure_failure"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "40dd68d704f1c0c94eab25bb9f5b854841afeacb0a62158ee497bfb1de625766",
+      "seconds": 28.935,
+      "files": {
+        "map.json": "40dd68d704f1c0c94eab25bb9f5b854841afeacb0a62158ee497bfb1de625766",
+        "environment.jsonl": "d54c120034da2da65b6532e18eb5868920e47323d17a2b2935fdce4d5462d875",
+        "controller.jsonl": "cf998956b5de662f734189949b46cd0e62731395ec0cc4d78f28fa9fc6102ed3"
+      }
+    },
+    {
+      "mission": "quarry",
+      "seed": 1009,
+      "controller": "portable",
+      "status": "success",
+      "time": 29.0,
+      "metrics": {
+        "energy_used": 1.844932846565,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 29
+      },
+      "audit": "passed",
+      "heading_changes": 12,
+      "paths_metres": {
+        "air": 75.59798,
+        "land": 34.41649,
+        "tunnel": 33.94113,
+        "boat": 50.2493,
+        "sub": 45.68161,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 74.30589,
+        "land_1": 74.26991,
+        "tunnel_1": 26.0,
+        "boat_1": 54.60901,
+        "sub_1": 18.0
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "contradictory_information",
+        "infrastructure_failure",
+        "restricted_zone_appeared"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "90f21bda27f5dae5e71f6d68b66d62f69d799c8279cd4566c8c735861bc7206d",
+      "seconds": 39.02,
+      "files": {
+        "map.json": "90f21bda27f5dae5e71f6d68b66d62f69d799c8279cd4566c8c735861bc7206d",
+        "environment.jsonl": "1073141c4b998ca557ce6f34fd545f792e6c8a9e47aed10ac8d5b9937e0e77e8",
+        "controller.jsonl": "96a5f48cd8108e8fc3953434dcd81e6cdfdc63db832feabd4d72b81b6de042d2"
+      }
+    },
+    {
+      "mission": "city",
+      "seed": 1009,
+      "controller": "portable",
+      "status": "success",
+      "time": 34.0,
+      "metrics": {
+        "energy_used": 1.867882797991,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 34
+      },
+      "audit": "passed",
+      "heading_changes": 15,
+      "paths_metres": {
+        "air": 81.59798,
+        "land": 22.41649,
+        "tunnel": 29.69848,
+        "boat": 54.2493,
+        "sub": 43.13735,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 80.30589,
+        "land_1": 87.20694,
+        "tunnel_1": 20.0,
+        "boat_1": 46.37118,
+        "sub_1": 19.0
+      },
+      "events": [
+        "agent_degradation",
+        "connectivity_loss",
+        "contradictory_information",
+        "infrastructure_failure",
+        "resource_shortage"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select"
+      ],
+      "map_sha256": "744be5784fd91589f7783e95920caaa202b35c68e115c70bcbf8e2cb6759eb73",
+      "seconds": 32.321,
+      "files": {
+        "map.json": "744be5784fd91589f7783e95920caaa202b35c68e115c70bcbf8e2cb6759eb73",
+        "environment.jsonl": "419021a179f2b493da5b8fe24774f5041a6d4e5723c7f3a6292d5ba42a0a453d",
+        "controller.jsonl": "33e10abb961d319cd5190472a1edb15e1b41094ac7c207c463fad486d672e699"
+      }
+    },
+    {
+      "mission": "snow",
+      "seed": 1009,
+      "controller": "portable",
+      "status": "success",
+      "time": 33.0,
+      "metrics": {
+        "energy_used": 1.875105731886,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 33
+      },
+      "audit": "passed",
+      "heading_changes": 13,
+      "paths_metres": {
+        "air": 57.59798,
+        "land": 62.44323,
+        "tunnel": 33.25042,
+        "boat": 54.2493,
+        "sub": 50.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 80.30589,
+        "land_1": 36.0,
+        "tunnel_1": 28.0,
+        "boat_1": 47.0729,
+        "sub_1": 19.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "infrastructure_failure",
+        "stale_information"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "78d0d71fd05dd5ec951a80f97ff2a668eae98f9b2f9acfd4a5655b79ace2fdb0",
+      "seconds": 27.96,
+      "files": {
+        "map.json": "78d0d71fd05dd5ec951a80f97ff2a668eae98f9b2f9acfd4a5655b79ace2fdb0",
+        "environment.jsonl": "ce832791ed31e0a4be9306c13037510343d71cec3ff1c4f4df399e6be7845018",
+        "controller.jsonl": "02b04ca108ad7c068777cad5cdada065b9e0dbfb80e58c4a62f1a6d2fba62326"
+      }
+    },
+    {
+      "mission": "delta",
+      "seed": 1009,
+      "controller": "portable",
+      "status": "success",
+      "time": 33.0,
+      "metrics": {
+        "energy_used": 2.247408852014,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 33
+      },
+      "audit": "passed",
+      "heading_changes": 16,
+      "paths_metres": {
+        "air": 105.59798,
+        "land": 63.35606,
+        "tunnel": 32.0,
+        "boat": 77.01963,
+        "sub": 57.67137,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 103.27646,
+        "land_1": 52.81484,
+        "tunnel_1": 28.0,
+        "boat_1": 61.46763,
+        "sub_1": 24.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "hazard_appeared",
+        "infrastructure_failure",
+        "mission_priority_change"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "b4a7e622c18e94700d592edd6ede4aca5201f6cf247655315f9fa28694d8be0f",
+      "seconds": 32.879,
+      "files": {
+        "map.json": "b4a7e622c18e94700d592edd6ede4aca5201f6cf247655315f9fa28694d8be0f",
+        "environment.jsonl": "789d6986ba9e759b3f656299c1fbdddd2194b133a9b815765a4f7821a3335b64",
+        "controller.jsonl": "fa2d50d4e89b6c137cd04c3a26804ee12174d8072692ba49e147d766142255ea"
+      }
+    }
+  ],
+  "external_teams_tested": 0,
+  "official_score": null
+}

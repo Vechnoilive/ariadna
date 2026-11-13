@@ -1,0 +1,1831 @@
+{
+  "format": "ariadna.experiment.v4",
+  "app_version": "0.4.0",
+  "verification_platform": "Linux CPython 3.12.14",
+  "design": {
+    "version": "0.4.0",
+    "model": "ariadna.public_forecast.v1",
+    "horizon": 6,
+    "weights": {
+      "completion": 100.0,
+      "information": 3.0,
+      "energy": 3.0,
+      "stopped": 4.0,
+      "reserve": 8.0
+    },
+    "development_seeds": [
+      42
+    ],
+    "holdout_seeds": [
+      101,
+      202
+    ],
+    "cases": [
+      "clean",
+      "priority_pressure",
+      "resource_recovery",
+      "relay_recovery"
+    ],
+    "controllers": [
+      "fixed",
+      "reactive",
+      "meta",
+      "counterfactual"
+    ],
+    "max_steps": 100,
+    "interpretation": "Paired tests in our simplified world; not the organizers' score or proof of general superiority. Parameters fixed before running the stage-4 holdout."
+  },
+  "design_sha256": "6876ec6ca2c2c70f0eaae1a444b3eded051900eb14b8f4494ec3566d14e7b45a",
+  "results": [
+    {
+      "split": "development",
+      "case": "clean",
+      "seed": 42,
+      "controller": "fixed",
+      "episode_id": "episode_cdf46bf3fc6d15c1",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.470820097079,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "d405ff01b0c7cff2703eb3e09a03aebcee9fb64e28e273abfeb7fba1a78e52fd",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "55d2d9b3fc19639346b117ee0ed9496cfdb571b7627e2d92dbd4dd25819aeead",
+        "controller.jsonl": "ed7fd2ef54d90ce96b6762c7a771713fc820287e79a5f52c680bef3e07eeeede"
+      }
+    },
+    {
+      "split": "development",
+      "case": "clean",
+      "seed": 42,
+      "controller": "reactive",
+      "episode_id": "episode_cdf46bf3fc6d15c1",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.470820097079,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "d405ff01b0c7cff2703eb3e09a03aebcee9fb64e28e273abfeb7fba1a78e52fd",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "8f77b76caa7abde7c665370450950fdaa3a6aa10d4ed78b4faaade9a8d5566d1",
+        "controller.jsonl": "0ddf7bc457842b169bf63b37c34ffc286f03a67282c4da4e6c050aadb4721093"
+      }
+    },
+    {
+      "split": "development",
+      "case": "clean",
+      "seed": 42,
+      "controller": "meta",
+      "episode_id": "episode_cdf46bf3fc6d15c1",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.535197326552,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "d405ff01b0c7cff2703eb3e09a03aebcee9fb64e28e273abfeb7fba1a78e52fd",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "c09607eab00c9bd7c0157e5963076f9c0a50070bffb0e630e77ba8c1a781db28",
+        "controller.jsonl": "38a5bc144c2dac5aa600136df61534284cfa2102300d0f236212070accbe1f35"
+      }
+    },
+    {
+      "split": "development",
+      "case": "clean",
+      "seed": 42,
+      "controller": "counterfactual",
+      "episode_id": "episode_cdf46bf3fc6d15c1",
+      "status": "success",
+      "time": 10.0,
+      "metrics": {
+        "energy_used": 0.404,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 10
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "d405ff01b0c7cff2703eb3e09a03aebcee9fb64e28e273abfeb7fba1a78e52fd",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 10,
+        "environment_steps_checked": 10,
+        "meta_decisions_reproduced": 10,
+        "forecast_updates_checked": 10
+      },
+      "calibration": {
+        "samples": 10,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 10,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 10,
+      "journal_sha256": {
+        "environment.jsonl": "0088a5d77ade5e88a4cc5a66ca25f2ca83ae1f0e1284694949a913aaddd4e200",
+        "controller.jsonl": "931b77ea40fb46114781f0800b15a6c638b38e3e64c729969ce536ba4a23248e"
+      }
+    },
+    {
+      "split": "development",
+      "case": "priority_pressure",
+      "seed": 42,
+      "controller": "fixed",
+      "episode_id": "episode_835f3d07086f54c9",
+      "status": "success",
+      "time": 20.0,
+      "metrics": {
+        "energy_used": 0.668820097079,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 20
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 20,
+        "environment_steps_checked": 20
+      },
+      "journal_sha256": {
+        "environment.jsonl": "82d1e109ac81b4d23d797ed7555bd0737bd1584883594aa91104716f38be0f23",
+        "controller.jsonl": "e9b2adfd7aff19db919968a3bd124c7394f40c8eacc83aa7b8a01cdfde89eb9f"
+      }
+    },
+    {
+      "split": "development",
+      "case": "priority_pressure",
+      "seed": 42,
+      "controller": "reactive",
+      "episode_id": "episode_835f3d07086f54c9",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.841820097079,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "82135dc81a73dd1eeaa78e8cf591f0416f525ad334b3d19c1338a02cf606f94d",
+        "controller.jsonl": "efd54ea4dddc10ad5c52cea3c8cf22345ba256a7f467c368641845c5fabdee89"
+      }
+    },
+    {
+      "split": "development",
+      "case": "priority_pressure",
+      "seed": 42,
+      "controller": "meta",
+      "episode_id": "episode_835f3d07086f54c9",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.847206141781,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30,
+        "meta_decisions_reproduced": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "a8129f8416980fe604e3d9bceca5fe6e014b5343d1a8b85b0b3ebacf3cd5a67a",
+        "controller.jsonl": "1cb705b01e394871ada71cdf8b4d1401b54f1588727887f9c8a17e4d10374146"
+      }
+    },
+    {
+      "split": "development",
+      "case": "priority_pressure",
+      "seed": 42,
+      "controller": "counterfactual",
+      "episode_id": "episode_835f3d07086f54c9",
+      "status": "success",
+      "time": 20.0,
+      "metrics": {
+        "energy_used": 0.564,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 20
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "beee781d06025667dc5870267337561ea6c7eb5e0a347107d7bc3600214c0848",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 20,
+        "environment_steps_checked": 20,
+        "meta_decisions_reproduced": 20,
+        "forecast_updates_checked": 20
+      },
+      "calibration": {
+        "samples": 20,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 0.999999999,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 20,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 20,
+      "journal_sha256": {
+        "environment.jsonl": "3b803a033b8e4e32963605b602253ac001058904b376b0658c7cddbaab6607ce",
+        "controller.jsonl": "5d7ed10769c5f4163800b995f4d053fdd6808be41839c27a6e1eb71c5558f7ad"
+      }
+    },
+    {
+      "split": "development",
+      "case": "resource_recovery",
+      "seed": 42,
+      "controller": "fixed",
+      "episode_id": "episode_61534fca3003f860",
+      "status": "protocol_error",
+      "time": 0.0,
+      "metrics": {
+        "energy_used": 0.0,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.0,
+        "step_count": 0
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f579f9feabb559565620798894b7c933913d0a516605ecdd34f62231c35993b6",
+      "error": {
+        "code": "RESOURCE_EXHAUSTED",
+        "message": "Нарушение резерва энергии"
+      },
+      "audit": {
+        "status": "incomplete",
+        "reason": "command_rejected_no_fabricated_result"
+      },
+      "journal_sha256": {
+        "environment.jsonl": "771d4fa90c0b8100880ca82f534f31b41f6f89b9506f0a420a735a44c137b72f",
+        "controller.jsonl": "badfab72ec31483457b3e6e74c96242aa39bd4433b3c44d4a992bfcb9c21e48a"
+      }
+    },
+    {
+      "split": "development",
+      "case": "resource_recovery",
+      "seed": 42,
+      "controller": "reactive",
+      "episode_id": "episode_61534fca3003f860",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.452820097079,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f579f9feabb559565620798894b7c933913d0a516605ecdd34f62231c35993b6",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "a3c0a995a758474dcaa53cc03d839532d30b30b937670ca5cca0538c28d02441",
+        "controller.jsonl": "ababb53eb4ddaecd1bbc501325eb34d9c694dd7b8bbab6aeeabeb9f66c29185c"
+      }
+    },
+    {
+      "split": "development",
+      "case": "resource_recovery",
+      "seed": 42,
+      "controller": "meta",
+      "episode_id": "episode_61534fca3003f860",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.546206141781,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f579f9feabb559565620798894b7c933913d0a516605ecdd34f62231c35993b6",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "2a3df2c636d1a712730b33d1176bf89a6e488f79150df9cb13fcf78e85fc3401",
+        "controller.jsonl": "bb15f4a25b34142f3a7fba54d941e35ba96cfdd11486c4918a83e19a9e3e99d9"
+      }
+    },
+    {
+      "split": "development",
+      "case": "resource_recovery",
+      "seed": 42,
+      "controller": "counterfactual",
+      "episode_id": "episode_61534fca3003f860",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.436,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f579f9feabb559565620798894b7c933913d0a516605ecdd34f62231c35993b6",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14,
+        "forecast_updates_checked": 14
+      },
+      "calibration": {
+        "samples": 14,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 14,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 14,
+      "journal_sha256": {
+        "environment.jsonl": "d889068bf16eaff12da1793cd68e8b982a9e64e25f10a445a637070cb69c5dd8",
+        "controller.jsonl": "33cf26845e7c1f5ad7bad85479cd0d60c91ed4db8b3cddf26f3367c1ac6e6c5c"
+      }
+    },
+    {
+      "split": "development",
+      "case": "relay_recovery",
+      "seed": 42,
+      "controller": "fixed",
+      "episode_id": "episode_904d6e04639d0f0f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.460670470215,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "01045649c5b0f2597c6106617abe3e1bc2617a8022f487dc52392899496014bb",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "e19663ba2f71081d153f4eb20e2aca878121124a0623315e2494abde72891aed",
+        "controller.jsonl": "e7ae40ea74ad6450bb0ca29a6f878dd343c16295788b98b900fb38d35ee4ca52"
+      }
+    },
+    {
+      "split": "development",
+      "case": "relay_recovery",
+      "seed": 42,
+      "controller": "reactive",
+      "episode_id": "episode_904d6e04639d0f0f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.460670470215,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "01045649c5b0f2597c6106617abe3e1bc2617a8022f487dc52392899496014bb",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "d478ba0d20798872baacb903d7adc0d1c2a0eb8066ca320e08b56d7906a4af1c",
+        "controller.jsonl": "f89a296bb96a8dfb31b8d5887b3dfe376db66fb0f6390497149364fb816b738b"
+      }
+    },
+    {
+      "split": "development",
+      "case": "relay_recovery",
+      "seed": 42,
+      "controller": "meta",
+      "episode_id": "episode_904d6e04639d0f0f",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.511892433282,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "01045649c5b0f2597c6106617abe3e1bc2617a8022f487dc52392899496014bb",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "bbf12a4675314b8fc9213fdab6b1949920aebee3b0bb67c5aa8e6f0c82f92ea6",
+        "controller.jsonl": "6fd09d299b55867dfccd5d16e4f61e485dd00e2611f76274fc162ebc5d96480c"
+      }
+    },
+    {
+      "split": "development",
+      "case": "relay_recovery",
+      "seed": 42,
+      "controller": "counterfactual",
+      "episode_id": "episode_904d6e04639d0f0f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.406,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "01045649c5b0f2597c6106617abe3e1bc2617a8022f487dc52392899496014bb",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12,
+        "forecast_updates_checked": 12
+      },
+      "calibration": {
+        "samples": 12,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 12,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 12,
+      "journal_sha256": {
+        "environment.jsonl": "460dc79ae9812d11867182bde1fc0d34b243b78091a46858ab18d4d42c93b652",
+        "controller.jsonl": "31e2e6ac7d2881bc0f3aada795c589b3fb5f935ae38bc82ef149ecf6f1faaa21"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 101,
+      "controller": "fixed",
+      "episode_id": "episode_ccaf97f35f272f73",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.473929202665,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "1d13edf0efdafe06a666eb854cfc8658c4a3e91525f3e6d199fb801a62b880b9",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "b5129cbae06ae31debf5492322a39ed06f10162d471d9fdd4b655f0eeb570122",
+        "controller.jsonl": "3c0fa5e40efd57f93119a0e94c4e4e2d3eb87a4c9cb64772620ec38bc83d90c7"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 101,
+      "controller": "reactive",
+      "episode_id": "episode_ccaf97f35f272f73",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.473929202665,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "1d13edf0efdafe06a666eb854cfc8658c4a3e91525f3e6d199fb801a62b880b9",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "1dd69b8e661f8c77ed3fbfa9d640e6dcfb26e115223a3933ea699ac4c6de91a5",
+        "controller.jsonl": "de58bfed447779e3ffe987c64206520e2693101ad5a50cac7a0e8f170d9704c5"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 101,
+      "controller": "meta",
+      "episode_id": "episode_ccaf97f35f272f73",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.534542543279,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "1d13edf0efdafe06a666eb854cfc8658c4a3e91525f3e6d199fb801a62b880b9",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "5377cca52a73856b974f44c6b0e23490c4faa35c888adaaae00d6eb99ac85ee4",
+        "controller.jsonl": "dd12809c10212de454fe6a26e191a796c6508ccc4a50f1f24aaf171bd036be32"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 101,
+      "controller": "counterfactual",
+      "episode_id": "episode_ccaf97f35f272f73",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.41972135955,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "1d13edf0efdafe06a666eb854cfc8658c4a3e91525f3e6d199fb801a62b880b9",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11,
+        "meta_decisions_reproduced": 11,
+        "forecast_updates_checked": 11
+      },
+      "calibration": {
+        "samples": 11,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 11,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 11,
+      "journal_sha256": {
+        "environment.jsonl": "c772ecd30211791727f9f841a2e8a0d4c3dc73336bc46a3665e2ca7bc0842a48",
+        "controller.jsonl": "7936d460cf07f8b78866062d0ab58d23dfac378ef8246a71b9d97417fd4003d3"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 101,
+      "controller": "fixed",
+      "episode_id": "episode_8238fdb76a358527",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 0.657929202665,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "0dded6ee90c4e6c40e52ec80c3d9fca496eb257df2ff35e1f7fc76b05ac0bf7f",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19
+      },
+      "journal_sha256": {
+        "environment.jsonl": "f4b36c10c875866a5cf2ae5e0ef9480757196a1656ec631063e1a3508679dfdd",
+        "controller.jsonl": "5cbeff8c099da4aa557d369bdff0bbee04a6f40b8664294f966a2b929fbb0696"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 101,
+      "controller": "reactive",
+      "episode_id": "episode_8238fdb76a358527",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.841929202665,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "0dded6ee90c4e6c40e52ec80c3d9fca496eb257df2ff35e1f7fc76b05ac0bf7f",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "d9ada541c60b838db3e893e36402bcde7a6a4478dc07c734e51bffcd94b76615",
+        "controller.jsonl": "e38e3eedbf7e0628c29bb44c70d48ad1ad35833a6f2532d5a528c0081fd7eb94"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 101,
+      "controller": "meta",
+      "episode_id": "episode_8238fdb76a358527",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.842355770034,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "0dded6ee90c4e6c40e52ec80c3d9fca496eb257df2ff35e1f7fc76b05ac0bf7f",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30,
+        "meta_decisions_reproduced": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "0c6124e511ad37f0ca19465e3c5a2f537672d2346f4b999734fa0b4cd6445c97",
+        "controller.jsonl": "64cb5c68425f6479f0e1de49184d19115130b28ee559d5505399fae6d5b9001a"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 101,
+      "controller": "counterfactual",
+      "episode_id": "episode_8238fdb76a358527",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 0.55772135955,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "0dded6ee90c4e6c40e52ec80c3d9fca496eb257df2ff35e1f7fc76b05ac0bf7f",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19,
+        "meta_decisions_reproduced": 19,
+        "forecast_updates_checked": 19
+      },
+      "calibration": {
+        "samples": 19,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 0.999999999,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 19,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 19,
+      "journal_sha256": {
+        "environment.jsonl": "8e5f40e64f0f19a5eeb6635243316468a0b88a32679429e4c8eefaa2fd26a987",
+        "controller.jsonl": "1bd0e8c51d940757124ad39b3563232cf4e8cf350a0ca3f79fc528e3a6ba2ecb"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 101,
+      "controller": "fixed",
+      "episode_id": "episode_950a116206decaf2",
+      "status": "protocol_error",
+      "time": 0.0,
+      "metrics": {
+        "energy_used": 0.0,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.0,
+        "step_count": 0
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "15d0c0588d88e01ebd1e1e6e1941ed8afa19ccb6e8f16a6813269dafa914f587",
+      "error": {
+        "code": "RESOURCE_EXHAUSTED",
+        "message": "Нарушение резерва энергии"
+      },
+      "audit": {
+        "status": "incomplete",
+        "reason": "command_rejected_no_fabricated_result"
+      },
+      "journal_sha256": {
+        "environment.jsonl": "cca23baac4f8a58b68f68998f483223bc11bbecffb1f0ce204a87a5528a3db47",
+        "controller.jsonl": "ef8f0bb45d1a1c1018beabdf34bc859fd1c8958301040804942001217628c4ab"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 101,
+      "controller": "reactive",
+      "episode_id": "episode_950a116206decaf2",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.455929202665,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "15d0c0588d88e01ebd1e1e6e1941ed8afa19ccb6e8f16a6813269dafa914f587",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "fd38ef31270074bbd84ea369a801433ee5d8b842183c1d8a81e1738d2451296e",
+        "controller.jsonl": "ef3c8bfebfdab7a8d88caa3ed14576a695f7aa2c8afb9139bfd1a588f1eae3b8"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 101,
+      "controller": "meta",
+      "episode_id": "episode_950a116206decaf2",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.544355770034,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "15d0c0588d88e01ebd1e1e6e1941ed8afa19ccb6e8f16a6813269dafa914f587",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "ef8bdc7567a8aaead087d3fe29b7749eca63620a4363f80f626c99e8dca640bf",
+        "controller.jsonl": "f6b4b6365c5faa072479d604ae20fed1720f3380cf6baaf21cafd9d05c402988"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 101,
+      "controller": "counterfactual",
+      "episode_id": "episode_950a116206decaf2",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.44372135955,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "15d0c0588d88e01ebd1e1e6e1941ed8afa19ccb6e8f16a6813269dafa914f587",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14,
+        "forecast_updates_checked": 14
+      },
+      "calibration": {
+        "samples": 14,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 14,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 14,
+      "journal_sha256": {
+        "environment.jsonl": "fb8a28796a9137c4be936266833e090547a1bc8172da32302cd193cb0b45bf95",
+        "controller.jsonl": "48172c95958ddc44c8542454afd64f17a060d90cbb5fde08df023b7e21dc96ed"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 101,
+      "controller": "fixed",
+      "episode_id": "episode_49e725c27b39df88",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.469779575802,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "339bc631a58b95e4753bf3d6d06aeacc0bc7d506770dddcd4cdde549b9b0c79e",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "249a0f13ff5b88105d3cb8d93221af6b2d3f96eb18a029aba230c7f320530b5b",
+        "controller.jsonl": "32a7421a067ff9240f224cf6326bb54e5284ee5f6f6f0419fce8fb8a86d8358e"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 101,
+      "controller": "reactive",
+      "episode_id": "episode_49e725c27b39df88",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.469779575802,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "339bc631a58b95e4753bf3d6d06aeacc0bc7d506770dddcd4cdde549b9b0c79e",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "5fcc67088aa95102200166c868e035077932693d9c46c218ec9d491eba886acd",
+        "controller.jsonl": "b22493412742b8b92f559bdad03f620294c84e017afffbbf9bdc807280923aee"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 101,
+      "controller": "meta",
+      "episode_id": "episode_49e725c27b39df88",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.513199214449,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "339bc631a58b95e4753bf3d6d06aeacc0bc7d506770dddcd4cdde549b9b0c79e",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "deb3afdc9aa81b086811da364ea14a7c8510093fc2818771ea62375a706af57c",
+        "controller.jsonl": "397118cb4334dcafdc21c3a22360ce5e8576d3788198d1216312be45e9f94fd4"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 101,
+      "controller": "counterfactual",
+      "episode_id": "episode_49e725c27b39df88",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.41372135955,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "339bc631a58b95e4753bf3d6d06aeacc0bc7d506770dddcd4cdde549b9b0c79e",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12,
+        "forecast_updates_checked": 12
+      },
+      "calibration": {
+        "samples": 12,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 12,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 12,
+      "journal_sha256": {
+        "environment.jsonl": "0bcd408f6ea8b66d4756737c6843e86a8e728d0f002caa72c7491ec3ad55bceb",
+        "controller.jsonl": "0dc598cb0a4441c5dac98f68d1722924d58a7b5484721afda62c0666091b9259"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 202,
+      "controller": "fixed",
+      "episode_id": "episode_19787abee9fb00ec",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.473394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "427da5f861f13165ee2572755c696d59d0e8cf124fa0f5ca5c5b6cdc848b1df0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "eb25114079eb1ae2d6ab01a42768eb9a40c7c0f07ffd876e390a48f26436acda",
+        "controller.jsonl": "e9e096141932eb14ce75ea5d7437bc23dfd971735e318decdfd03bcc32a52570"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 202,
+      "controller": "reactive",
+      "episode_id": "episode_19787abee9fb00ec",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.473394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "427da5f861f13165ee2572755c696d59d0e8cf124fa0f5ca5c5b6cdc848b1df0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "549815149b9fa662aaf5109e8accf9be646f751e6c0d9c9be5f653bb81de5e94",
+        "controller.jsonl": "8845dfddae9cf33b4ac6b9cafb649621bd61d54d140efc9bd2edc168d0732501"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 202,
+      "controller": "meta",
+      "episode_id": "episode_19787abee9fb00ec",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.536340095844,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "427da5f861f13165ee2572755c696d59d0e8cf124fa0f5ca5c5b6cdc848b1df0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "a5f4944a7b2931d5511e3e0186216a0a8d2ee89df16d9c750322e01f88b45763",
+        "controller.jsonl": "26ab91d488f90e047cd39d4fdb358d157d70859310896a39a021bdfd93ad8b33"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "clean",
+      "seed": 202,
+      "controller": "counterfactual",
+      "episode_id": "episode_19787abee9fb00ec",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.419181444069,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "427da5f861f13165ee2572755c696d59d0e8cf124fa0f5ca5c5b6cdc848b1df0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11,
+        "meta_decisions_reproduced": 11,
+        "forecast_updates_checked": 11
+      },
+      "calibration": {
+        "samples": 11,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 11,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 11,
+      "journal_sha256": {
+        "environment.jsonl": "456d95680ac3b7acaf3fb8d2941c49cf0de7dc82d8a28dcafaa85078e421e8e6",
+        "controller.jsonl": "fb7cb58d477a57c1519b4a2467d0b51c24e5b47139c91b58d611816258438518"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 202,
+      "controller": "fixed",
+      "episode_id": "episode_1c6317ca051e818c",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 0.657394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "5fd10e828883ce3c4106afa36ce1039e77fdf1438aec3cefd39b2ad071084f3c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19
+      },
+      "journal_sha256": {
+        "environment.jsonl": "5be0c08b32d34f9e1f8a7b8347356a884bef1486ac1aa096ac4d241e097294a5",
+        "controller.jsonl": "f9c81b6de817f30cb8e9c61f0d83946e0cb74ef5124c769173e9830188cbeaca"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 202,
+      "controller": "reactive",
+      "episode_id": "episode_1c6317ca051e818c",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.841394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "5fd10e828883ce3c4106afa36ce1039e77fdf1438aec3cefd39b2ad071084f3c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "f8e754d1161d32f182393b63b36f8688057e8578a61b99030be83dd17f7b677d",
+        "controller.jsonl": "73325b738417ed64a35c0f711337fa7e878133359dd53f082a9473e54469b27b"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 202,
+      "controller": "meta",
+      "episode_id": "episode_1c6317ca051e818c",
+      "status": "success",
+      "time": 30.0,
+      "metrics": {
+        "energy_used": 0.845472663263,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 30
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "5fd10e828883ce3c4106afa36ce1039e77fdf1438aec3cefd39b2ad071084f3c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 30,
+        "environment_steps_checked": 30,
+        "meta_decisions_reproduced": 30
+      },
+      "journal_sha256": {
+        "environment.jsonl": "56379cc4e030983381ce55bca366a85dbb88ee59ea7dae9468b6c2a6ad4f707b",
+        "controller.jsonl": "caa23c476b1d2c6d9b0bb7dde03fc14c81b9a2db8fb48179cfb7ad1ff6deabed"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "priority_pressure",
+      "seed": 202,
+      "controller": "counterfactual",
+      "episode_id": "episode_1c6317ca051e818c",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 0.557181444069,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "5fd10e828883ce3c4106afa36ce1039e77fdf1438aec3cefd39b2ad071084f3c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19,
+        "meta_decisions_reproduced": 19,
+        "forecast_updates_checked": 19
+      },
+      "calibration": {
+        "samples": 19,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 0.999999999,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 19,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 19,
+      "journal_sha256": {
+        "environment.jsonl": "1104050032c0fbd7838c481783cdb03074991c1a4282676012716dcacfb113fb",
+        "controller.jsonl": "bda39fb413ab66fb7076e8ef91e5ba869007b31e6eb0b584718921896f182445"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 202,
+      "controller": "fixed",
+      "episode_id": "episode_aeeeb0330ac4cd0a",
+      "status": "protocol_error",
+      "time": 0.0,
+      "metrics": {
+        "energy_used": 0.0,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.0,
+        "step_count": 0
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "aad243967d797e80453a06f227cc089bf7ecf4a0d6035407fdf6e13baf03002c",
+      "error": {
+        "code": "RESOURCE_EXHAUSTED",
+        "message": "Нарушение резерва энергии"
+      },
+      "audit": {
+        "status": "incomplete",
+        "reason": "command_rejected_no_fabricated_result"
+      },
+      "journal_sha256": {
+        "environment.jsonl": "a02729578088469692dabc0e9debb7eeed1eede0d13247de7b48444de6f8adee",
+        "controller.jsonl": "c8f69c620fa1a9d74ef4e2a1e6c1f6866c9b26fa0372f72460dce396bdf517fe"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 202,
+      "controller": "reactive",
+      "episode_id": "episode_aeeeb0330ac4cd0a",
+      "status": "success",
+      "time": 11.0,
+      "metrics": {
+        "energy_used": 0.455394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 11
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "aad243967d797e80453a06f227cc089bf7ecf4a0d6035407fdf6e13baf03002c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 11,
+        "environment_steps_checked": 11
+      },
+      "journal_sha256": {
+        "environment.jsonl": "ea8b0f9fd297e2dff16dd7698c462521cef6a0c31efbcd152258983593583911",
+        "controller.jsonl": "27362de296620a47242687c111d0eea7e45f3784fada50cb458e03c9c5267f42"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 202,
+      "controller": "meta",
+      "episode_id": "episode_aeeeb0330ac4cd0a",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.547472663263,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "aad243967d797e80453a06f227cc089bf7ecf4a0d6035407fdf6e13baf03002c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "33032f1fa7a8cd308085ea60eef9a21d8d9d98c9d5f0b8bb6ef416a8c99de929",
+        "controller.jsonl": "cc4f83bb88ec4a50816609653f4141b2e0dce1299b6f0e730053dad53a246bc5"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "resource_recovery",
+      "seed": 202,
+      "controller": "counterfactual",
+      "episode_id": "episode_aeeeb0330ac4cd0a",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.443181444069,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "aad243967d797e80453a06f227cc089bf7ecf4a0d6035407fdf6e13baf03002c",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14,
+        "forecast_updates_checked": 14
+      },
+      "calibration": {
+        "samples": 14,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 14,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 14,
+      "journal_sha256": {
+        "environment.jsonl": "f8ea89bd09ec2e6a399ea34a86dd1be3b63eead14205c7706909d47d6af48c30",
+        "controller.jsonl": "bd94ad681479c77361743d64fbe5a62068ba85ae5710826f7f6f1ff1f865ed74"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 202,
+      "controller": "fixed",
+      "episode_id": "episode_0273aec9a0a2c45f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.469394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f05f4a3db93b4891c573f4940be4d0428bd8346e3e3b3f21bd7e56a638d3d7e0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "483ecabe58df0d7e5c4cfaf38f9a30a0fdec28d14c9f2950e0122f0e21447310",
+        "controller.jsonl": "980fd472646d35b212407834d056f3eceda7a9b0eb81a70e368336ed7b1546dc"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 202,
+      "controller": "reactive",
+      "episode_id": "episode_0273aec9a0a2c45f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.469394987663,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f05f4a3db93b4891c573f4940be4d0428bd8346e3e3b3f21bd7e56a638d3d7e0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      },
+      "journal_sha256": {
+        "environment.jsonl": "c1ba9f70eac87235961af7726be41c87d60a1ac3f6647f3cdbf2521ae09a1571",
+        "controller.jsonl": "f778ab507671eee4eedeca6d51ebab83e76640e8a6062949fda0a3deaee2bd8a"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 202,
+      "controller": "meta",
+      "episode_id": "episode_0273aec9a0a2c45f",
+      "status": "success",
+      "time": 14.0,
+      "metrics": {
+        "energy_used": 0.513365018217,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 14
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f05f4a3db93b4891c573f4940be4d0428bd8346e3e3b3f21bd7e56a638d3d7e0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 14,
+        "environment_steps_checked": 14,
+        "meta_decisions_reproduced": 14
+      },
+      "journal_sha256": {
+        "environment.jsonl": "5d5114ed2fed11ce7aef479270248472886c4686b53be35229055fa6e463542e",
+        "controller.jsonl": "7ff89bba226472f242838e097038fe5cc979e8e0f947a564c467b416f554bdcf"
+      }
+    },
+    {
+      "split": "holdout",
+      "case": "relay_recovery",
+      "seed": 202,
+      "controller": "counterfactual",
+      "episode_id": "episode_0273aec9a0a2c45f",
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.413181444069,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "max_steps": 100,
+      "initial_public_sha256": "f05f4a3db93b4891c573f4940be4d0428bd8346e3e3b3f21bd7e56a638d3d7e0",
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12,
+        "meta_decisions_reproduced": 12,
+        "forecast_updates_checked": 12
+      },
+      "calibration": {
+        "samples": 12,
+        "ewma_absolute_errors": {
+          "energy": 0.0,
+          "completion": 0.0,
+          "connectivity": 0.0,
+          "position": 0.0,
+          "state": 0.0,
+          "resource": 0.0
+        },
+        "trust": 1.0,
+        "energy_error_radius": 0.001,
+        "energy_interval_hits": 12,
+        "interval_label": "empirical_residual_envelope_not_statistical_guarantee"
+      },
+      "forecast_policy_changes": 12,
+      "journal_sha256": {
+        "environment.jsonl": "b423280de97e1cb0ecdcccee13e0daa802efff3705f7ee5c0f1fa7d5584dff1f",
+        "controller.jsonl": "3e46c753eed11bba8b30a0d2642ab48a09844aa4f4250a729328331dd9334c44"
+      }
+    }
+  ],
+  "aggregate": {
+    "groups": [
+      {
+        "split": "development",
+        "controller": "fixed",
+        "episodes": 4,
+        "successes": 3,
+        "mean_completion": 0.75,
+        "mean_penalized_steps": 35.75,
+        "protocol_errors": 1
+      },
+      {
+        "split": "development",
+        "controller": "reactive",
+        "episodes": 4,
+        "successes": 4,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 16.0,
+        "protocol_errors": 0
+      },
+      {
+        "split": "development",
+        "controller": "meta",
+        "episodes": 4,
+        "successes": 4,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 17.5,
+        "protocol_errors": 0
+      },
+      {
+        "split": "development",
+        "controller": "counterfactual",
+        "episodes": 4,
+        "successes": 4,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 14.0,
+        "protocol_errors": 0
+      },
+      {
+        "split": "holdout",
+        "controller": "fixed",
+        "episodes": 8,
+        "successes": 6,
+        "mean_completion": 0.75,
+        "mean_penalized_steps": 35.5,
+        "protocol_errors": 2
+      },
+      {
+        "split": "holdout",
+        "controller": "reactive",
+        "episodes": 8,
+        "successes": 8,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 16.0,
+        "protocol_errors": 0
+      },
+      {
+        "split": "holdout",
+        "controller": "meta",
+        "episodes": 8,
+        "successes": 8,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 17.5,
+        "protocol_errors": 0
+      },
+      {
+        "split": "holdout",
+        "controller": "counterfactual",
+        "episodes": 8,
+        "successes": 8,
+        "mean_completion": 1.0,
+        "mean_penalized_steps": 14.0,
+        "protocol_errors": 0
+      }
+    ],
+    "paired_success_deltas_vs_meta": [
+      {
+        "split": "development",
+        "case": "clean",
+        "seed": 42,
+        "steps_delta_cf_minus_meta": -2.0,
+        "energy_delta_cf_minus_meta": -0.131197326552
+      },
+      {
+        "split": "development",
+        "case": "priority_pressure",
+        "seed": 42,
+        "steps_delta_cf_minus_meta": -10.0,
+        "energy_delta_cf_minus_meta": -0.283206141781
+      },
+      {
+        "split": "development",
+        "case": "resource_recovery",
+        "seed": 42,
+        "steps_delta_cf_minus_meta": 0.0,
+        "energy_delta_cf_minus_meta": -0.110206141781
+      },
+      {
+        "split": "development",
+        "case": "relay_recovery",
+        "seed": 42,
+        "steps_delta_cf_minus_meta": -2.0,
+        "energy_delta_cf_minus_meta": -0.105892433282
+      },
+      {
+        "split": "holdout",
+        "case": "clean",
+        "seed": 101,
+        "steps_delta_cf_minus_meta": -1.0,
+        "energy_delta_cf_minus_meta": -0.114821183729
+      },
+      {
+        "split": "holdout",
+        "case": "priority_pressure",
+        "seed": 101,
+        "steps_delta_cf_minus_meta": -11.0,
+        "energy_delta_cf_minus_meta": -0.284634410484
+      },
+      {
+        "split": "holdout",
+        "case": "resource_recovery",
+        "seed": 101,
+        "steps_delta_cf_minus_meta": 0.0,
+        "energy_delta_cf_minus_meta": -0.100634410484
+      },
+      {
+        "split": "holdout",
+        "case": "relay_recovery",
+        "seed": 101,
+        "steps_delta_cf_minus_meta": -2.0,
+        "energy_delta_cf_minus_meta": -0.099477854899
+      },
+      {
+        "split": "holdout",
+        "case": "clean",
+        "seed": 202,
+        "steps_delta_cf_minus_meta": -1.0,
+        "energy_delta_cf_minus_meta": -0.117158651775
+      },
+      {
+        "split": "holdout",
+        "case": "priority_pressure",
+        "seed": 202,
+        "steps_delta_cf_minus_meta": -11.0,
+        "energy_delta_cf_minus_meta": -0.288291219194
+      },
+      {
+        "split": "holdout",
+        "case": "resource_recovery",
+        "seed": 202,
+        "steps_delta_cf_minus_meta": 0.0,
+        "energy_delta_cf_minus_meta": -0.104291219194
+      },
+      {
+        "split": "holdout",
+        "case": "relay_recovery",
+        "seed": 202,
+        "steps_delta_cf_minus_meta": -2.0,
+        "energy_delta_cf_minus_meta": -0.100183574148
+      }
+    ]
+  },
+  "scope": "Fixed simple own-world geometry; seed changes target offset modulo 3. Not an independent tournament result.",
+  "source_archive_sha256": "dc38c45934d110dadea0ff32550f9000e05a2b74e55c83e8f89fc70e87cc5aa6"
+}

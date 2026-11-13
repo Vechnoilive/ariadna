@@ -1,0 +1,358 @@
+{
+  "version": "0.8.0",
+  "results": [
+    {
+      "mission": "forest",
+      "seed": 42,
+      "controller": "portable",
+      "status": "success",
+      "time": 21.0,
+      "metrics": {
+        "energy_used": 1.535094091602,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 21
+      },
+      "audit": "passed",
+      "heading_changes": 10,
+      "paths_metres": {
+        "air": 63.59798,
+        "land": 43.073,
+        "tunnel": 31.83788,
+        "boat": 43.41649,
+        "sub": 37.1336,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 62.30589,
+        "land_1": 52.3311,
+        "tunnel_1": 22.0,
+        "boat_1": 34.64621,
+        "sub_1": 19.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "infrastructure_failure"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "b34d3138673c223664cd9e1258871802d2ea062ce1e2a44104cd0c7ffac311f4",
+      "seconds": 23.212,
+      "files": {
+        "map.json": "b34d3138673c223664cd9e1258871802d2ea062ce1e2a44104cd0c7ffac311f4",
+        "environment.jsonl": "1d8e4b04b9b45bd933c87db4c18e0db09c452e024001638e946f72b88027b355",
+        "controller.jsonl": "b4f0ddabb81ff601237cca5d1f2692f53879ab99eed39f0700e728282fb2ca62"
+      }
+    },
+    {
+      "mission": "forest",
+      "seed": 42,
+      "controller": "fixed",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.238
+    },
+    {
+      "mission": "forest",
+      "seed": 42,
+      "controller": "reactive",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.253
+    },
+    {
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "portable",
+      "status": "success",
+      "time": 51.0,
+      "metrics": {
+        "energy_used": 2.155233552567,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 51
+      },
+      "audit": "passed",
+      "heading_changes": 15,
+      "paths_metres": {
+        "air": 75.59798,
+        "land": 34.41649,
+        "tunnel": 33.94113,
+        "boat": 50.2493,
+        "sub": 26.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 74.30589,
+        "land_1": 84.0,
+        "tunnel_1": 26.0,
+        "boat_1": 54.60901,
+        "sub_1": 41.95923
+      },
+      "events": [
+        "agent_degradation",
+        "agent_failure",
+        "contradictory_information",
+        "infrastructure_failure",
+        "restricted_zone_appeared"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "0b5dbbbb96c8481534b4eed790b17f3727409e1f3a08f7192fb742e235a39384",
+      "seconds": 38.602,
+      "files": {
+        "map.json": "0b5dbbbb96c8481534b4eed790b17f3727409e1f3a08f7192fb742e235a39384",
+        "environment.jsonl": "324f69fd9822957784981d52edabc8aa4838cab71dbf63500db7db85493c1da1",
+        "controller.jsonl": "8fbd412d9f2d14b7eff80a3dc428da3954aa247b97b68da10fbc0a0744038149"
+      }
+    },
+    {
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "fixed",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.251
+    },
+    {
+      "mission": "quarry",
+      "seed": 109,
+      "controller": "reactive",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.25
+    },
+    {
+      "mission": "city",
+      "seed": 307,
+      "controller": "portable",
+      "status": "success",
+      "time": 34.0,
+      "metrics": {
+        "energy_used": 1.901017785142,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 34
+      },
+      "audit": "passed",
+      "heading_changes": 16,
+      "paths_metres": {
+        "air": 81.59798,
+        "land": 25.41649,
+        "tunnel": 29.69848,
+        "boat": 54.2493,
+        "sub": 28.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 80.30589,
+        "land_1": 87.20694,
+        "tunnel_1": 20.0,
+        "boat_1": 46.37118,
+        "sub_1": 39.6711
+      },
+      "events": [
+        "agent_degradation",
+        "connectivity_loss",
+        "contradictory_information",
+        "infrastructure_failure",
+        "resource_shortage"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select"
+      ],
+      "map_sha256": "b92178433e36154eaa06309b1bc12fdd099194e528b216a6def6d03156415525",
+      "seconds": 27.63,
+      "files": {
+        "map.json": "b92178433e36154eaa06309b1bc12fdd099194e528b216a6def6d03156415525",
+        "environment.jsonl": "66fcde0e744924553ec54f17c81bbe9ad027e0210920af5fd1570e981961c69b",
+        "controller.jsonl": "660f164c7b2af02d2537a34d618c2c311e4d3d8739aa6e78658a84951179b943"
+      }
+    },
+    {
+      "mission": "city",
+      "seed": 307,
+      "controller": "fixed",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.229
+    },
+    {
+      "mission": "city",
+      "seed": 307,
+      "controller": "reactive",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.237
+    },
+    {
+      "mission": "snow",
+      "seed": 701,
+      "controller": "portable",
+      "status": "success",
+      "time": 50.0,
+      "metrics": {
+        "energy_used": 2.10902551349,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 50
+      },
+      "audit": "passed",
+      "heading_changes": 15,
+      "paths_metres": {
+        "air": 57.59798,
+        "land": 61.41649,
+        "tunnel": 33.25042,
+        "boat": 54.2493,
+        "sub": 28.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 80.30589,
+        "land_1": 36.0,
+        "tunnel_1": 28.0,
+        "boat_1": 47.0729,
+        "sub_1": 45.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "infrastructure_failure",
+        "stale_information"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "c066d8b2c8ea5df02589f229d6bb4a4baeee5e19f98d56a8df690d53712afafe",
+      "seconds": 43.594,
+      "files": {
+        "map.json": "c066d8b2c8ea5df02589f229d6bb4a4baeee5e19f98d56a8df690d53712afafe",
+        "environment.jsonl": "74cae79c264584fd353d1822c6aa269ba31ff3ccf53fc23824cb1d0c58c50087",
+        "controller.jsonl": "4bdd54454a614f326f2511ef4b2c6a11fb5d247948c27f05685e6536923511f1"
+      }
+    },
+    {
+      "mission": "snow",
+      "seed": 701,
+      "controller": "fixed",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.238
+    },
+    {
+      "mission": "snow",
+      "seed": 701,
+      "controller": "reactive",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.23
+    },
+    {
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "portable",
+      "status": "success",
+      "time": 32.0,
+      "metrics": {
+        "energy_used": 2.225320469603,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 32
+      },
+      "audit": "passed",
+      "heading_changes": 15,
+      "paths_metres": {
+        "air": 105.59798,
+        "land": 63.35606,
+        "tunnel": 32.0,
+        "boat": 77.01963,
+        "sub": 38.0,
+        "mast": 0.0,
+        "fusion": 0,
+        "operator": 0,
+        "air_1": 103.27646,
+        "land_1": 52.81484,
+        "tunnel_1": 28.0,
+        "boat_1": 42.0,
+        "sub_1": 56.0
+      },
+      "events": [
+        "agent_degradation",
+        "contradictory_information",
+        "hazard_appeared",
+        "infrastructure_failure",
+        "mission_priority_change"
+      ],
+      "operations": [
+        "compose",
+        "keep",
+        "modify",
+        "select",
+        "switch"
+      ],
+      "map_sha256": "8ca9a73b8456b093597dda3a109d691837f240776a31e44f732110fc643e3561",
+      "seconds": 31.102,
+      "files": {
+        "map.json": "8ca9a73b8456b093597dda3a109d691837f240776a31e44f732110fc643e3561",
+        "environment.jsonl": "c14af843438a97c76ef58c5c159323c2fe4d699c21218a18d970cbf6ab73707d",
+        "controller.jsonl": "ae93be32a74f02f165329f1c9695073ae61a69b849d29cc602d634d12d559be3"
+      }
+    },
+    {
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "fixed",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.236
+    },
+    {
+      "mission": "delta",
+      "seed": 2027,
+      "controller": "reactive",
+      "status": "error",
+      "audit": "not_completed",
+      "error": "{'event': 'error', 'protocol_version': '1.0', 'request_id': None, 'episode_id': None, 'error': {'code': 'CONSTRAINT_VIOLATION', 'message': 'Коллизия траекторий', 'details': {}}}",
+      "seconds": 0.231
+    }
+  ],
+  "external_teams_tested": 0,
+  "official_score": null
+}

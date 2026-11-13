@@ -1,0 +1,61 @@
+{
+  "protocol_version": "1.0",
+  "episode_id": "episode_fb5e6a25361584b8",
+  "request_id": "step_716a2ebb78be5bfc6ebc952c",
+  "decision_id": "decision_716a2ebb78be5bfc6ebc952c",
+  "time": 0.0,
+  "operation": "select",
+  "previous_configuration": {
+    "scenario_ids": [],
+    "role_assignments": {}
+  },
+  "selected_configuration": {
+    "scenario_ids": [
+      "coverage_search"
+    ],
+    "parameters": {},
+    "synthesized_scenario": null
+  },
+  "candidate_evaluations": [
+    {
+      "scenario_id": "coverage_search",
+      "applicable": true,
+      "selected": true,
+      "risk": 0.0
+    }
+  ],
+  "role_assignments": {
+    "scout_A": "scout"
+  },
+  "commands": [
+    {
+      "agent_id": "scout_A",
+      "action": "move",
+      "parameters": {
+        "target": [
+          35.0,
+          26.0,
+          10.0
+        ]
+      }
+    }
+  ],
+  "constraint_checks": [
+    {
+      "constraint_id": "agent_available_actions",
+      "status": "passed"
+    }
+  ],
+  "explanation": {
+    "observation_refs": [
+      "sha256:716a2ebb78be5bfc6ebc952c200fbc3cb19c1050851cf0c1b8f368e265fb196d"
+    ],
+    "reason_codes": [
+      "stage1_protocol_probe"
+    ],
+    "expected_effects": [
+      "confirm_target"
+    ],
+    "confidence": 1.0
+  }
+}

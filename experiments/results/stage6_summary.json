@@ -1,0 +1,128 @@
+{
+  "format": "ariadna.stage6.v1",
+  "version": "0.6.0",
+  "results": [
+    {
+      "case": "pressure",
+      "seed": 42,
+      "episode_id": "episode_880b4f2be4d7c813",
+      "status": "success",
+      "time": 20.0,
+      "metrics": {
+        "energy_used": 0.564,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 20
+      },
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 20,
+        "environment_steps_checked": 20,
+        "meta_decisions_reproduced": 20,
+        "forecast_updates_checked": 20
+      }
+    },
+    {
+      "case": "flood",
+      "seed": 2027,
+      "episode_id": "episode_b2149308351f04b8",
+      "status": "success",
+      "time": 29.0,
+      "metrics": {
+        "energy_used": 1.502617081889,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 29
+      },
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 29,
+        "environment_steps_checked": 29,
+        "meta_decisions_reproduced": 29,
+        "forecast_updates_checked": 29,
+        "portable_decisions_reproduced": 29
+      }
+    },
+    {
+      "case": "synthesis",
+      "seed": 42,
+      "episode_id": "episode_7bc30ab7e3cc78e1",
+      "status": "success",
+      "time": 20.0,
+      "metrics": {
+        "energy_used": 0.4465,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 20
+      },
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 20,
+        "environment_steps_checked": 20,
+        "meta_decisions_reproduced": 20
+      }
+    },
+    {
+      "case": "stop",
+      "seed": 42,
+      "episode_id": "episode_89e579e562b90b39",
+      "status": "safe_stopped",
+      "time": 3.0,
+      "metrics": {
+        "energy_used": 0.121313708499,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 0.0,
+        "step_count": 3
+      },
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 3,
+        "environment_steps_checked": 3,
+        "meta_decisions_reproduced": 3
+      }
+    },
+    {
+      "case": "peer",
+      "seed": 1009,
+      "episode_id": "peer_980c9bbd7851a1110280",
+      "status": "success",
+      "time": 18.0,
+      "metrics": {
+        "energy_used": 0.139597411976,
+        "mission_completion": 1.0,
+        "step_count": 18
+      },
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 18,
+        "environment_steps_checked": 18,
+        "meta_decisions_reproduced": 18,
+        "forecast_updates_checked": 18,
+        "portable_decisions_reproduced": 18
+      }
+    }
+  ],
+  "source_sha256": {
+    "evidence/pressure/environment.jsonl": "91711e78a343b3d02d08153f5edfeffc544892afc00055cc1d97bc43e88b264b",
+    "evidence/pressure/controller.jsonl": "a3495335e92f6505c3ea1ae94fc3bfd6bdb29bea1b778c1057b2ffc675776981",
+    "evidence/flood/environment.jsonl": "876f6809f56ffd69cf545177e65c2b2aaedb9649b681e7a23f5b796583986133",
+    "evidence/flood/controller.jsonl": "6b488b459c5a6d2f93ecebbf35d4ef09415b659574b33d98235f03dac31433f5",
+    "evidence/synthesis/environment.jsonl": "99be5cf32767c7a69e3dc6dc773657051d3082adb06241408d88fe4359e9518a",
+    "evidence/synthesis/controller.jsonl": "b0c9c4bd72c9aab87c426c0326ee74942428be11b4abcce780a8327f13566ab2",
+    "evidence/stop/environment.jsonl": "a81b192ea853d21d642225bfbd30982349cf8c54b73ac0dee26ada267369c4ec",
+    "evidence/stop/controller.jsonl": "2a3b9a846a7c25d7d64b48861b42cc7e9e32288b72cedf2eb01fa1fa899e9681",
+    "evidence/peer/environment.jsonl": "0273aaf2eb5455f5c8d62441aa1b396bc2e20c5207613bf899b9b74b66a979df",
+    "evidence/peer/controller.jsonl": "726fdb52108966770a44273edeaa303e90cbb9bc9c8fcd7d1e9562733de9b189"
+  },
+  "viewer_sha256": "659a3e6d0967d4cedbfbdc8b215ee933b73da3e272290c218367e2f9d1ce0ff8",
+  "research_decision_id": "decision_de2715e95858c7f84a5cf8be",
+  "external_teams_tested": 0
+}

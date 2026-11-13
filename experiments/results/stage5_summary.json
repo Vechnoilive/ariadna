@@ -1,0 +1,1048 @@
+{
+  "format": "ariadna.stage5.v1",
+  "design": {
+    "version": "0.5.0",
+    "development_seeds": [
+      42
+    ],
+    "holdout_seeds": [
+      1009,
+      2027,
+      3037
+    ],
+    "native_cases": [
+      "flood_single",
+      "flood_team",
+      "flood_faults"
+    ],
+    "load_cases": [
+      {
+        "cohorts": 4,
+        "targets_per_kind": 2
+      },
+      {
+        "cohorts": 8,
+        "targets_per_kind": 2
+      }
+    ],
+    "peer_seeds": [
+      42,
+      1009,
+      2027
+    ],
+    "fault_modes": [
+      "wrong_request",
+      "wrong_episode",
+      "stale_time",
+      "undeclared_partial",
+      "lost_after_commit",
+      "malformed_json",
+      "oversize",
+      "unavailable"
+    ],
+    "forecast_agent_limit": 24,
+    "forecast_target_limit": 48,
+    "transport": {
+      "protocol": "1.0",
+      "max_body_bytes": 65536
+    },
+    "scope": "Independent local fixture, not an external team or official compatibility tournament. No external team endpoint supplied."
+  },
+  "design_sha256": "7ee0a54ae866e4e48ef6cb328803fcb61beacab6313d6ba05e0d457afb836a5f",
+  "suite": "full",
+  "results": [
+    {
+      "category": "native",
+      "split": "development",
+      "seed": 42,
+      "case": "flood_single",
+      "episode_id": "episode_4932799187357323",
+      "status": "success",
+      "time": 17.0,
+      "metrics": {
+        "energy_used": 0.722929185602,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 17
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 17,
+        "environment_steps_checked": 17,
+        "meta_decisions_reproduced": 17,
+        "forecast_updates_checked": 17,
+        "portable_decisions_reproduced": 17
+      },
+      "performance": {
+        "decisions": 17,
+        "p95_decision_seconds": 0.169748,
+        "max_decision_bytes": 20366,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "dbe49280a3643291a7fae3b51334aaad5ed8014cc100909b3743c8810dbf3b1d",
+      "elapsed_with_audit_seconds": 5.555159
+    },
+    {
+      "category": "native",
+      "split": "development",
+      "seed": 42,
+      "case": "flood_team",
+      "episode_id": "episode_2ea4e366bdbba31c",
+      "status": "success",
+      "time": 22.0,
+      "metrics": {
+        "energy_used": 1.437669718832,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 22
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 22,
+        "environment_steps_checked": 22,
+        "meta_decisions_reproduced": 22,
+        "forecast_updates_checked": 22,
+        "portable_decisions_reproduced": 22
+      },
+      "performance": {
+        "decisions": 22,
+        "p95_decision_seconds": 0.338484,
+        "max_decision_bytes": 28775,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "37d5f959fbf064ec78577e7bb8eb8127a3af3ef6d146f9b2bf0e80d1dedaa0e6",
+      "elapsed_with_audit_seconds": 16.779332
+    },
+    {
+      "category": "native",
+      "split": "development",
+      "seed": 42,
+      "case": "flood_faults",
+      "episode_id": "episode_adb5877e151e57cd",
+      "status": "success",
+      "time": 27.0,
+      "metrics": {
+        "energy_used": 1.406469201374,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 27
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 27,
+        "environment_steps_checked": 27,
+        "meta_decisions_reproduced": 27,
+        "forecast_updates_checked": 27,
+        "portable_decisions_reproduced": 27
+      },
+      "performance": {
+        "decisions": 27,
+        "p95_decision_seconds": 0.669392,
+        "max_decision_bytes": 29679,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "5e95b19c7f0b4cdc822fa39f93212bddeecffb2a7d0c9f37bea6b070e721dcf0",
+      "elapsed_with_audit_seconds": 23.125199
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 1009,
+      "case": "flood_single",
+      "episode_id": "episode_8c4d9cc1e05be009",
+      "status": "success",
+      "time": 16.0,
+      "metrics": {
+        "energy_used": 0.691110922005,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 16
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 16,
+        "environment_steps_checked": 16,
+        "meta_decisions_reproduced": 16,
+        "forecast_updates_checked": 16,
+        "portable_decisions_reproduced": 16
+      },
+      "performance": {
+        "decisions": 16,
+        "p95_decision_seconds": 0.475258,
+        "max_decision_bytes": 20245,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "21e01837fe9db940aec74e1af959988d3c5757964ef376abbbd02aa05bb2311a",
+      "elapsed_with_audit_seconds": 7.660792
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 1009,
+      "case": "flood_team",
+      "episode_id": "episode_f47538f825cd04ec",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 1.369583143651,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19,
+        "meta_decisions_reproduced": 19,
+        "forecast_updates_checked": 19,
+        "portable_decisions_reproduced": 19
+      },
+      "performance": {
+        "decisions": 19,
+        "p95_decision_seconds": 0.441785,
+        "max_decision_bytes": 29151,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "45cb8e5d79170a6ccd3ce93b9cd504c60f356330a7979d6e170f5be145b0e0c5",
+      "elapsed_with_audit_seconds": 15.16963
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 1009,
+      "case": "flood_faults",
+      "episode_id": "episode_7fd561365ddcde8f",
+      "status": "success",
+      "time": 26.0,
+      "metrics": {
+        "energy_used": 1.398660490615,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 26
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 26,
+        "environment_steps_checked": 26,
+        "meta_decisions_reproduced": 26,
+        "forecast_updates_checked": 26,
+        "portable_decisions_reproduced": 26
+      },
+      "performance": {
+        "decisions": 26,
+        "p95_decision_seconds": 0.880458,
+        "max_decision_bytes": 29181,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "2475ddf1bb1be309eefd18b4e9b55f48ff8c5d0318ea95b59b0cdad2d034edaa",
+      "elapsed_with_audit_seconds": 33.403282
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 2027,
+      "case": "flood_single",
+      "episode_id": "episode_2146fd04f45d5192",
+      "status": "success",
+      "time": 18.0,
+      "metrics": {
+        "energy_used": 0.702618770064,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 18
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 18,
+        "environment_steps_checked": 18,
+        "meta_decisions_reproduced": 18,
+        "forecast_updates_checked": 18,
+        "portable_decisions_reproduced": 18
+      },
+      "performance": {
+        "decisions": 18,
+        "p95_decision_seconds": 0.28163,
+        "max_decision_bytes": 20300,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "8801d885aa383a8f19754ae72d502480debd70b7767de74c01cd0aeacccc6bd8",
+      "elapsed_with_audit_seconds": 7.985992
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 2027,
+      "case": "flood_team",
+      "episode_id": "episode_f8f6fbf168bc6534",
+      "status": "success",
+      "time": 20.0,
+      "metrics": {
+        "energy_used": 1.385552323031,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 20
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 20,
+        "environment_steps_checked": 20,
+        "meta_decisions_reproduced": 20,
+        "forecast_updates_checked": 20,
+        "portable_decisions_reproduced": 20
+      },
+      "performance": {
+        "decisions": 20,
+        "p95_decision_seconds": 0.520361,
+        "max_decision_bytes": 29958,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "2b05e387eda4eb012e85ed5d566fe26f3fbf1c69671c5df96c7cd7588d0e254f",
+      "elapsed_with_audit_seconds": 18.578751
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 2027,
+      "case": "flood_faults",
+      "episode_id": "episode_0017f37e279ab23b",
+      "status": "success",
+      "time": 29.0,
+      "metrics": {
+        "energy_used": 1.502617081889,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 29
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 29,
+        "environment_steps_checked": 29,
+        "meta_decisions_reproduced": 29,
+        "forecast_updates_checked": 29,
+        "portable_decisions_reproduced": 29
+      },
+      "performance": {
+        "decisions": 29,
+        "p95_decision_seconds": 0.492229,
+        "max_decision_bytes": 29532,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "104fd93c3c322814f2b8c5578327c20adaca609770a2e3fe5a685443a85221a4",
+      "elapsed_with_audit_seconds": 24.126378
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 3037,
+      "case": "flood_single",
+      "episode_id": "episode_ef6489872a5553cd",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 0.779728338336,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19,
+        "meta_decisions_reproduced": 19,
+        "forecast_updates_checked": 19,
+        "portable_decisions_reproduced": 19
+      },
+      "performance": {
+        "decisions": 19,
+        "p95_decision_seconds": 0.228481,
+        "max_decision_bytes": 20513,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "4d645957eafd6964cef651660b3bc6ced453883b8cdabbc954d0c36f8a0569a8",
+      "elapsed_with_audit_seconds": 8.895835
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 3037,
+      "case": "flood_team",
+      "episode_id": "episode_335cb2704e4bcc92",
+      "status": "success",
+      "time": 19.0,
+      "metrics": {
+        "energy_used": 1.348968025253,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 19
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 19,
+        "environment_steps_checked": 19,
+        "meta_decisions_reproduced": 19,
+        "forecast_updates_checked": 19,
+        "portable_decisions_reproduced": 19
+      },
+      "performance": {
+        "decisions": 19,
+        "p95_decision_seconds": 0.748,
+        "max_decision_bytes": 29085,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "350647755ce6e7c0568ae4d41df229983a365d245805b697a85923990eeb3850",
+      "elapsed_with_audit_seconds": 13.789747
+    },
+    {
+      "category": "native",
+      "split": "holdout",
+      "seed": 3037,
+      "case": "flood_faults",
+      "episode_id": "episode_73a0b416717218de",
+      "status": "success",
+      "time": 27.0,
+      "metrics": {
+        "energy_used": 1.439737563287,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 27
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 27,
+        "environment_steps_checked": 27,
+        "meta_decisions_reproduced": 27,
+        "forecast_updates_checked": 27,
+        "portable_decisions_reproduced": 27
+      },
+      "performance": {
+        "decisions": 27,
+        "p95_decision_seconds": 0.333969,
+        "max_decision_bytes": 28851,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "79d54666284f7eeeb3331751095294cd425b6ecfbf40f239337347c483a91fe5",
+      "elapsed_with_audit_seconds": 18.530587
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer",
+      "seed": 42,
+      "episode_id": "peer_8b2fede29c37c3ab7a34",
+      "status": "success",
+      "time": 31.0,
+      "metrics": {
+        "energy_used": 0.242121988567,
+        "mission_completion": 1.0,
+        "step_count": 31
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 31,
+        "environment_steps_checked": 31,
+        "meta_decisions_reproduced": 31,
+        "forecast_updates_checked": 31,
+        "portable_decisions_reproduced": 31
+      },
+      "performance": {
+        "decisions": 31,
+        "p95_decision_seconds": 0.04433,
+        "max_decision_bytes": 16382,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "795b238c13b3cf10294cd4068fc4b136d98973daae5ff67e679f217108382f78",
+      "elapsed_with_audit_seconds": 2.893199
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer_partial",
+      "seed": 42,
+      "episode_id": "peer_589e7251eebe19d832ea",
+      "status": "success",
+      "time": 18.0,
+      "metrics": {
+        "energy_used": 0.139021628488,
+        "mission_completion": 1.0,
+        "step_count": 18
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 18,
+        "environment_steps_checked": 18,
+        "meta_decisions_reproduced": 18,
+        "forecast_updates_checked": 18,
+        "portable_decisions_reproduced": 18
+      },
+      "performance": {
+        "decisions": 18,
+        "p95_decision_seconds": 0.051498,
+        "max_decision_bytes": 16516,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "d8b056092f15571f7a961ba32116e0da2b12fcd5620dcbce2a4c90636f88d9e3",
+      "elapsed_with_audit_seconds": 1.639652
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_native",
+      "seed": 42,
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.631566643429,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      }
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_peer",
+      "seed": 42,
+      "status": "success",
+      "time": 47.0,
+      "metrics": {
+        "energy_used": 0.400501259769,
+        "mission_completion": 1.0,
+        "step_count": 47
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 47,
+        "environment_steps_checked": 47
+      }
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer",
+      "seed": 1009,
+      "episode_id": "peer_c71b295cacb88300d4e4",
+      "status": "success",
+      "time": 18.0,
+      "metrics": {
+        "energy_used": 0.139597411976,
+        "mission_completion": 1.0,
+        "step_count": 18
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 18,
+        "environment_steps_checked": 18,
+        "meta_decisions_reproduced": 18,
+        "forecast_updates_checked": 18,
+        "portable_decisions_reproduced": 18
+      },
+      "performance": {
+        "decisions": 18,
+        "p95_decision_seconds": 0.463995,
+        "max_decision_bytes": 16455,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "592bc53ed9606d85b4c6fcc34b675f066fda3b4e8f16800cde4ad57952ca6b99",
+      "elapsed_with_audit_seconds": 2.160984
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer_partial",
+      "seed": 1009,
+      "episode_id": "peer_b0ad9857032c6d6df9f7",
+      "status": "success",
+      "time": 18.0,
+      "metrics": {
+        "energy_used": 0.139597411976,
+        "mission_completion": 1.0,
+        "step_count": 18
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 18,
+        "environment_steps_checked": 18,
+        "meta_decisions_reproduced": 18,
+        "forecast_updates_checked": 18,
+        "portable_decisions_reproduced": 18
+      },
+      "performance": {
+        "decisions": 18,
+        "p95_decision_seconds": 0.153993,
+        "max_decision_bytes": 16510,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "20771bf15a0f696fcd11eac4bbc187b31106b26e3c610a0af412c75ff49813ff",
+      "elapsed_with_audit_seconds": 1.95427
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_native",
+      "seed": 1009,
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.633756503709,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      }
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_peer",
+      "seed": 1009,
+      "status": "success",
+      "time": 43.0,
+      "metrics": {
+        "energy_used": 0.382403747776,
+        "mission_completion": 1.0,
+        "step_count": 43
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 43,
+        "environment_steps_checked": 43
+      }
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer",
+      "seed": 2027,
+      "episode_id": "peer_ec615f5899dd5125ae90",
+      "status": "success",
+      "time": 17.0,
+      "metrics": {
+        "energy_used": 0.135553325898,
+        "mission_completion": 1.0,
+        "step_count": 17
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 17,
+        "environment_steps_checked": 17,
+        "meta_decisions_reproduced": 17,
+        "forecast_updates_checked": 17,
+        "portable_decisions_reproduced": 17
+      },
+      "performance": {
+        "decisions": 17,
+        "p95_decision_seconds": 0.048129,
+        "max_decision_bytes": 16484,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "8b7e20f87a52bf87219a225c5d5a5664c31afa417b72ea0a5d0159d851c3cec1",
+      "elapsed_with_audit_seconds": 1.481627
+    },
+    {
+      "category": "interop",
+      "case": "portable_to_peer_partial",
+      "seed": 2027,
+      "episode_id": "peer_b3cd77bc3af368267e9e",
+      "status": "success",
+      "time": 17.0,
+      "metrics": {
+        "energy_used": 0.135553325898,
+        "mission_completion": 1.0,
+        "step_count": 17
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 17,
+        "environment_steps_checked": 17,
+        "meta_decisions_reproduced": 17,
+        "forecast_updates_checked": 17,
+        "portable_decisions_reproduced": 17
+      },
+      "performance": {
+        "decisions": 17,
+        "p95_decision_seconds": 0.048171,
+        "max_decision_bytes": 16497,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "3f5fa104842945859894f5257ffd4fa3593d268f1efba330c491b020f312b4da",
+      "elapsed_with_audit_seconds": 1.438646
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_native",
+      "seed": 2027,
+      "status": "success",
+      "time": 12.0,
+      "metrics": {
+        "energy_used": 0.632341050288,
+        "messages_delivered": 0,
+        "messages_dropped": 0,
+        "messages_sent": 0,
+        "mission_completion": 1.0,
+        "step_count": 12
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 12,
+        "environment_steps_checked": 12
+      }
+    },
+    {
+      "category": "interop",
+      "case": "peer_to_peer",
+      "seed": 2027,
+      "status": "success",
+      "time": 29.0,
+      "metrics": {
+        "energy_used": 0.251605759318,
+        "mission_completion": 1.0,
+        "step_count": 29
+      },
+      "foreign_scenario_ids_seen": [
+        "foreign_rescue"
+      ],
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 29,
+        "environment_steps_checked": 29
+      }
+    },
+    {
+      "category": "load",
+      "case": "load_4",
+      "seed": 42,
+      "agents": 23,
+      "episode_id": "episode_d50c612ff9fc792e",
+      "status": "success",
+      "time": 22.0,
+      "metrics": {
+        "energy_used": 2.298850034883,
+        "messages_delivered": 2,
+        "messages_dropped": 0,
+        "messages_sent": 2,
+        "mission_completion": 1.0,
+        "step_count": 22
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 22,
+        "environment_steps_checked": 22,
+        "meta_decisions_reproduced": 22,
+        "forecast_updates_checked": 22,
+        "portable_decisions_reproduced": 22
+      },
+      "performance": {
+        "decisions": 22,
+        "p95_decision_seconds": 0.821762,
+        "max_decision_bytes": 46358,
+        "forecast_skipped_steps": 0
+      },
+      "initial_public_sha256": "8383c6a85452b5cea1f9614cd3d7959c25b968f20a0d35adee95f794ed3fd566",
+      "elapsed_with_audit_seconds": 36.003563
+    },
+    {
+      "category": "load",
+      "case": "load_8",
+      "seed": 42,
+      "agents": 43,
+      "episode_id": "episode_d29b1cf468293e70",
+      "status": "success",
+      "time": 16.0,
+      "metrics": {
+        "energy_used": 3.382739459369,
+        "messages_delivered": 2,
+        "messages_dropped": 0,
+        "messages_sent": 2,
+        "mission_completion": 1.0,
+        "step_count": 16
+      },
+      "error": null,
+      "audit": {
+        "status": "passed",
+        "decisions_checked": 16,
+        "environment_steps_checked": 16,
+        "meta_decisions_reproduced": 16,
+        "forecast_updates_checked": 16,
+        "portable_decisions_reproduced": 16
+      },
+      "performance": {
+        "decisions": 16,
+        "p95_decision_seconds": 0.473802,
+        "max_decision_bytes": 35089,
+        "forecast_skipped_steps": 16
+      },
+      "initial_public_sha256": "d3c8d4847d1c293e9d53f66d8f166b520a7187a34a4587f56f945829ee56a63e",
+      "elapsed_with_audit_seconds": 21.92859
+    },
+    {
+      "category": "fault",
+      "case": "wrong_request",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Ответ среды не соответствует запросу или объявленной семантике исполнения"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "wrong_episode",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Ответ среды не соответствует запросу или объявленной семантике исполнения"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "stale_time",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Ответ среды не соответствует запросу или объявленной семантике исполнения"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "undeclared_partial",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Ответ среды не соответствует запросу или объявленной семантике исполнения"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "lost_after_commit",
+      "status": "passed",
+      "expected_error": "TIMEOUT",
+      "error": {
+        "code": "TIMEOUT",
+        "message": "fixture lost committed response"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "malformed_json",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Среда вернула некорректный JSON UTF-8"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "oversize",
+      "status": "passed",
+      "expected_error": "INVALID_REQUEST",
+      "error": {
+        "code": "INVALID_REQUEST",
+        "message": "Ответ превышает ограничение клиента"
+      },
+      "step_http_requests": 1,
+      "committed_steps": 1,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    },
+    {
+      "category": "fault",
+      "case": "unavailable",
+      "status": "passed",
+      "expected_error": "TIMEOUT",
+      "error": {
+        "code": "TIMEOUT",
+        "message": "fixture unavailable"
+      },
+      "step_http_requests": 0,
+      "committed_steps": 0,
+      "audit": {
+        "status": "incomplete_expected",
+        "reason": "fault injected after request, no fabricated acknowledgment"
+      }
+    }
+  ],
+  "summary": {
+    "mission_cases": 26,
+    "mission_successes": 26,
+    "fault_probes": 8,
+    "fault_probes_passed": 8,
+    "external_team_endpoints_tested": 0
+  },
+  "scope": "Independent local implementations, not a third-party team tournament.",
+  "evidence_zip_sha256": "4cc71a501797594d403537017f1b766c1e7f8a5e57d094957d6f92090e8b815f",
+  "evidence_files": {
+    "development_42_flood_faults/controller.jsonl": "8156681d08af197e80b951fe0fe445a6987f65ab27946aef7181c957952b8ec1",
+    "development_42_flood_faults/environment.jsonl": "8b1bee7a3ba548a437e096e71dcb28fc180d5ead6f9837281f648bc1d9662958",
+    "development_42_flood_single/controller.jsonl": "83903d2a1c87987539a67b7ff7fd2b73d6b62a7638115aa3ee24a6c406e8a5e6",
+    "development_42_flood_single/environment.jsonl": "c391b5617eb7c975a7df6ce42f01d054a8bf0b35b42cfb7b9284e25d6432794c",
+    "development_42_flood_team/controller.jsonl": "81adbd70790ffa3e35e651bb93b08924608171f29a1826514db7e7d4679818a6",
+    "development_42_flood_team/environment.jsonl": "168b4fe2880b06e853e09dedfe3427f94d600530696252acaa6b96a33373956f",
+    "holdout_1009_flood_faults/controller.jsonl": "8edcf4e6e6f4d8cc4cf1e3fc4a813011635e2243a14ad2b731ababcbf186dc7a",
+    "holdout_1009_flood_faults/environment.jsonl": "4f0d9c1278bfc5ca8ba98e928729e7325f80b9ff0fb10ec3280ae176fd313a43",
+    "holdout_1009_flood_single/controller.jsonl": "7d28634be20bce4346791cecc1207d35991ddeeec2c24267128738f6724b8e90",
+    "holdout_1009_flood_single/environment.jsonl": "f9bb47c0152861fbbb3bad5ab9e4d82d331e567a076e6943bef372eb7dc84ca0",
+    "holdout_1009_flood_team/controller.jsonl": "a880a36f0fe378bc44e4454687258f2077666693d936b64483adc14afa2e28e9",
+    "holdout_1009_flood_team/environment.jsonl": "793d02e5e06e011826f15fc46138418203b2b5573d23b1ace79dba1d89750dcf",
+    "holdout_2027_flood_faults/controller.jsonl": "776a2de3f0724e8873e75ae2798fdffd694cf54081fd7b390eb7f72c010a738e",
+    "holdout_2027_flood_faults/environment.jsonl": "fe2947902ca44039556cdbd464db670ef9ff9cd13e28c0a446fcd4e9c472b4ff",
+    "holdout_2027_flood_single/controller.jsonl": "b507b87a5de0d914c384fb89bbc4bf063ca1187be34353b7227467f82d673561",
+    "holdout_2027_flood_single/environment.jsonl": "bf56a39e2ae1fb92666b1fd149de0f46866599b26c6bf87d38c0b82fa4e0227b",
+    "holdout_2027_flood_team/controller.jsonl": "94a2ea3f26bd5e683913f4b57e1ca71e2f3dde58bc7d1bfcfefadb6dd7f825dc",
+    "holdout_2027_flood_team/environment.jsonl": "0ea5fc61430d436e7b37427cd62d740c9d6147ce359275604690b7a168b2ef9d",
+    "holdout_3037_flood_faults/controller.jsonl": "484bb3da8741a95dc550375560ebe7b8630242f435e89b6e6c50476d8b43e32c",
+    "holdout_3037_flood_faults/environment.jsonl": "e50d8cf4a201910213a98240bf134e6369111f3f909c6a317191bd940b7d51a0",
+    "holdout_3037_flood_single/controller.jsonl": "9631c1933b2dee9e079b2e2efb9876a4beb2ab25d3779c87c27280d494b1445b",
+    "holdout_3037_flood_single/environment.jsonl": "4f76acd3d6e1f780e58c7871a755543f017c2f63570d7e729d32287b4723692e",
+    "holdout_3037_flood_team/controller.jsonl": "0cc9f653c5323009f4fdc6dea1f82c20d6fe7453298ac1818a26b2ff835c3bac",
+    "holdout_3037_flood_team/environment.jsonl": "f5977387478db20df64bde4a83f579627e7d4073ba279c376c278cf453b0a886",
+    "load_4/controller.jsonl": "d14086aa17e2e92e50b3b39a06b3f51a5d4d0ab5792cb0026244324ffe904d13",
+    "load_4/environment.jsonl": "dda43fcc48227fc9091919781e94af0184c87fdd29a51c0682dd1152e76774e7",
+    "load_8/controller.jsonl": "a956609710df572c3201010fc33dbf2c5046b2d9b1e7ad09297adc64da76d43a",
+    "load_8/environment.jsonl": "5c745551f34a15cee0552c527ebe14526a8605cb30db42280601c22789cb0a00",
+    "lost_after_commit/controller.jsonl": "dab84f0635caa607a19f82767031be6fcdfeedf9e88731bedc35d98e5244babc",
+    "lost_after_commit/environment.jsonl": "1c807eb843f0196b0426ed975ca68a029f0371508d419aa09d6f7dc0549ae83f",
+    "malformed_json/controller.jsonl": "04844d0ac60a80b7e528c9ce257ee9b54c0cc1cafc23f10dd7cd67a76bfe0876",
+    "malformed_json/environment.jsonl": "52f3ed2208145ed08ce8594b1a366ba87d0411fbe14130f36db8362265aec486",
+    "oversize/controller.jsonl": "d0a6ff811e1196b15ee9d3b418ef7bc05f44cfbf6e905a7517f7dbed56bff562",
+    "oversize/environment.jsonl": "413b186d97a0e3e7cd471d1a06163dfd25402abb77e797dec8fe1283d64d390e",
+    "peer_to_native_1009/controller.jsonl": "cd65d226f1515ffcc559582df7252610e41345f4aa4569e97d5c07a6f1c99dc8",
+    "peer_to_native_1009/environment.jsonl": "51ddd7156dac1271cb0b443962033d925eb4679b0bcf3f78ed7a673c9097f399",
+    "peer_to_native_2027/controller.jsonl": "3f70ef23449da13d5e3e172f083cf64746c67e5c111fda6982f9d2d88c7e71ab",
+    "peer_to_native_2027/environment.jsonl": "c22f2f5d7316ea80d1dd556b6c4449ccde23fc70823fb30e86a210b1551713a4",
+    "peer_to_native_42/controller.jsonl": "b9ed9d4000861c3fbcd4f958a128a6e32285debdc6f0e5ff93889668dd22f2d1",
+    "peer_to_native_42/environment.jsonl": "f80c0bf809e692833a4ad978ad41aea6818115aba1192033c31e5bf7bd6bff70",
+    "peer_to_peer_1009/controller.jsonl": "442ec1ac24f709e96d0c970969046acbd0eeea2607a146869f79969ff6300132",
+    "peer_to_peer_1009/environment.jsonl": "8434407ca3f411c1f58b7428f963b28d1568dc0a49adc7f10b15c9da3eadc4f7",
+    "peer_to_peer_2027/controller.jsonl": "52ad3489504fc6b2a59e53a385147ab5b7398abeaf953022965b6ecba82c7f37",
+    "peer_to_peer_2027/environment.jsonl": "4fc935686414441b161798933b73a570a8f96594f33c18b8922cbe03c0757390",
+    "peer_to_peer_42/controller.jsonl": "677b9c2dd8da04280769264a3115d74e5ee64684509977ffa5f5f7705542e891",
+    "peer_to_peer_42/environment.jsonl": "1c3fa191a9acae0d44dfa2c22e318f88971b54d1e71d3c363d3b741b0e383d70",
+    "portable_to_peer_1009/controller.jsonl": "4d581dc49096edc27b4c2a64dca998985390c9597b1cadf68804dda7d723f047",
+    "portable_to_peer_1009/environment.jsonl": "8eb466f517c0640ef8e61b6240f1f7237a79ecd22d49eeaeb1303780fc9c52d5",
+    "portable_to_peer_2027/controller.jsonl": "a7653653c0152e44b1f0922d6b6b1792f3c414b6af604f8e627f30b680a35a9f",
+    "portable_to_peer_2027/environment.jsonl": "b1909d330cff64e2b3118935fdd37cf1349708a8ed6b3d6b9bd69670ca15b5f9",
+    "portable_to_peer_42/controller.jsonl": "2cce72130b530d66f953d79422d23e2c805c43840dd8f0fed93fb827e1556213",
+    "portable_to_peer_42/environment.jsonl": "74983b47f9a92314ebe357e0f786eb96ee0d51f961561a9734fd37e4d4d2c152",
+    "portable_to_peer_partial_1009/controller.jsonl": "456640c1b1c093476f76305570e05aa220203f4b982bf206ee9e452311f39ea7",
+    "portable_to_peer_partial_1009/environment.jsonl": "6c06b1abcb36d8271631979db5d7b7e5be706c31c1c58368a1299f8f7db5fdb0",
+    "portable_to_peer_partial_2027/controller.jsonl": "0831eabe36ed58a48d68097267af0c786e078e1d6a38f7c3f69489af78eb7005",
+    "portable_to_peer_partial_2027/environment.jsonl": "1d0a9e28f9b2106d3fed1616163a6aabb8dd3def94a9e4f0ab87f6199238ae62",
+    "portable_to_peer_partial_42/controller.jsonl": "e6654001bfbad974d43ed7781d554675517d0bb94f7391b0b62e5b56b4484ca1",
+    "portable_to_peer_partial_42/environment.jsonl": "6e6c8e2bafeb5a56f8b1e138fc8f64c0e8c429aac0775d655be1a1d23329c6e0",
+    "stale_time/controller.jsonl": "3f7bb6f110e8ba9e41be7b679a2f77a3ac84cc3600e5e6f7c2bfa126b9961d26",
+    "stale_time/environment.jsonl": "55cb00c4cbba228b49731b19aaf0caceac5ea541bfb2cc9982f89b1a6fc91691",
+    "unavailable/controller.jsonl": "8363ce6880e501b069c0e7f7c899af4b8939b10784558a7298b46b36c009011b",
+    "undeclared_partial/controller.jsonl": "5da8eb6dffe73bc1ae9f6bf9179e5dfc44a9e83c31dbef9b1a9a5404021f5f2a",
+    "undeclared_partial/environment.jsonl": "c6f9e4aaf192d1593c2192e68d6a863c4160305843f855557fe62b1bc2573743",
+    "wrong_episode/controller.jsonl": "405545fbc903916009a99da04aafa482014c59c6376947b0aabd41b45a8f9393",
+    "wrong_episode/environment.jsonl": "a7ee7000df0f6ea616a06530c814d5b80bcec666dc8aa93ad4badf70f2c41760",
+    "wrong_request/controller.jsonl": "da320d9f782655c3980e96a4e4a69d7355e24221569bce29fcd7337a2e839192",
+    "wrong_request/environment.jsonl": "f5efd8e67623c4ae91488c7cb5a57c9ec1dbd5652598a0ad45c7dfb3d50c1133"
+  },
+  "verification_platform": "Linux CPython 3.12.14",
+  "app_version": "0.5.0"
+}

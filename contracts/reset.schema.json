@@ -1,0 +1,737 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ariadna:protocol:1.0:reset",
+  "title": "Ариадна базовый профиль reset",
+  "type": "object",
+  "properties": {
+    "protocol_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "mission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "const": "search_and_rescue"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "parameters"
+      ]
+    }
+  },
+  "required": [
+    "protocol_version",
+    "request_id",
+    "seed",
+    "mission"
+  ],
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minimum": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maximum": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "value",
+        "minimum",
+        "maximum",
+        "unit"
+      ]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parameters_schema": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "action"
+      ]
+    },
+    "agent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "degraded",
+            "failed",
+            "offline",
+            "charging",
+            "busy",
+            "safe_mode",
+            "unknown"
+          ]
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "resources": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": {
+            "$ref": "#/$defs/resource"
+          }
+        },
+        "communication": {
+          "type": "object"
+        },
+        "role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scenario_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "uniqueItems": true
+        },
+        "available_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "position",
+        "status",
+        "capabilities",
+        "resources",
+        "communication",
+        "role",
+        "scenario_ids",
+        "available_actions",
+        "constraints"
+      ]
+    },
+    "infrastructure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resources": {
+          "type": "object"
+        },
+        "communication": {
+          "type": "object"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "position",
+        "status",
+        "capabilities",
+        "resources",
+        "communication",
+        "constraints"
+      ]
+    },
+    "zone": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "geometry": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access": {
+          "type": "object"
+        },
+        "risk": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "cost": {
+          "type": "object"
+        },
+        "communication": {
+          "type": "object"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "geometry",
+        "type",
+        "access",
+        "risk",
+        "cost",
+        "communication",
+        "constraints"
+      ]
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "status": {
+          "enum": [
+            "new",
+            "active",
+            "resolved",
+            "expired"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "time",
+        "source",
+        "targets",
+        "parameters",
+        "confidence",
+        "status"
+      ]
+    },
+    "mission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "priorities": {
+          "type": "array",
+          "items": {}
+        },
+        "directives": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "status": {
+          "enum": [
+            "active",
+            "completed",
+            "failed",
+            "suspended",
+            "safe_stopped"
+          ]
+        },
+        "termination": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "objectives",
+        "priorities",
+        "directives",
+        "constraints",
+        "status",
+        "termination"
+      ]
+    },
+    "network": {
+      "type": "object",
+      "properties": {
+        "connectivity_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "partition_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reachable_agent_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "average_link_quality": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "mesh_available": {
+          "type": "boolean"
+        },
+        "known_links": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "connectivity_score",
+        "partition_count",
+        "reachable_agent_ratio",
+        "average_link_quality",
+        "mesh_available",
+        "known_links"
+      ]
+    },
+    "observation_quality": {
+      "type": "object",
+      "properties": {
+        "global_completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maximum_delay": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stale_data_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "contradiction_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknown_state_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "global_completeness",
+        "maximum_delay",
+        "stale_data_ratio",
+        "contradiction_count",
+        "unknown_state_ratio"
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "scenario_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "uniqueItems": true
+        },
+        "role_assignments": {
+          "type": "object",
+          "properties": {},
+          "required": [],
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "scenario_ids",
+        "role_assignments"
+      ]
+    },
+    "selected_configuration": {
+      "type": "object",
+      "properties": {
+        "scenario_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "uniqueItems": true
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "synthesized_scenario": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "scenario_ids",
+        "parameters",
+        "synthesized_scenario"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "scenario_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "applicable": {
+          "type": "boolean"
+        },
+        "utility": {
+          "type": "number"
+        },
+        "risk": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rejected_reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "selected": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "applicable"
+      ]
+    },
+    "command": {
+      "type": "object",
+      "properties": {
+        "agent_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "agent_id",
+        "action",
+        "parameters"
+      ]
+    },
+    "constraint_check": {
+      "type": "object",
+      "properties": {
+        "constraint_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "constraint_id",
+        "status"
+      ]
+    },
+    "explanation": {
+      "type": "object",
+      "properties": {
+        "observation_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "expected_effects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "observation_refs",
+        "reason_codes",
+        "expected_effects",
+        "confidence"
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "properties": {
+        "protocol_version": {
+          "const": "1.0"
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mission": {
+          "$ref": "#/$defs/mission"
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/agent"
+          }
+        },
+        "infrastructure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/infrastructure"
+          }
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/zone"
+          }
+        },
+        "network": {
+          "$ref": "#/$defs/network"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "metrics": {
+          "type": "object"
+        },
+        "observation_quality": {
+          "$ref": "#/$defs/observation_quality"
+        }
+      },
+      "required": [
+        "protocol_version",
+        "episode_id",
+        "request_id",
+        "time",
+        "mission",
+        "agents",
+        "infrastructure",
+        "targets",
+        "zones",
+        "network",
+        "events",
+        "constraints",
+        "metrics",
+        "observation_quality"
+      ]
+    }
+  }
+}

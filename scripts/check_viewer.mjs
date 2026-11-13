@@ -1,0 +1,73 @@
+/** Optional browser QA. Mission runtime and the offline viewer need no Node dependency. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+let chromium;try{({chromium}=require('playwright'));}catch{({chromium}=require(path.join(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES||'','playwright')));}
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader'],...(process.env.ARIADNA_BROWSER?{executablePath:process.env.ARIADNA_BROWSER}:{})});
+const temporary=await fs.mkdtemp(path.join(os.tmpdir(),'ariadna-ui-')),errors=[],checks=[];
+const url=pathToFileURL(path.join(root,'viewer/index.html')).href;
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1100}});page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(url+'#/mission');await page.locator('#welcome').waitFor({state:'visible'});
+ assert.equal((await page.evaluate(()=>window.ariadna.state())).episode,'forest');
+ assert.deepEqual(await page.locator('#episode option').evaluateAll(xs=>xs.map(x=>x.value)),['forest','quarry','city','snow','delta']);checks.push('five_new_default_operations');
+ const map=await page.locator('#view').boundingBox();assert.ok(map.width>1000&&map.height>=600,JSON.stringify(map));
+ assert.ok((await page.evaluate(()=>window.ariadna.state())).map.unit_radius>=18);
+ assert.ok((await page.evaluate(()=>window.ariadna.state())).map.visible_units>=10);
+ await page.waitForFunction(()=>window.ariadna.state().map.textures_loaded===6);assert.equal((await page.evaluate(()=>window.ariadna.state())).map.renderer,'webgl2');assert.ok((await page.evaluate(()=>window.ariadna.state())).map.meshes>1000);checks.push('true_webgl_3d','three_local_textures');
+ checks.push('large_map','readable_units','first_visit_welcome');
+ const geometries=await page.evaluate(()=>window.ARIADNA_DEMO.episodes.filter(e=>!e.archived).map(e=>JSON.stringify(e.frames[0].zones)));assert.equal(new Set(geometries).size,5);assert.equal(await page.locator('#run-scenario').isVisible(),true);checks.push('distinct_initial_terrain','campaign_rerun_control');
+ await page.locator('#tour-start').click();
+ const pages=['mission','mission','mission','mission','decisions','branches','journal','editor','mission'];
+ for(let i=0;i<9;i++){
+  await page.waitForFunction(i=>document.getElementById('tour-progress').textContent.startsWith(String(i+1).padStart(2,'0')),i);
+  assert.equal((await page.evaluate(()=>window.ariadna.state())).page,pages[i]);
+  await page.waitForFunction(()=>{const f=document.getElementById('tour-focus'),r=f.getBoundingClientRect(),c=document.getElementById('tour-card').getBoundingClientRect();return r.width>20&&r.height>20&&Math.abs(r.width-parseFloat(f.style.width))<1&&c.x>=0&&c.y>=0&&c.right<=innerWidth+1&&c.bottom<=innerHeight+1;});
+  const focus=await page.locator('#tour-focus').boundingBox(),card=await page.locator('#tour-card').boundingBox();assert.ok(focus.width>20&&focus.height>20);assert.ok(card.x>=0&&card.y>=0&&card.x+card.width<=1441&&card.y+card.height<=1101);
+  if(i<8)await page.locator('#tour-next').click();
+ }
+ await page.locator('#tour-next').click();await page.waitForFunction(()=>window.ariadna.state().index>=1);await page.locator('#play').click();
+ assert.equal(await page.locator('#tour-overlay').isVisible(),false);await page.reload();assert.equal(await page.locator('#welcome').isVisible(),false);checks.push('nine_tour_steps','tour_launch','welcome_persisted');
+ await page.locator('#help').click();await page.locator('#tour-next').click();await page.locator('#tour-back').click();await page.waitForFunction(()=>document.getElementById('tour-progress').textContent.startsWith('01'));await page.keyboard.press('Escape');assert.equal(await page.locator('#tour-overlay').isVisible(),false);checks.push('tour_repeat_back_escape');
+ await page.locator('#next').click();assert.equal((await page.evaluate(()=>window.ariadna.state())).index,1);await page.locator('#prev').click();await page.locator('#view').focus();await page.keyboard.press('ArrowRight');assert.equal((await page.evaluate(()=>window.ariadna.state())).index,1);
+ await page.locator('#units-toggle').click();await page.getByRole('button',{name:'Дрон 01',exact:true}).click();assert.equal((await page.evaluate(()=>window.ariadna.state())).selected,'air');assert.equal(await page.locator('#unit-detail').isVisible(),true);await page.locator('#focus-unit').click();await page.locator('#unit-close').click();checks.push('timeline_keyboard','unit_detail_follow');
+ await page.locator('#layers-toggle').click();await page.locator('#network').check();await page.locator('#trails').uncheck();await page.locator('#labels').uncheck();await page.locator('#layers-toggle').click();await page.locator('#zoom-in').click();await page.locator('#zoom-out').click();await page.locator('#fit').click();await page.locator('#top').click();await page.locator('#section-toggle').click();assert.equal((await page.evaluate(()=>window.ariadna.state())).map.cutaway,true);checks.push('layers_zoom_volume','subsurface_cutaway');
+ await page.locator('[data-page="decisions"]').click();await page.waitForFunction(()=>window.ariadna.state().page==='decisions');assert.equal(await page.locator('#alternatives .candidate').count(),4);assert.equal(await page.locator('.page:not([hidden])').count(),1);
+ await page.evaluate(()=>window.ariadna.seek(24));await page.locator('[data-page="journal"]').click();await page.waitForFunction(()=>window.ariadna.state().page==='journal');assert.match(await page.locator('#events').textContent(),/Отказ агента/);await page.goBack();await page.waitForFunction(()=>window.ariadna.state().page==='decisions');assert.equal((await page.evaluate(()=>window.ariadna.state())).index,24);checks.push('separate_pages','back_keeps_time','events_and_commands');
+ await page.locator('[data-page="mission"]').click();
+ await page.locator('#preview-deployment').click();
+ assert.equal((await page.evaluate(()=>window.ariadna.state())).page,'editor');
+ assert.deepEqual(await page.evaluate(()=>window.ARIADNA_EDITOR.getMap().deployment.ground.slice(0,2)),[[8,15,0],[37,25,0]]);
+ checks.push('offline_deployment_preview');
+ await page.locator('[data-page="branches"]').click();await page.waitForFunction(()=>window.ariadna.state().page==='branches');assert.equal(await page.locator('.branch-option').count(),4);assert.match(await page.locator('#branch-incident').textContent(),/23 с.*Отказ агента/);assert.equal(await page.locator('#reference-view').isVisible(),true);assert.equal(await page.locator('#branch-view').isVisible(),true);await page.locator('[data-branch="nearby"]').click();assert.equal((await page.evaluate(()=>window.ariadna.state())).branchChoice,'nearby');await page.evaluate(()=>window.ariadna.seek(6));assert.match(await page.locator('#branch-step').textContent(),/6 из 6 · 29 с/);assert.match(await page.locator('#reference-step').textContent(),/6 из 6 · 29 с/);assert.notEqual(await page.locator('#branch-name').textContent(),await page.locator('#reference-name').textContent());assert.equal(await page.locator('#branch-completion').textContent(),await page.locator('#reference-completion').textContent());await page.locator('#branch-case').selectOption('initial');assert.match(await page.locator('#branch-step').textContent(),/0 из 6 · 0 с/);await page.locator('#branch-case').selectOption('incident');await page.locator('#fork').click();await page.waitForFunction(()=>window.ariadna.state().page==='decisions');checks.push('measured_branch_player','source_fork');
+ await page.locator('#archive-toggle').click();await page.locator('#episode').selectOption('synthesis');assert.equal(await page.locator('#operation').textContent(),'synthesize');await page.locator('#episode').selectOption('stop');await page.evaluate(()=>window.ariadna.seek(2));assert.equal(await page.locator('#operation').textContent(),'safe_stop');
+ await page.locator('#episode').selectOption('peer');await page.locator('[data-page="mission"]').click();await page.waitForFunction(()=>window.ariadna.state().page==='mission');const state=await page.evaluate(()=>window.ariadna.state());assert.ok(state.bounds.min[0]>=100);assert.ok(state.bounds.max[0]>150);checks.push('synthesis','operator_stop','peer_bounds');
+ const frames=await page.evaluate(()=>window.ARIADNA_DEMO.episodes.find(x=>x.id==='peer').frames);const replay=path.join(temporary,'replay.json');await fs.writeFile(replay,JSON.stringify(frames));await page.locator('#file').setInputFiles(replay);await page.waitForFunction(()=>window.ariadna.state().episode==='import');assert.match(await page.locator('#audit').textContent(),/Без аудита/);
+ const invalid=path.join(temporary,'bad.json');await fs.writeFile(invalid,'{"format":"wrong"}');await page.locator('#file').setInputFiles(invalid);await page.locator('#error').waitFor({state:'visible'});assert.equal((await page.evaluate(()=>window.ariadna.state())).episode,'import');checks.push('import_without_fake_audit','invalid_import_keeps_data');
+ const payload=await page.evaluate(()=>{const d=structuredClone(window.ARIADNA_DEMO);d.episodes.find(x=>x.id==='forest').frames[0].agents[0].id='<img src=x onerror="window.PWNED=true">';return d;});await page.evaluate(d=>window.ariadna.install(d),payload);await page.locator('#units-toggle').click();assert.equal(await page.locator('main img').count(),0);assert.equal(await page.evaluate(()=>Boolean(window.PWNED)),false);checks.push('safe_text_rendering');
+ await page.evaluate(()=>window.ariadna.install(window.ARIADNA_DEMO));await page.evaluate(()=>{window.ariadna.choose('pressure');window.ariadna.seek(19)});await page.locator('#play').click();await page.waitForFunction(()=>window.ariadna.state().index===20&&!window.ariadna.state().playing);assert.equal(await page.locator('#mission-finish').isVisible(),true);checks.push('end_pause_and_summary');
+ await page.evaluate(()=>{window.ariadna.choose('forest');window.ariadna.go('overview');});
+ assert.equal(await page.locator('.field-card').count(),5);
+ await page.locator('.field-card').first().click();assert.equal((await page.evaluate(()=>window.ariadna.state())).page,'mission');
+ await page.locator('#layers-toggle').click();await page.locator('#hitboxes').check();
+ await page.locator('[data-page="fleet"]').click();await page.locator('[data-kind="aerial"]').click();
+ assert.ok(await page.locator('.field-agent').count()>0);await page.locator('.field-agent').first().click();
+ assert.equal((await page.evaluate(()=>window.ariadna.state())).page,'mission');assert.ok(await page.locator('#unit-dimensions').textContent());
+ checks.push('field_overview_cards','field_fleet_filter_and_selection','field_visual_bounds');
+ for(const width of [320,390,768,1440]){
+  await page.setViewportSize({width,height:1000});
+  for(const id of ['overview','fleet','mission','decisions','branches','journal','editor']){await page.evaluate(id=>window.ariadna.go(id),id);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`Overflow ${width} ${id}`);}
+  await page.evaluate(()=>{window.ariadna.choose('forest');window.ariadna.go('mission');window.ariadna.seek(24)});
+  if(process.env.ARIADNA_UI_OUTPUT){await fs.mkdir(process.env.ARIADNA_UI_OUTPUT,{recursive:true});await page.screenshot({path:path.join(process.env.ARIADNA_UI_OUTPUT,`viewer-${width}.png`),fullPage:true});}
+ }
+ checks.push('responsive_all_pages');
+ // Restricted storage must never prevent replay or the tutorial from opening.
+ const softwareContext=await browser.newContext({viewport:{width:1100,height:900}});await softwareContext.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type==='webgl2'?null:original.call(this,type,...args);};});const softwarePage=await softwareContext.newPage();softwarePage.on('pageerror',e=>errors.push(e.message));await softwarePage.goto(url+'#/mission');await softwarePage.waitForFunction(()=>window.ariadna.state().map.textures_loaded===6);assert.equal((await softwarePage.evaluate(()=>window.ariadna.state())).map.renderer,'software-3d');assert.ok(await softwarePage.locator('#map-stage .scene-svg path').count()>1000);await softwareContext.close();checks.push('software_3d_fallback');
+ const privateContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});await privateContext.addInitScript(()=>{Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Disabled','SecurityError')}})});const privatePage=await privateContext.newPage();privatePage.on('pageerror',e=>errors.push(e.message));await privatePage.goto(url);await privatePage.locator('#tour-start').click();for(let i=0;i<9;i++){await privatePage.waitForFunction(i=>document.getElementById('tour-progress').textContent.startsWith(String(i+1).padStart(2,'0')),i);const b=await privatePage.locator('#tour-card').boundingBox();assert.ok(b.x>=0&&b.y>=0&&b.x+b.width<=391&&b.y+b.height<=845);if(i<8)await privatePage.locator('#tour-next').click();}await privatePage.locator('#tour-close').click();await privateContext.close();checks.push('storage_denied','mobile_tour','reduced_motion');
+ assert.deepEqual(errors,[]);console.log(JSON.stringify({status:'passed',checks,console_errors:errors}));
+}finally{await browser.close();await fs.rm(temporary,{recursive:true,force:true});}

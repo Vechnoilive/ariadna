@@ -1,0 +1,21 @@
+{
+  "profile":"a2x.public-model.v1",
+  "owner":"Ariadna test profile; not an organizer standard",
+  "protocol_version":"1.0",
+  "units":{"position":"metre","time":"second","resources":"normalized per declared resource"},
+  "dt_seconds":{"default":1.0,"public_capability":"dt_seconds","minimum":0.000001,"maximum":60.0},
+  "resource_declaration":{"location":"agents[].resources or infrastructure[].resources","semantic":"energy | supplies | stock","representation":"normative resource object with optional semantic"},
+  "motion_declaration":{"location":"agents[].constraints[]","type":"motion_limits","bounds":{"lower":"3 numbers","upper":"3 numbers"},
+    "required":["speed","energy_per_metre","idle_energy","interaction_radius","charge_radius","delivery_supplies","sensor_radius"],
+    "optional":["action_energy","charging_rate","degraded_speed_factor"],"speed_unit":"metre/second","idle_and_action_cost_unit":"normalized per step/action"},
+  "energy_declaration":{"type":"energy_limits","required":["idle_energy"]},
+  "action_declaration":{"location":"agents[].available_actions[]","wire_name":"action","semantic":"move | observe | deliver | charge | relay | send_message",
+    "parameter_mapping":"canonical parameter name -> wire parameter name, one level, unique values",
+    "schema":"inline parameters_schema; basic JSON Schema subset from the executable contract",
+    "costs":["energy_cost upper bound","execution_energy actual declared action cost"]},
+  "box_geometry":{"type":"box","lower":"3 numbers","upper":"3 numbers"},
+  "zone_semantics":{"optional_field":"semantic_type","examples":["obstacle","restricted","hazard","low_connectivity"]},
+  "category_semantics":{"optional_field":"semantic_kind","unknown_agent_categories":"supported when public limits and actions are understood"},
+  "partial_execution":{"capability":{"execution_semantics":{"batch":"partial","configuration":"atomic"}},"command_statuses":["applied","rejected"]},
+  "limits":"No implicit centimetre conversion, private constants, executable mappings or arbitrary nested action transformations. Insufficient public information yields safe_stop."
+}

@@ -1,0 +1,12 @@
+{
+  "version": "0.4.0",
+  "model": "ariadna.public_forecast.v1",
+  "horizon": 6,
+  "weights": {"completion": 100.0, "information": 3.0, "energy": 3.0, "stopped": 4.0, "reserve": 8.0},
+  "development_seeds": [42],
+  "holdout_seeds": [101, 202],
+  "cases": ["clean", "priority_pressure", "resource_recovery", "relay_recovery"],
+  "controllers": ["fixed", "reactive", "meta", "counterfactual"],
+  "max_steps": 100,
+  "interpretation": "Paired tests in our simplified world; not the organizers' score or proof of general superiority. Parameters fixed before running the stage-4 holdout."
+}

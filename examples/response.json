@@ -1,0 +1,429 @@
+{
+  "protocol_version": "1.0",
+  "request_id": "step_716a2ebb78be5bfc6ebc952c",
+  "episode_id": "episode_fb5e6a25361584b8",
+  "time": 1.0,
+  "status": "running",
+  "observation": {
+    "episode_id": "episode_fb5e6a25361584b8",
+    "request_id": "step_716a2ebb78be5bfc6ebc952c",
+    "time": 1.0,
+    "mission": {
+      "id": "search_and_rescue",
+      "objectives": [
+        {
+          "id": "confirm_target",
+          "type": "confirm",
+          "priority": 1.0,
+          "status": "pending",
+          "target_id": "target_1"
+        }
+      ],
+      "priorities": [
+        "confirm",
+        "safety"
+      ],
+      "directives": [],
+      "constraints": [],
+      "status": "active",
+      "termination": {
+        "time_limit": 40.0
+      }
+    },
+    "agents": [
+      {
+        "id": "scout_A",
+        "kind": "aerial",
+        "position": [
+          9.096159602595,
+          7.867311721817,
+          10.0
+        ],
+        "status": "active",
+        "capabilities": [
+          "move",
+          "sense"
+        ],
+        "resources": {
+          "energy": {
+            "id": "energy",
+            "value": 0.99,
+            "minimum": 0.15,
+            "maximum": 1.0,
+            "unit": "normalized"
+          }
+        },
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "role": "scout",
+        "scenario_ids": [
+          "coverage_search"
+        ],
+        "available_actions": [
+          {
+            "action": "move",
+            "parameters_schema": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "target"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "action": "observe",
+            "parameters_schema": {
+              "type": "object",
+              "properties": {
+                "target_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "target_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "constraints": []
+      },
+      {
+        "id": "carrier_B",
+        "kind": "ground",
+        "position": [
+          5.0,
+          5.0,
+          0.0
+        ],
+        "status": "active",
+        "capabilities": [
+          "move",
+          "sense"
+        ],
+        "resources": {
+          "energy": {
+            "id": "energy",
+            "value": 1.0,
+            "minimum": 0.15,
+            "maximum": 1.0,
+            "unit": "normalized"
+          }
+        },
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "role": null,
+        "scenario_ids": [],
+        "available_actions": [
+          {
+            "action": "move",
+            "parameters_schema": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "target"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "action": "observe",
+            "parameters_schema": {
+              "type": "object",
+              "properties": {
+                "target_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "target_id"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ],
+        "constraints": []
+      },
+      {
+        "id": "compute_C",
+        "kind": "digital",
+        "position": null,
+        "status": "active",
+        "capabilities": [
+          "compute"
+        ],
+        "resources": {
+          "energy": {
+            "id": "energy",
+            "value": 1.0,
+            "minimum": 0.15,
+            "maximum": 1.0,
+            "unit": "normalized"
+          }
+        },
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "role": null,
+        "scenario_ids": [],
+        "available_actions": [],
+        "constraints": []
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infra_0",
+        "kind": "relay",
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "status": "active",
+        "capabilities": [],
+        "resources": {},
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "constraints": []
+      },
+      {
+        "id": "infra_1",
+        "kind": "charging_station",
+        "position": [
+          2.0,
+          0.0,
+          0.0
+        ],
+        "status": "active",
+        "capabilities": [],
+        "resources": {},
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "constraints": []
+      },
+      {
+        "id": "infra_2",
+        "kind": "sensor_node",
+        "position": [
+          4.0,
+          0.0,
+          0.0
+        ],
+        "status": "active",
+        "capabilities": [],
+        "resources": {},
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "constraints": []
+      },
+      {
+        "id": "infra_3",
+        "kind": "base_station",
+        "position": [
+          6.0,
+          0.0,
+          0.0
+        ],
+        "status": "active",
+        "capabilities": [],
+        "resources": {},
+        "communication": {
+          "connected": true,
+          "quality": 1.0
+        },
+        "constraints": []
+      }
+    ],
+    "targets": [
+      {
+        "id": "target_1",
+        "position": [
+          35.0,
+          26.0,
+          10.0
+        ],
+        "status": "unconfirmed",
+        "priority": 1.0
+      }
+    ],
+    "zones": [
+      {
+        "id": "world",
+        "type": "air",
+        "geometry": {
+          "type": "axis_aligned_box",
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max": [
+            100.0,
+            100.0,
+            30.0
+          ]
+        },
+        "access": {
+          "aerial": true
+        },
+        "risk": 0.0,
+        "cost": {
+          "energy": 1.0,
+          "time": 1.0
+        },
+        "communication": {},
+        "constraints": []
+      },
+      {
+        "id": "surface",
+        "type": "land",
+        "geometry": {
+          "type": "axis_aligned_box",
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max": [
+            100.0,
+            100.0,
+            0.0
+          ]
+        },
+        "access": {
+          "ground": true
+        },
+        "risk": 0.0,
+        "cost": {
+          "energy": 1.0,
+          "time": 1.0
+        },
+        "communication": {},
+        "constraints": []
+      },
+      {
+        "id": "restricted_1",
+        "type": "restricted",
+        "geometry": {
+          "type": "axis_aligned_box",
+          "min": [
+            80.0,
+            80.0,
+            0.0
+          ],
+          "max": [
+            90.0,
+            90.0,
+            30.0
+          ]
+        },
+        "access": {
+          "all": false
+        },
+        "risk": 0.0,
+        "cost": {
+          "energy": 1.0,
+          "time": 1.0
+        },
+        "communication": {},
+        "constraints": []
+      }
+    ],
+    "network": {
+      "connectivity_score": 1.0,
+      "partition_count": 0,
+      "reachable_agent_ratio": 1.0,
+      "average_link_quality": 1.0,
+      "mesh_available": false,
+      "known_links": []
+    },
+    "events": [],
+    "constraints": [
+      {
+        "id": "energy_reserve",
+        "minimum": 0.15
+      },
+      {
+        "id": "bounds",
+        "min": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "max": [
+          100.0,
+          100.0,
+          30.0
+        ]
+      },
+      {
+        "id": "restricted_1",
+        "type": "forbidden_zone"
+      },
+      {
+        "id": "collision_distance",
+        "minimum_metres": 0.5
+      }
+    ],
+    "metrics": {
+      "mission_completion": 0.0,
+      "step_count": 1,
+      "energy_used": 0.01
+    },
+    "observation_quality": {
+      "global_completeness": 1.0,
+      "maximum_delay": 0.0,
+      "stale_data_ratio": 0.0,
+      "contradiction_count": 0,
+      "unknown_state_ratio": 0.0
+    },
+    "protocol_version": "1.0"
+  },
+  "command_results": [
+    {
+      "agent_id": "scout_A",
+      "action": "move",
+      "status": "applied"
+    }
+  ],
+  "events": [],
+  "metrics": {
+    "mission_completion": 0.0,
+    "step_count": 1,
+    "energy_used": 0.01
+  }
+}

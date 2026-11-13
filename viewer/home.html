@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="color-scheme" content="dark">
+ <meta name="description" content="Квартира 42 — симулятор умного дома и метасценарного управления роем Ариадна.">
+ <title>Квартира 42 · Ариадна</title>
+ <link rel="stylesheet" href="tour.css">
+ <link rel="stylesheet" href="home.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="defs" aria-hidden="true"><defs>
+ <symbol id="h-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+ <symbol id="h-mark" viewBox="0 0 24 24"><path d="M2.5 19.5 12 3l9.5 16.5h-8.7l4.3-7.5"/></symbol>
+ <symbol id="h-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.3"/><rect x="14" y="3" width="7" height="7" rx="1.3"/><rect x="3" y="14" width="7" height="7" rx="1.3"/><rect x="14" y="14" width="7" height="7" rx="1.3"/></symbol>
+ <symbol id="h-map" viewBox="0 0 24 24"><path d="m12 2.5 9 5.3v9L12 22l-9-5.2v-9ZM12 22V12m-9-4 9 4 9-4"/></symbol>
+ <symbol id="h-fleet" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="20" cy="20" r="2"/><circle cx="4" cy="20" r="2"/><path d="m6 6 4 4m4 4 4 4m0-12-4 4m-4 4-4 4"/></symbol>
+ <symbol id="h-decision" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="5" rx="1"/><rect x="2" y="16" width="7" height="5" rx="1"/><rect x="15" y="16" width="7" height="5" rx="1"/><path d="M12 8v4m-6.5 4v-4h13v4"/></symbol>
+ <symbol id="h-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><path d="M6 7v10m12-10c0 6-12 2-12 10"/></symbol>
+ <symbol id="h-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+ <symbol id="h-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+ <symbol id="h-pause" viewBox="0 0 24 24"><path d="M9 5v14m6-14v14"/></symbol>
+ <symbol id="h-prev" viewBox="0 0 24 24"><path d="m14 5-7 7 7 7"/></symbol>
+ <symbol id="h-next" viewBox="0 0 24 24"><path d="m10 5 7 7-7 7"/></symbol>
+ <symbol id="h-network" viewBox="0 0 24 24"><path d="M3 8a13 13 0 0 1 18 0M6 12a9 9 0 0 1 12 0m-9 4a4 4 0 0 1 6 0"/><circle cx="12" cy="20" r="1"/></symbol>
+ <symbol id="h-reset" viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 1 8M4 3v6h6"/></symbol>
+ <symbol id="h-plus" viewBox="0 0 24 24"><path d="M5 12h14m-7-7v14"/></symbol>
+ <symbol id="h-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+ <symbol id="h-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+</defs></svg>
+<div class="home-shell">
+ <aside class="rail">
+  <a class="brand" href="#overview"><span class="brand-icon"><svg><use href="#h-mark"/></svg></span><span>Ариадна</span></a>
+  <span class="nav-caption">КВАРТИРА 42</span>
+  <nav aria-label="Квартира 42">
+   <a data-page="overview" href="#overview"><svg><use href="#h-overview"/></svg><span>Сценарии</span></a>
+   <a data-page="live" href="#live"><svg><use href="#h-map"/></svg><span>Операция</span></a>
+   <a data-page="fleet" href="#fleet"><svg><use href="#h-fleet"/></svg><span>Устройства</span></a>
+   <a data-page="decisions" href="#decisions"><svg><use href="#h-decision"/></svg><span>Решения</span></a>
+   <a data-page="compare" href="#compare"><svg><use href="#h-branch"/></svg><span>Развилка</span></a>
+  </nav>
+  <a class="field-link" href="index.html">Полевые миссии <svg><use href="#h-arrow"/></svg></a>
+ </aside>
+ <main>
+  <header class="top">
+   <div class="breadcrumb">Квартира 42 <span>/</span> <strong id="page-label">Сценарии</strong></div>
+   <button id="guide-open" class="button secondary compact" type="button" aria-haspopup="dialog">Как пользоваться</button>
+  </header>
+  <p id="app-error" class="notice error" role="alert" hidden></p>
+
+  <section id="page-overview" class="page">
+   <div class="hero">
+    <div class="hero-copy">
+     <div class="eyebrow"><i></i> МЕТАРОЙ 1.0</div>
+     <h1>Квартира <em>42</em></h1>
+     <p>Как домашние роботы действуют, когда привычный план срывается.</p>
+     <a class="button primary" href="#scenarios">Выбрать сценарий <svg aria-hidden="true"><use href="#h-arrow"/></svg></a>
+    </div>
+    <figure class="hero-art"><img src="assets/apartment-cover.jpg" alt="Иллюстрация квартиры в разрезе с пылесосом, дроном и роботом-курьером"><figcaption>Концепт интерьера</figcaption></figure>
+   </div>
+   <div id="scenarios" class="section-head scenario-head"><h2>Что случилось дома?</h2></div>
+   <div id="campaign" class="campaign"></div>
+  </section>
+
+  <section id="page-live" class="page" hidden>
+   <div class="section-head operation-head"><div><h1 id="operation-title">Операция</h1><p id="operation-description"></p></div><div class="controls">
+    <label>Сценарий<select id="case"></select></label>
+   </div></div>
+   <div class="operation-brief">
+    <div class="story"><span id="story-stage"></span><strong id="story-title"></strong><p id="story-response"></p></div>
+    <div class="live-metrics"><span>Задачи <strong id="mission-value">—</strong></span><span>Связь <strong id="network-value">—</strong></span></div>
+   </div>
+   <div id="mission-tasks" class="mission-tasks" aria-label="Задачи"></div>
+   <div id="incident-links" class="incident-links" aria-label="Ключевые моменты операции"></div>
+   <div id="home-map-panel" class="map-panel">
+    <canvas id="home-map" tabindex="0" aria-label="Трёхмерная модель квартиры" aria-describedby="map-help"></canvas>
+    <div class="map-tools">
+     <button id="map-links" type="button" aria-pressed="false" class="icon-button" title="Связи" aria-label="Связи"><svg aria-hidden="true"><use href="#h-network"/></svg><span>Связи</span></button>
+     <button id="map-top" type="button" aria-pressed="false" class="icon-button" title="Вид сверху" aria-label="Вид сверху"><svg aria-hidden="true"><use href="#h-map"/></svg><span>Сверху</span></button>
+     <button id="map-zoom-out" type="button" class="icon-button" title="Отдалить" aria-label="Отдалить"><svg aria-hidden="true"><use href="#h-minus"/></svg></button>
+     <button id="map-zoom-in" type="button" class="icon-button" title="Приблизить" aria-label="Приблизить"><svg aria-hidden="true"><use href="#h-plus"/></svg></button>
+     <button id="map-fit" type="button" class="icon-button" title="Сбросить вид" aria-label="Сбросить вид"><svg aria-hidden="true"><use href="#h-reset"/></svg></button>
+    </div>
+    <div id="room-legend" class="map-legend" aria-label="Комнаты"></div>
+    <p id="scene-note" class="scene-note" hidden></p>
+    <p id="map-selected" class="map-selected" hidden></p>
+   </div>
+   <div class="map-caption">
+    <p id="map-help"><span id="map-gesture">Перетащите, чтобы повернуть</span><span class="desktop-gesture"> · Колесо меняет масштаб</span></p>
+    <label class="agent-picker"><span>На карте</span><select id="map-agent" aria-label="Робот на карте"></select></label>
+   </div>
+   <div id="home-player" class="player">
+    <button id="prev" class="icon-button" type="button" aria-label="Назад"><svg><use href="#h-prev"/></svg></button>
+    <button id="play" class="icon-button primary" type="button" aria-label="Воспроизвести"><svg><use href="#h-play"/></svg></button>
+    <button id="next" class="icon-button" type="button" aria-label="Вперёд"><svg><use href="#h-next"/></svg></button>
+    <output id="clock" aria-label="Модельное время">0 с</output><input id="timeline" type="range" min="0" max="0" value="0" aria-label="Модельное время">
+    <label class="speed">Скорость<select id="speed"><option value="950">1×</option><option value="475" selected>2×</option><option value="180">5×</option></select></label>
+   </div>
+   <div class="below-map"><p id="live-status" class="quiet" aria-live="polite"></p><a id="decision-link" href="#decisions" class="text-link">Почему такой план? <svg aria-hidden="true"><use href="#h-arrow"/></svg></a></div>
+   <details id="run-tools" class="run-tools">
+    <summary>Запуск симуляции</summary>
+    <div class="controls">
+     <label>Случайное зерно (seed)<input id="seed" type="number" min="0" max="2147483647"></label>
+     <button id="run" class="button secondary" type="button">Новый прогон</button>
+     <a id="evidence-link" class="text-link" hidden>Скачать журналы</a>
+    </div>
+   </details>
+  </section>
+
+  <section id="page-fleet" class="page" hidden>
+   <div class="section-head"><div><h1>Устройства дома</h1><p id="fleet-context"></p></div></div>
+   <div class="segmented" id="fleet-filter" aria-label="Группа устройств"><button class="active" data-filter="mobile" type="button" aria-pressed="true">Мобильные</button><button data-filter="site" type="button" aria-pressed="false">Инфраструктура</button><button data-filter="digital" type="button" aria-pressed="false">Штаб и оператор</button></div>
+   <div id="fleet" class="fleet-grid"></div>
+  </section>
+
+  <section id="page-decisions" class="page" hidden>
+   <div class="section-head"><h1>Решения штаба</h1><a id="return-live" href="#live" class="button secondary compact">К карте</a></div>
+   <div class="decision-layout">
+    <aside class="panel decision-list"><h2>Поворотные моменты</h2><div id="decision-times"></div></aside>
+    <div class="decision-main">
+     <section class="panel decision-summary"><span class="eyebrow" id="decision-time"></span><h2 id="decision-title">Текущий шаг</h2><p id="decision-result" class="quiet"></p><div id="decision-scenarios" class="tags"></div><div id="decision-graph" class="tags"></div></section>
+     <details class="panel decision-details"><summary>Команды и проверки</summary><ul id="decision-checks" class="plain-list"></ul><div id="decision-commands" class="command-list"></div></details>
+     <details class="panel decision-details"><summary>Альтернативы и протокол</summary><div id="decision-candidates" class="command-list"></div><details><summary>Полный протокол</summary><pre id="decision-json"></pre></details></details>
+    </div>
+   </div>
+  </section>
+
+  <section id="page-compare" class="page" hidden>
+   <div class="section-head"><div><h1>Один сбой, два плана</h1><p id="fork-context">Сравнение после отказа узла связи.</p></div><a id="open-fork-decision" href="#decisions" class="button secondary">К исходному решению</a></div>
+   <div class="fork-controls"><label>Альтернатива<select id="branch-choice"></select></label><output id="branch-time"></output><input id="branch-timeline" type="range" min="0" max="0" value="0" aria-label="Время после развилки"></div>
+   <div class="fork-maps">
+    <figure class="panel fork-card"><figcaption id="fork-reference-title"></figcaption><svg id="fork-reference" viewBox="0 0 240 160" role="img" aria-label="Опорная ветвь"></svg><div id="fork-reference-metrics" class="fork-metrics"></div></figure>
+    <figure class="panel fork-card"><figcaption id="fork-alternative-title"></figcaption><svg id="fork-alternative" viewBox="0 0 240 160" role="img" aria-label="Альтернативная ветвь"></svg><div id="fork-alternative-metrics" class="fork-metrics"></div></figure>
+   </div>
+   <details class="panel comparison-data">
+    <summary>Контрольные прогоны</summary>
+    <div class="table-head"><label>Сценарий<select id="compare-case"></select></label></div>
+    <div class="table-scroll"><table><thead><tr><th>Контроллер</th><th>Итог</th><th>Задачи</th><th>Время</th><th>Энергия</th><th>Аудит</th></tr></thead><tbody id="compare-table"></tbody></table></div>
+    <p class="quiet">Для каждого сценария контроллеры начинают в одинаковых условиях.</p>
+   </details>
+  </section>
+ </main>
+</div>
+<div id="welcome" class="modal-backdrop" hidden><section class="welcome-card" role="dialog" aria-modal="true" aria-labelledby="welcome-title"><button id="welcome-close" class="icon-button welcome-close" type="button" aria-label="Закрыть обучение"><svg><use href="#h-close"/></svg></button><div class="welcome-art" aria-hidden="true"><span class="welcome-orbit orbit-one"></span><span class="welcome-orbit orbit-two"></span><span class="welcome-dot dot-one"></span><span class="welcome-dot dot-two"></span><span class="welcome-dot dot-three"></span><span class="welcome-center"><svg><use href="#h-map"/></svg></span></div><span class="section-kicker">ВАШ ПЕРВЫЙ ЗАПУСК</span><h2 id="welcome-title">Добро пожаловать<br>в квартиру 42.</h2><p>За минуту покажем, где искать маршруты, события и решения роботов.</p><button id="tour-start" class="primary-button full-width" type="button">Показать, как это работает <svg><use href="#h-arrow"/></svg></button><button id="tour-skip" class="text-button" type="button">Разберусь самостоятельно</button></section></div>
+<div id="tour-overlay" hidden><div id="tour-focus" class="tour-focus"></div><section id="tour-card" class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-title"><div class="tour-card-top"><span id="tour-progress">01 / 09</span><button id="tour-close" class="icon-button" type="button" aria-label="Пропустить обучение"><svg><use href="#h-close"/></svg></button></div><h2 id="tour-title"></h2><p id="tour-description"></p><div class="tour-actions"><button id="tour-back" class="text-button" type="button">Назад</button><div id="tour-dots" class="tour-dots"></div><button id="tour-next" class="primary-button" type="button">Дальше <svg><use href="#h-arrow"/></svg></button></div></section></div>
+<script src="vendor/three.bundle.js"></script>
+<script src="materials.js"></script>
+<script src="home-models.js"></script>
+<script src="map.js"></script>
+<script src="data-loader.js"></script>
+<script src="home-data.js"></script>
+<script src="tour.js"></script>
+<script src="home-story.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

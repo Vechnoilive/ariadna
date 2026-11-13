@@ -1,0 +1,4 @@
+/** Bundle pinned Three.js and its official CPU SVG renderer for offline use. */
+import {build} from 'esbuild';
+import fs from 'node:fs/promises';
+await build({entryPoints:['scripts/three-entry.mjs'],bundle:true,format:'iife',target:'es2020',minify:true,legalComments:'inline',outfile:'viewer/vendor/three.bundle.js',plugins:[{name:'ariadna-svg-grass-pattern',setup(builder){builder.onLoad({filter:/SVGRenderer\.js$/},async({path})=>{let contents=await fs.readFile(path,'utf8');const original="style = 'fill:' + _color.getStyle( _this.outputColorSpace ) + ';fill-opacity:' + material.opacity;";if(!contents.includes(original))throw Error('Pinned SVG renderer changed');contents=contents.replace(original,"style = 'fill:' + (/^(grass|sand|snow|concrete)-/.test(material.map?.name||'') ? 'url(#ariadna-' + material.map.name + ')'  : _color.getStyle( _this.outputColorSpace )) + ';fill-opacity:' + material.opacity;");return{contents,loader:'js'};});}}]});

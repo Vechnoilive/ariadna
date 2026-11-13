@@ -1,0 +1,9 @@
+{
+  "protocol_version": "1.0",
+  "request_id": "example_reset",
+  "seed": 42,
+  "mission": {
+    "id": "search_and_rescue",
+    "parameters": {}
+  }
+}

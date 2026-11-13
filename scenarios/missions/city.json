@@ -1,0 +1,192 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Нулевой район",
+  "seed": 307,
+  "max_steps": 180,
+  "cohorts": 3,
+  "random_events": true,
+  "terrain": "city",
+  "conditions": "operation",
+  "geography": "city",
+  "objects": [
+    {
+      "kind": "ruin",
+      "position": [
+        5,
+        67,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        19,
+        89,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        32,
+        63,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        10,
+        37,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        45,
+        93,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        14,
+        62,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        45,
+        38,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        44,
+        68,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        30,
+        91,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        41,
+        77,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        14,
+        73,
+        0
+      ]
+    },
+    {
+      "kind": "ruin",
+      "position": [
+        34,
+        36,
+        0
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        24,
+        34,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        44,
+        60,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "ground",
+      "position": [
+        9,
+        84,
+        0
+      ],
+      "priority": 5
+    },
+    {
+      "kind": "underground",
+      "position": [
+        30,
+        30,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underground",
+      "position": [
+        9,
+        34,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        81,
+        37,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        93,
+        79,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        78,
+        43,
+        -5
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "underwater",
+      "position": [
+        91,
+        77,
+        -5
+      ],
+      "priority": 3
+    }
+  ]
+}

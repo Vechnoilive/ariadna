@@ -1,0 +1,13 @@
+{
+  "version":"0.5.0",
+  "development_seeds":[42],
+  "holdout_seeds":[1009,2027,3037],
+  "native_cases":["flood_single","flood_team","flood_faults"],
+  "load_cases":[{"cohorts":4,"targets_per_kind":2},{"cohorts":8,"targets_per_kind":2}],
+  "peer_seeds":[42,1009,2027],
+  "fault_modes":["wrong_request","wrong_episode","stale_time","undeclared_partial","lost_after_commit","malformed_json","oversize","unavailable"],
+  "forecast_agent_limit":24,
+  "forecast_target_limit":48,
+  "transport":{"protocol":"1.0","max_body_bytes":65536},
+  "scope":"Independent local fixture, not an external team or official compatibility tournament. No external team endpoint supplied."
+}

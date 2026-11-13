@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "transparent_background": false,
+  "prompts": {
+    "sand": "Use case: photorealistic-natural. Asset type: seamless repeating base color game terrain texture. Primary request: top-down orthographic beige river sand and fine ochre quarry gravel with tiny scattered pebbles, subdued realistic detail, broad scale homogeneity, no objects larger than a pebble. Uniform flat ambient lighting, no directional shadows, square full bleed, seamless tile edges, no text, no border, no watermark. For a miniature 3D rescue terrain.",
+    "snow": "Use case: photorealistic-natural. Asset type: seamless repeating game terrain base color texture. Primary request: top-down orthographic cold pale snow crust, subtle blue grey ice grains and faint natural compacted crystalline variation. Almost white, clean soft material, no footprints or objects, no dramatic cracks, no directional shadows, uniform flat ambient lighting, square full bleed, seamless tile edges, no text or border or watermark. For a miniature 3D rescue terrain.",
+    "concrete": "Use case: photorealistic-natural. Asset type: seamless repeating game 3D rubble material texture. Primary request: top-down orthographic weathered warm grey concrete, small aggregate, subtle chipped grain and thin fine fractures, restrained neutral realistic PBR base color. Uniform ambient lighting no shadows, no large objects, no road markings or text, square full bleed, seamless edges no border no watermark. For 3D ruined walls in a rescue mission."
+  }
+}

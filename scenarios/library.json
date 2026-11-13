@@ -1,0 +1,814 @@
+[
+  {
+    "id": "coverage_search",
+    "version": "1.0",
+    "title": "Распределённый поиск и покрытие",
+    "purpose": "Распределённый поиск и покрытие",
+    "participants": {
+      "selection": "public capability and feasible task pairs"
+    },
+    "required_capabilities": [
+      "move",
+      "observe"
+    ],
+    "game_model": {
+      "class": "potential",
+      "players": [
+        "scout"
+      ],
+      "N": "eligible public agents",
+      "Ai": [
+        "move",
+        "observe",
+        "hold"
+      ],
+      "Ii": "public observation and previously received public observations only",
+      "Ui": "10*new_cell*confidence - distance*0.05 - energy_cost*2",
+      "utility_weights": {
+        "new_cell": 10.0,
+        "distance": 0.05,
+        "energy": 2.0
+      },
+      "K": [
+        "one_command_per_agent",
+        "reserve",
+        "space",
+        "connection",
+        "directives"
+      ],
+      "Theta": [
+        "source_reputation",
+        "freshness",
+        "consistency",
+        "observation_confidence",
+        "observed_action_reliability"
+      ],
+      "E": "deterministic_positive_marginal_potential_then_safety_filter",
+      "information_structure": "partial",
+      "stability_criterion": "positive feasible marginal utility; incumbent coordinator retained within 3 utility units; minimum 3 ticks unless unavailable"
+    },
+    "applicability": {
+      "entry": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.searchers"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "continuation": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.searchers"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "exit": [
+        {
+          "op": "not",
+          "arg": {
+            "op": "gt",
+            "left": {
+              "path": "features.searchers"
+            },
+            "right": {
+              "value": 0
+            }
+          }
+        }
+      ],
+      "emergency_exit": [
+        {
+          "op": "eq",
+          "left": {
+            "path": "features.hard_stop"
+          },
+          "right": {
+            "value": true
+          }
+        }
+      ]
+    },
+    "roles": [
+      "scout"
+    ],
+    "objectives": [
+      "Распределённый поиск и покрытие"
+    ],
+    "constraints": [
+      "public_limits_required",
+      "one_command_per_agent",
+      "reserve",
+      "swept_collision",
+      "restricted_zone",
+      "operator_safety"
+    ],
+    "allowed_actions": [
+      "move",
+      "observe"
+    ],
+    "execution": {
+      "handler": "search",
+      "arbitration": "recovery > relay > service > search",
+      "completion": "re-evaluate entry after each public observation",
+      "messages": "coordination announcements; no remote command injection",
+      "journal": "observation hash, candidates, utilities, roles, safety, result"
+    },
+    "transition_targets": [
+      "priority_service",
+      "relay_coalition",
+      "safe_degradation",
+      "coordination_reconfiguration"
+    ],
+    "metrics": [
+      "mission_completion",
+      "energy_used",
+      "connectivity_score",
+      "assignment_utility"
+    ]
+  },
+  {
+    "id": "priority_service",
+    "version": "1.0",
+    "title": "Выполнение приоритетной задачи",
+    "purpose": "Выполнение приоритетной задачи",
+    "participants": {
+      "selection": "public capability and feasible task pairs"
+    },
+    "required_capabilities": [
+      "move",
+      "observe",
+      "deliver"
+    ],
+    "game_model": {
+      "class": "assignment",
+      "players": [
+        "executor",
+        "verifier"
+      ],
+      "N": "eligible public agents",
+      "Ai": [
+        "move",
+        "observe",
+        "deliver",
+        "hold"
+      ],
+      "Ii": "public observation and previously received public observations only",
+      "Ui": "20*priority*confidence*(0.5+0.5*agent_reliability) - distance*0.05 - energy_cost*2",
+      "utility_weights": {
+        "priority": 20.0,
+        "distance": 0.05,
+        "energy": 2.0
+      },
+      "K": [
+        "one_command_per_agent",
+        "reserve",
+        "space",
+        "connection",
+        "directives"
+      ],
+      "Theta": [
+        "source_reputation",
+        "freshness",
+        "consistency",
+        "observation_confidence",
+        "observed_action_reliability"
+      ],
+      "E": "deterministic_positive_marginal_potential_then_safety_filter",
+      "information_structure": "partial",
+      "stability_criterion": "positive feasible marginal utility; incumbent coordinator retained within 3 utility units; minimum 3 ticks unless unavailable"
+    },
+    "applicability": {
+      "entry": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.service_pairs"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "continuation": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.service_pairs"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "exit": [
+        {
+          "op": "not",
+          "arg": {
+            "op": "gt",
+            "left": {
+              "path": "features.service_pairs"
+            },
+            "right": {
+              "value": 0
+            }
+          }
+        }
+      ],
+      "emergency_exit": [
+        {
+          "op": "eq",
+          "left": {
+            "path": "features.hard_stop"
+          },
+          "right": {
+            "value": true
+          }
+        }
+      ]
+    },
+    "roles": [
+      "executor",
+      "verifier"
+    ],
+    "objectives": [
+      "Выполнение приоритетной задачи"
+    ],
+    "constraints": [
+      "public_limits_required",
+      "one_command_per_agent",
+      "reserve",
+      "swept_collision",
+      "restricted_zone",
+      "operator_safety"
+    ],
+    "allowed_actions": [
+      "move",
+      "observe",
+      "deliver"
+    ],
+    "execution": {
+      "handler": "service",
+      "arbitration": "recovery > relay > service > search",
+      "completion": "re-evaluate entry after each public observation",
+      "messages": "coordination announcements; no remote command injection",
+      "journal": "observation hash, candidates, utilities, roles, safety, result"
+    },
+    "transition_targets": [
+      "coverage_search",
+      "relay_coalition",
+      "safe_degradation",
+      "coordination_reconfiguration"
+    ],
+    "metrics": [
+      "mission_completion",
+      "energy_used",
+      "connectivity_score",
+      "assignment_utility"
+    ]
+  },
+  {
+    "id": "relay_coalition",
+    "version": "1.0",
+    "title": "Временная коалиция ретрансляции",
+    "purpose": "Временная коалиция ретрансляции",
+    "participants": {
+      "selection": "public capability and feasible task pairs"
+    },
+    "required_capabilities": [
+      "move",
+      "relay"
+    ],
+    "game_model": {
+      "class": "coalition",
+      "players": [
+        "relay",
+        "beneficiary"
+      ],
+      "N": "eligible public agents",
+      "Ai": [
+        "move",
+        "relay",
+        "hold"
+      ],
+      "Ii": "public observation and previously received public observations only",
+      "Ui": "15*newly_connected_members - distance*0.05 - energy_cost*2",
+      "utility_weights": {
+        "connectivity": 15.0,
+        "distance": 0.05,
+        "energy": 2.0
+      },
+      "K": [
+        "one_command_per_agent",
+        "reserve",
+        "space",
+        "connection",
+        "directives"
+      ],
+      "Theta": [
+        "source_reputation",
+        "freshness",
+        "consistency",
+        "observation_confidence",
+        "observed_action_reliability"
+      ],
+      "E": "deterministic_positive_marginal_potential_then_safety_filter",
+      "information_structure": "partial",
+      "stability_criterion": "positive feasible marginal utility; incumbent coordinator retained within 3 utility units; minimum 3 ticks unless unavailable"
+    },
+    "applicability": {
+      "entry": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "or",
+              "args": [
+                {
+                  "op": "gt",
+                  "left": {
+                    "path": "features.disconnected"
+                  },
+                  "right": {
+                    "value": 0
+                  }
+                },
+                {
+                  "op": "gt",
+                  "left": {
+                    "path": "features.critical_relays"
+                  },
+                  "right": {
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            {
+              "op": "gt",
+              "left": {
+                "path": "features.relays"
+              },
+              "right": {
+                "value": 0
+              }
+            }
+          ]
+        }
+      ],
+      "continuation": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "or",
+              "args": [
+                {
+                  "op": "gt",
+                  "left": {
+                    "path": "features.disconnected"
+                  },
+                  "right": {
+                    "value": 0
+                  }
+                },
+                {
+                  "op": "gt",
+                  "left": {
+                    "path": "features.critical_relays"
+                  },
+                  "right": {
+                    "value": 0
+                  }
+                }
+              ]
+            },
+            {
+              "op": "gt",
+              "left": {
+                "path": "features.relays"
+              },
+              "right": {
+                "value": 0
+              }
+            }
+          ]
+        }
+      ],
+      "exit": [
+        {
+          "op": "not",
+          "arg": {
+            "op": "and",
+            "args": [
+              {
+                "op": "or",
+                "args": [
+                  {
+                    "op": "gt",
+                    "left": {
+                      "path": "features.disconnected"
+                    },
+                    "right": {
+                      "value": 0
+                    }
+                  },
+                  {
+                    "op": "gt",
+                    "left": {
+                      "path": "features.critical_relays"
+                    },
+                    "right": {
+                      "value": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "op": "gt",
+                "left": {
+                  "path": "features.relays"
+                },
+                "right": {
+                  "value": 0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "emergency_exit": [
+        {
+          "op": "eq",
+          "left": {
+            "path": "features.hard_stop"
+          },
+          "right": {
+            "value": true
+          }
+        }
+      ]
+    },
+    "roles": [
+      "relay",
+      "beneficiary"
+    ],
+    "objectives": [
+      "Временная коалиция ретрансляции"
+    ],
+    "constraints": [
+      "public_limits_required",
+      "one_command_per_agent",
+      "reserve",
+      "swept_collision",
+      "restricted_zone",
+      "operator_safety"
+    ],
+    "allowed_actions": [
+      "move",
+      "relay"
+    ],
+    "execution": {
+      "handler": "relay",
+      "arbitration": "recovery > relay > service > search",
+      "completion": "re-evaluate entry after each public observation",
+      "messages": "coordination announcements; no remote command injection",
+      "journal": "observation hash, candidates, utilities, roles, safety, result"
+    },
+    "transition_targets": [
+      "coverage_search",
+      "priority_service",
+      "safe_degradation",
+      "coordination_reconfiguration"
+    ],
+    "metrics": [
+      "mission_completion",
+      "energy_used",
+      "connectivity_score",
+      "assignment_utility"
+    ]
+  },
+  {
+    "id": "safe_degradation",
+    "version": "1.0",
+    "title": "Безопасный режим при деградации",
+    "purpose": "Безопасный режим при деградации",
+    "participants": {
+      "selection": "public capability and feasible task pairs"
+    },
+    "required_capabilities": [
+      "move",
+      "charge"
+    ],
+    "game_model": {
+      "class": "constrained",
+      "players": [
+        "returning",
+        "charging",
+        "holding"
+      ],
+      "N": "eligible public agents",
+      "Ai": [
+        "move",
+        "charge",
+        "hold"
+      ],
+      "Ii": "public observation and previously received public observations only",
+      "Ui": "30*recoverable_agents - distance*0.05 - energy_cost*2",
+      "utility_weights": {
+        "recovery": 30.0,
+        "distance": 0.05,
+        "energy": 2.0
+      },
+      "K": [
+        "one_command_per_agent",
+        "reserve",
+        "space",
+        "connection",
+        "directives"
+      ],
+      "Theta": [
+        "source_reputation",
+        "freshness",
+        "consistency",
+        "observation_confidence",
+        "observed_action_reliability"
+      ],
+      "E": "deterministic_positive_marginal_potential_then_safety_filter",
+      "information_structure": "partial",
+      "stability_criterion": "positive feasible marginal utility; incumbent coordinator retained within 3 utility units; minimum 3 ticks unless unavailable"
+    },
+    "applicability": {
+      "entry": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.endangered"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "continuation": [
+        {
+          "op": "gt",
+          "left": {
+            "path": "features.endangered"
+          },
+          "right": {
+            "value": 0
+          }
+        }
+      ],
+      "exit": [
+        {
+          "op": "not",
+          "arg": {
+            "op": "gt",
+            "left": {
+              "path": "features.endangered"
+            },
+            "right": {
+              "value": 0
+            }
+          }
+        }
+      ],
+      "emergency_exit": [
+        {
+          "op": "eq",
+          "left": {
+            "path": "features.hard_stop"
+          },
+          "right": {
+            "value": true
+          }
+        }
+      ]
+    },
+    "roles": [
+      "returning",
+      "charging",
+      "holding"
+    ],
+    "objectives": [
+      "Безопасный режим при деградации"
+    ],
+    "constraints": [
+      "public_limits_required",
+      "one_command_per_agent",
+      "reserve",
+      "swept_collision",
+      "restricted_zone",
+      "operator_safety"
+    ],
+    "allowed_actions": [
+      "move",
+      "charge"
+    ],
+    "execution": {
+      "handler": "recover",
+      "arbitration": "recovery > relay > service > search",
+      "completion": "re-evaluate entry after each public observation",
+      "messages": "coordination announcements; no remote command injection",
+      "journal": "observation hash, candidates, utilities, roles, safety, result"
+    },
+    "transition_targets": [
+      "coverage_search",
+      "priority_service",
+      "relay_coalition",
+      "coordination_reconfiguration"
+    ],
+    "metrics": [
+      "mission_completion",
+      "energy_used",
+      "connectivity_score",
+      "assignment_utility"
+    ]
+  },
+  {
+    "id": "coordination_reconfiguration",
+    "version": "1.0",
+    "title": "Реконфигурация координации",
+    "purpose": "Реконфигурация координации",
+    "participants": {
+      "selection": "public capability and feasible task pairs"
+    },
+    "required_capabilities": [
+      "send_message"
+    ],
+    "game_model": {
+      "class": "leader_election",
+      "players": [
+        "coordinator",
+        "member"
+      ],
+      "N": "eligible public agents",
+      "Ai": [
+        "send_message",
+        "hold"
+      ],
+      "Ii": "public observation and previously received public observations only",
+      "Ui": "10*reliability + 5*energy + degree - reassignment_cost",
+      "utility_weights": {
+        "reliability": 10.0,
+        "energy": 5.0,
+        "degree": 1.0,
+        "switch": 3.0
+      },
+      "K": [
+        "one_command_per_agent",
+        "reserve",
+        "space",
+        "connection",
+        "directives"
+      ],
+      "Theta": [
+        "source_reputation",
+        "freshness",
+        "consistency",
+        "observation_confidence",
+        "observed_action_reliability"
+      ],
+      "E": "deterministic_positive_marginal_potential_then_safety_filter",
+      "information_structure": "partial",
+      "stability_criterion": "positive feasible marginal utility; incumbent coordinator retained within 3 utility units; minimum 3 ticks unless unavailable"
+    },
+    "applicability": {
+      "entry": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "eq",
+              "left": {
+                "path": "features.leader_change"
+              },
+              "right": {
+                "value": true
+              }
+            },
+            {
+              "op": "gt",
+              "left": {
+                "path": "features.leaders"
+              },
+              "right": {
+                "value": 0
+              }
+            }
+          ]
+        }
+      ],
+      "continuation": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "eq",
+              "left": {
+                "path": "features.leader_change"
+              },
+              "right": {
+                "value": true
+              }
+            },
+            {
+              "op": "gt",
+              "left": {
+                "path": "features.leaders"
+              },
+              "right": {
+                "value": 0
+              }
+            }
+          ]
+        }
+      ],
+      "exit": [
+        {
+          "op": "not",
+          "arg": {
+            "op": "and",
+            "args": [
+              {
+                "op": "eq",
+                "left": {
+                  "path": "features.leader_change"
+                },
+                "right": {
+                  "value": true
+                }
+              },
+              {
+                "op": "gt",
+                "left": {
+                  "path": "features.leaders"
+                },
+                "right": {
+                  "value": 0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "emergency_exit": [
+        {
+          "op": "eq",
+          "left": {
+            "path": "features.hard_stop"
+          },
+          "right": {
+            "value": true
+          }
+        }
+      ]
+    },
+    "roles": [
+      "coordinator",
+      "member"
+    ],
+    "objectives": [
+      "Реконфигурация координации"
+    ],
+    "constraints": [
+      "public_limits_required",
+      "one_command_per_agent",
+      "reserve",
+      "swept_collision",
+      "restricted_zone",
+      "operator_safety"
+    ],
+    "allowed_actions": [
+      "send_message"
+    ],
+    "execution": {
+      "handler": "coordinate",
+      "arbitration": "recovery > relay > service > search",
+      "completion": "re-evaluate entry after each public observation",
+      "messages": "coordination announcements; no remote command injection",
+      "journal": "observation hash, candidates, utilities, roles, safety, result"
+    },
+    "transition_targets": [
+      "coverage_search",
+      "priority_service",
+      "relay_coalition",
+      "safe_degradation"
+    ],
+    "metrics": [
+      "mission_completion",
+      "energy_used",
+      "connectivity_score",
+      "assignment_utility"
+    ]
+  }
+]
