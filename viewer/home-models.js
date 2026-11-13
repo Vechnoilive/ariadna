@@ -34,8 +34,8 @@
 
  function scene(map,frame) {
   map.scene.background.set('#d4ddd5');
-  map.cube(map.terrain,[24.65,.44,16.65],[12,-.28,-8],'#354b46');
-  map.cube(map.terrain,[25.05,.13,17.05],[12,-.56,-8],'#203936');
+  map.openTop(map.cube(map.terrain,[24.65,.44,16.65],[12,-.28,-8],'#354b46'));
+  map.openTop(map.cube(map.terrain,[25.05,.13,17.05],[12,-.56,-8],'#203936'));
   for(const z of frame.zones){
    const {min,max}=geometry(z),w=max[0]-min[0],d=max[1]-min[1],h=max[2]-min[2];
    const x=(min[0]+max[0])/2,y=(min[1]+max[1])/2,kind=z.appearance?.kind;
@@ -48,7 +48,7 @@
    if(kind==='home_floor'){
     const name=z.appearance.material;
     const floor=map.surface(name,floorColors[name],[w/3,d/3],{roughness:name==='ceramic'?.32:.68,bumpScale:.025});
-    const mesh=map.mesh(map.terrain,new T.PlaneGeometry(w,d),floor,x,.005,-y);
+    const mesh=map.mesh(map.terrain,new T.PlaneGeometry(w,d,...(map.software?[Math.ceil(w/2),Math.ceil(d/2)]:[1,1])),floor,x,.005,-y);
     mesh.rotation.x=-Math.PI/2;
     continue;
    }

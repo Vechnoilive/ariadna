@@ -71,8 +71,8 @@
       "bytes": 23421
     },
     "docs/REVIEW_2026-11-13.md": {
-      "sha256": "d5011126adaf22c2d24672db212918a486faeabfb4f3f5a75876723bbee763d9",
-      "bytes": 10637
+      "sha256": "c353df5c45cf136dc1cfcf0e1eb7ad9c5fe6e4a1808a8a87e26fb8a32dd8ffb6",
+      "bytes": 10925
     },
     "docs/RUN_GUIDE.md": {
       "sha256": "5428381772e0a490f2a152e0ff0623a109f116a014a345269269510699cac7cb",
@@ -775,16 +775,16 @@
       "bytes": 124735
     },
     "viewer/home-models.js": {
-      "sha256": "61192596f7c40b6d979308aa8f80db593406adb0ded706f285cc835aedacd467",
-      "bytes": 8681
+      "sha256": "9243ced4b482be19dc77bf61158cdf9fd9b98ed16226ff8657580512c191822c",
+      "bytes": 8763
     },
     "viewer/home-story.js": {
       "sha256": "bea69918595f5d28d7eeb53c768a66a5016be091451c4f85cd9f21ec39d57abb",
       "bytes": 4880
     },
     "viewer/home.css": {
-      "sha256": "ff1303abac929d180395e9449d399dc842db47e1742115f3ff24bb22470b2d81",
-      "bytes": 17970
+      "sha256": "50fc768966269fa7244cdc3e769d701ccc20449c462b040478717fea647cd974",
+      "bytes": 18104
     },
     "viewer/home.html": {
       "sha256": "c6147725cef6b8cd5ef694d3f7e1ec86762cc4c4b74159f84483bf8f819dcecc",

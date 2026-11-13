@@ -79,3 +79,7 @@ details>summary{cursor:pointer;color:var(--ink);font-weight:650}
 .mission-task.delivered span{color:#a8d99f}
 .scene-note{position:absolute;top:12px;left:12px;max-width:calc(100% - 24px);z-index:3;background:#17332ce8;color:#ffedaa;border-radius:7px;padding:6px 8px;font-size:12px;pointer-events:none}
 @media(max-width:850px){.scene-note{top:60px;font-size:11px}}
+
+/* SVG scene geometry must not inherit toolbar icon outlines. */
+.scene-svg{stroke:none;stroke-width:0}
+.scene-svg path{stroke:none}
