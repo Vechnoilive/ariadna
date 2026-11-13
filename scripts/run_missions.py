@@ -17,7 +17,7 @@ from hackroi.custom_maps import campaign_map
 from hackroi.showcase import episode,FORMAT
 from hackroi import __version__
 
-def run(directory,modes=('portable',),seeds=None,mission_ids=None,*,dispersed=False):
+def run(directory,modes=('portable',),seeds=None,mission_ids=None,*,dispersed=False,cosmic_enabled=None):
     directory=Path(directory);directory.mkdir(parents=True,exist_ok=True)
     catalog=json.loads((ROOT/'scenarios/missions/catalog.json').read_text(encoding='utf-8'));results=[];episodes=[]
     deployments=json.loads((ROOT/'scenarios/campaign/deployments.json').read_text(encoding='utf-8')) if dispersed else None
@@ -28,7 +28,9 @@ def run(directory,modes=('portable',),seeds=None,mission_ids=None,*,dispersed=Fa
       for seed in seeds or [source['seed']]:
        for mode in modes:
         name=f"{entry['id']}_{seed}_{mode}";folder=directory/name;folder.mkdir(exist_ok=False)
-        definition={**source,'seed':seed};map_path=folder/'map.json';map_path.write_text(canonical(definition)+'\n',encoding='utf-8')
+        definition={**source,'seed':seed}
+        if entry['id']=='cosmic' and cosmic_enabled is not None:definition['include_cosmic']=cosmic_enabled
+        map_path=folder/'map.json';map_path.write_text(canonical(definition)+'\n',encoding='utf-8')
         env=ctrl=None;started=time.monotonic()
         try:
             env=Process(['environment','--port','0','--map-file',str(map_path.resolve()),'--log-path',str((folder/'environment.jsonl').resolve())]);url=env.event('ready')['url'];client=Client(url,max_response_bytes=64*1024*1024);caps=client.get('capabilities')
@@ -60,7 +62,7 @@ def run(directory,modes=('portable',),seeds=None,mission_ids=None,*,dispersed=Fa
             if f.is_file() and f.suffix in ('.json','.jsonl'):z.write(f,f.relative_to(directory).as_posix())
     return results
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=ROOT/'artifacts/missions_080');p.add_argument('--baselines',action='store_true');p.add_argument('--seeds',type=int,nargs='+');p.add_argument('--missions',nargs='+',choices=['forest','quarry','city','snow','delta'])
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,default=ROOT/'artifacts/missions_080');p.add_argument('--baselines',action='store_true');p.add_argument('--seeds',type=int,nargs='+');p.add_argument('--missions',nargs='+',choices=['forest','quarry','city','snow','delta','cosmic'])
     p.add_argument('--dispersed', action='store_true', help='Use the current studio deployment presets')
     a=p.parse_args();rows=run(a.output,('portable','fixed','reactive') if a.baselines else ('portable',),a.seeds,a.missions,dispersed=a.dispersed)
     if any(r['audit']!='passed' or (r['controller']=='portable' and r['status']!='success') for r in rows):raise SystemExit(1)

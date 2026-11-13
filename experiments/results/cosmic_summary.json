@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "model": "schematic_geostationary_relay",
+  "comparison": [
+    {
+      "satellite": true,
+      "time": 19.0,
+      "status": "success",
+      "completion": 1.0,
+      "audit": "passed"
+    },
+    {
+      "satellite": false,
+      "time": 31.0,
+      "status": "safe_stopped",
+      "completion": 0.0,
+      "audit": "passed"
+    }
+  ],
+  "source_sha256": {
+    "cosmic/branches/branches.json": "2c4cc6b9ffd76af69c2957b918728aa493f2098e12b178688bcd54eae7b47136",
+    "cosmic/branches/branches.md": "c2c1d44d19739409b3a0855624881e9a7a231529098c4d975b65c91caae2eb5a",
+    "cosmic/branches/frontier/environment.jsonl": "79fda1df4cec5be6db7e01ef4454234f8f3bf6032d47253b77e13f54c59dd2e3",
+    "cosmic/branches/frontier/interventions.jsonl": "bde97838d396f2bfccbccb2e51e548a19ea8be16eb7b572ba03fe85f3c4c7344",
+    "cosmic/branches/frontier/replay.json": "8fa3094625dd8ed9259efa5e8b89a477d53e416613926da0386062aae7543523",
+    "cosmic/branches/meta/environment.jsonl": "14e44a91c3d259958414b587b48b734e88d0038178532f81e080b982fbad6314",
+    "cosmic/branches/meta/interventions.jsonl": "2eded5ad8087600eac50bd8237812ceff5b4ccb7e811adcf5b69132ca726654a",
+    "cosmic/branches/meta/replay.json": "29335540d7e735dc2e8716894a21171a976140af4293061fa7cb1f2598d7ab75",
+    "cosmic/branches/nearby/environment.jsonl": "2f88e1e9f2528a74b631b233c765f05902f880b83ba82f7dddb0cbe581cb86b5",
+    "cosmic/branches/nearby/interventions.jsonl": "17b72f01cdea0b57ec680ed36d588fb951ab60395a3042ee3a0dfb4f2a298204",
+    "cosmic/branches/nearby/replay.json": "88dbc07bdd9e0d67d5fee9a3f9557563aed622f7b531a94090e2d7869dbd6d9e",
+    "cosmic/branches/reserve/environment.jsonl": "0bcefa20f5a980884651e57d7273014f68b309dd1da0f5aa9139ac121b7bdcdf",
+    "cosmic/branches/reserve/interventions.jsonl": "942c25b1cc3a81c2e0d7050bee230b6ad0ccd58b03405e9038c671324693b2a1",
+    "cosmic/branches/reserve/replay.json": "6f62203a2dce942f10e51b85083fd62e6b148c5e47b3d70490a32dce2b65ce96",
+    "cosmic/off/controller.jsonl": "c8c4bae1db520f7560717767fd95f5c0f6f0ec58f171a88a586f7a1088117238",
+    "cosmic/off/environment.jsonl": "c6b681152b8c1da8bf2a7b39a0ce5880b417c8fd6c23bd7a9123b442c89bbf3f",
+    "cosmic/off/map.json": "984ef4dfcc707e8d9911563a66bbf917a8a142025ff59e71061a715c90dcc1ea",
+    "cosmic/off/summary.json": "0445bb8662036ed043249b95cb493bce40d3a530aaf977612e78cab14e331431",
+    "cosmic/on/controller.jsonl": "7f69c52aba0f2715a145253bf149bc9ec83a5dc98b54bfd8bc0fd381d71c170e",
+    "cosmic/on/environment.jsonl": "d28a4f796c0e11d85ce8380064e74eea4aa1963dc92d4eec3bbaebc4b17f14cd",
+    "cosmic/on/map.json": "8079f8d73ccc7012544a1f95a300860b698c98b5abd78f59b2efd2e0728f8095",
+    "cosmic/on/summary.json": "8c3ec76fe857e136edaf21291242b08b666a2cdf16d8557bd448b2e32b9b6be7"
+  },
+  "viewer_sha256": "21497ba3f0f4a8c3f4242b17ec5e87d5da2d3548773e733adb78c307b7e15151",
+  "evidence_sha256": "215f487ab81b5b40d27c7d1eba3589be849ac97cae825f1b9eef8fd8b11fbb59",
+  "historical_campaign_unchanged": true,
+  "official_score": null
+}

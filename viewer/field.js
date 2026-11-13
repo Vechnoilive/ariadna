@@ -1,6 +1,6 @@
 'use strict';
 (() => {
- const $=id=>document.getElementById(id), kinds={aerial:'Воздушный',ground:'Наземный',underground:'Подземный',surface_water:'Надводный',underwater:'Подводный',infrastructure:'Инфраструктура',digital:'Вычислительный',operator:'Оператор'};
+ const $=id=>document.getElementById(id), kinds={cosmic:'Космический',aerial:'Воздушный',ground:'Наземный',underground:'Подземный',surface_water:'Надводный',underwater:'Подводный',infrastructure:'Инфраструктура',digital:'Вычислительный',operator:'Оператор'};
  const status={active:'В строю',degraded:'Ограничен',failed:'Отказ',offline:'Нет связи',safe_mode:'Безопасный режим',charging:'Заряжается',busy:'Занят'};
  let data,preview,filter='all';
  const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};

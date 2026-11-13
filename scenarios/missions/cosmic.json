@@ -1,0 +1,33 @@
+{
+  "format": "ariadna.map.v1",
+  "title": "Орбитальный мост",
+  "seed": 42,
+  "max_steps": 90,
+  "cohorts": 1,
+  "random_events": true,
+  "terrain": "forest",
+  "conditions": "standard",
+  "include_cosmic": true,
+  "objects": [],
+  "targets": [
+    {
+      "kind": "ground",
+      "position": [
+        28,
+        24,
+        0
+      ],
+      "priority": 3
+    },
+    {
+      "kind": "surface_water",
+      "position": [
+        75,
+        25,
+        0
+      ],
+      "priority": 3
+    }
+  ],
+  "relay_outage": true
+}

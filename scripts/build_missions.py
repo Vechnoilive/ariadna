@@ -11,7 +11,7 @@ from hackroi.landscapes import PROFILES,zones
 def build():
     catalog=json.loads((ROOT/'scenarios/missions/catalog.json').read_text(encoding='utf-8'))
     deployments=json.loads((ROOT/'scenarios/campaign/deployments.json').read_text(encoding='utf-8'))
-    assert len(catalog)==5 and len({x['id'] for x in catalog})==5
+    assert len(catalog)==6 and len({x['id'] for x in catalog})==6
     for entry in catalog:
         entry['map']=campaign_map(json.loads((ROOT/'scenarios/missions'/entry.pop('file')).read_text(encoding='utf-8')), deployments)
     landscapes={name:zones(name,name) for name in PROFILES}

@@ -28,9 +28,12 @@ def validate_map(value):
         return validate_home(value)
     if not isinstance(value, dict) or value.get('format') != FORMAT:
         invalid('Ожидается карта ariadna.map.v1')
-    if set(value) - {'format', 'title', 'seed', 'max_steps', 'cohorts', 'random_events', 'objects', 'targets', 'terrain', 'conditions', 'geography', 'deployment', 'physics'}:
+    if set(value) - {'format', 'title', 'seed', 'max_steps', 'cohorts', 'random_events', 'objects', 'targets', 'terrain', 'conditions', 'geography', 'deployment', 'physics', 'include_cosmic', 'relay_outage'}:
         invalid('В карте есть неизвестные поля')
     if value.get('physics', 'legacy') not in ('legacy', 'solid_v1'):invalid('Неизвестная модель столкновений')
+    for key in ('include_cosmic','relay_outage'):
+        if type(value.get(key, False)) is not bool:
+            invalid(key+' должен быть bool')
     result = copy.deepcopy(value)
     title = result.get('title', 'Своя операция')
     if not isinstance(title, str) or not 1 <= len(title.strip()) <= 64:
@@ -127,6 +130,8 @@ def validate_deployment(deployment, geography, blocked):
 
 def campaign_map(definition, deployments):
     """Build the live preset while keeping the original evidence map replayable."""
+    if not definition.get('geography'):
+        return validate_map({**definition, 'physics':'solid_v1'})
     return validate_map({**definition, 'physics':'solid_v1', 'deployment': deployments[definition['geography']]})
 
 
@@ -206,6 +211,16 @@ def configure(state, parameters):
         n.update(id='custom_station_'+a['id'], position=copy.deepcopy(a['position']))
         state['infrastructure'].append(n)
     parameters['events'] = random_schedule(state['seed'],state,value.get('conditions','standard'),value.get('geography')) if value['random_events'] else []
+    if value.get('relay_outage', value.get('include_cosmic', False)):
+        gateway=copy.deepcopy(prototype)
+        gateway.update(id='orbital_gateway',position=[75.,30.,0.])
+        state['infrastructure'].append(gateway)
+        relay_ids = [n['id'] for n in state['infrastructure'] if n['kind'] in ('relay','sensor_node') and n['id']!='orbital_gateway'] + ['mast']
+        parameters['events'] = [
+            {'time':4.,'type':'infrastructure_failure','targets':relay_ids,'parameters':{}},
+            {'time':9.,'type':'target_detected','targets':[],
+             'parameters':{'position':[75.,35.,0.],'priority':5.}},
+        ]
     state['layout'] = 'custom'
     if value.get('physics')=='solid_v1':
         from .physics import configure as configure_physics

@@ -174,7 +174,7 @@ class MissionCatalogTests(unittest.TestCase):
         catalog=json.loads((ROOT/'scenarios/missions/catalog.json').read_text(encoding='utf-8'))
         deployments=json.loads((ROOT/'scenarios/campaign/deployments.json').read_text(encoding='utf-8'))
         bundled=json.loads((ROOT/'viewer/missions.js').read_text(encoding='utf-8').split('window.ARIADNA_MISSIONS=',1)[1].strip().removesuffix(';'))
-        self.assertEqual(len(catalog),5)
+        self.assertEqual(len(catalog),6)
         signatures=set()
         for item,display in zip(catalog,bundled):
             source=json.loads((ROOT/'scenarios/missions'/item['file']).read_text(encoding='utf-8'))
@@ -182,7 +182,7 @@ class MissionCatalogTests(unittest.TestCase):
             signatures.add(fingerprint(definition))
             self.assertEqual(display['map'],definition)
             self.assertEqual(display['id'],item['id'])
-        self.assertEqual(len(signatures),5)
+        self.assertEqual(len(signatures),6)
 
     def test_profiles_publish_terrain_keep_targets_private_and_seed_events(self):
         for name in ('forest','quarry','city','snow','delta'):

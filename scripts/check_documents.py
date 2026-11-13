@@ -36,7 +36,10 @@ def check():
     assert report['program_version']==__version__
     assert report['tests']['status']=='passed' and report['tests']['run']==200
     assert len(report['results'])==24
-    for relative,digest in report['runtime_source_sha256'].items():
+    current=json.loads((ROOT/'experiments/results/verification_2026-11-13.json').read_text(encoding='utf-8'))
+    assert current['tests']['status']=='passed' and current['tests']['run']==206
+    assert current['historical_report_sha256']==hashlib.sha256((ROOT/'experiments/results/verification_2026-11-12.json').read_bytes()).hexdigest()
+    for relative,digest in current['runtime_source_sha256'].items():
         assert hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==digest,('runtime changed',relative)
     evidence=media/'verification_evidence.zip'
     assert hashlib.sha256(evidence.read_bytes()).hexdigest()==report['evidence_sha256'],'verification ZIP digest'
@@ -53,6 +56,6 @@ def check():
     field=[r for r in report['results'] if r['domain']=='field']
     for mission in {r['mission'] for r in field}:
         assert len({r['map_sha256'] for r in field if r['mission']==mission})==1
-    return {'status':'passed','documents':4,'verification_runs':24,'tests_reported':200,
+    return {'status':'passed','documents':4,'verification_runs':24,'tests_reported':206,
             'screencast':'external_link','presentation':'separate','external_teams_tested':0}
 if __name__=='__main__':print(json.dumps(check(),ensure_ascii=False))

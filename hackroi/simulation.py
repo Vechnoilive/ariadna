@@ -77,10 +77,13 @@ def initialize(s, request):
              ('tunnel','underground',[8.,8.,-5.]),('boat','surface_water',[55.,8.,0.]),
              ('sub','underwater',[58.,8.,-5.]),('mast','infrastructure',[30.,8.,8.]),
              ('fusion','digital',None),('operator','operator',None)]
-    if p.get('include_cosmic',False):initial.append(('orbital','cosmic',[10.,10.,60.]))
+    if p.get('include_cosmic',False) or p.get('custom_map',{}).get('include_cosmic',False):initial.append(('orbital','cosmic',[10.,10.,60.]))
     s['agents']=[]
     for identifier,kind,position in initial:
-        add_agent(s, identifier, kind, position)
+        a = add_agent(s, identifier, kind, position)
+        if kind == 'cosmic':
+            from .cosmic import configure as configure_cosmic
+            configure_cosmic(a)
     s['zones']=[zone('land','land',[0,0,0],[49.999,100,0]),zone('water','water',[50,0,-15],[100,100,0]),
                 zone('sky','air',[0,0,1],[100,100,30]),zone('tunnel','underground',[0,0,-12],[40,40,-1]),
                 zone('wall','obstacle',[42,40,-15],[46,60,30]),zone('forbidden','restricted',[80,80,-15],[90,90,100]),
@@ -156,11 +159,13 @@ def network(s):
     def position(a):return a['position'] if a['position'] is not None else [0,0,0]
     for i,(key,a) in enumerate(sorted(nodes.items())):
         for other,b in sorted(nodes.items())[i+1:]:
-            if math.dist(position(a),position(b))<=s['link_range']:
-                blocked=any(z['type']=='low_connectivity' and intersects_box(position(a),position(b),z['geometry']['min'],z['geometry']['max']) for z in s['zones'])
+            from .cosmic import link as cosmic_link
+            satellite = cosmic_link(a,b,position(a),position(b))
+            if satellite or (satellite is None and math.dist(position(a),position(b))<=s['link_range']):
+                blocked=satellite is None and any(z['type']=='low_connectivity' and intersects_box(position(a),position(b),z['geometry']['min'],z['geometry']['max']) for z in s['zones'])
                 if blocked:continue
                 graph[key].append(other);graph[other].append(key)
-                links.append({'source':key,'target':other,'quality':1.-s['message_loss'],'delay':1.})
+                links.append({'source':key,'target':other,'quality':1.-s['message_loss'],'delay':2. if satellite else 1., **({'kind':'satellite'} if satellite else {})})
     s['graph']=graph
     reachable=set()
     for identifier in nodes:
@@ -180,6 +185,10 @@ def network(s):
         a['communication']={'connected':a['id'] in reachable,'quality':1.-s['message_loss'] if a['id'] in reachable else 0.}
         if a['position'] is None:
             a['communication']['anchor_position']=[0.,0.,0.]
+        if a['kind']=='cosmic':
+            served=[peer['id'] for peer in spatial if peer['id']!=a['id'] and a['id'] in (route(s,'infra_3',peer['id'],nodes) or [])[1:-1]]
+            a['communication'].update(relayed_agents=served, relay_steps=s.get('cosmic_relay_steps',0),
+                                      active_links=sum(a['id'] in (l['source'],l['target']) for l in links))
 
 
 def route(s, source, destination, nodes=None):
@@ -377,9 +386,11 @@ def advance(state, decision):
             if len(s['pending_messages'])>=1000:fail('Очередь сообщений заполнена','RESOURCE_EXHAUSTED')
             identifier='message_'+str(s['message_count']);s['message_count']+=1
             s['pending_messages'].append({'id':identifier,'source':a['id'],'recipient':p['recipient_id'],
-                                          'payload':copy.deepcopy(p['payload']),'path':path,'arrival':s['time']+max(1,len(path)-1)})
+                                          'payload':copy.deepcopy(p['payload']),'path':path,'arrival':s['time']+max(1,sum(next(l['delay'] for l in s['network']['known_links'] if {l['source'],l['target']}=={u,v}) for u,v in zip(path,path[1:]))) })
             cost=.001
-        elif action=='relay':cost=.001
+        elif action=='relay':
+            cost=.001
+            if a['kind']=='cosmic':s['cosmic_relay_steps']=s.get('cosmic_relay_steps',0)+1
         resource=a['resources']['energy']
         if resource['value']-cost<resource['minimum']-1e-12:fail('Нарушение резерва энергии','RESOURCE_EXHAUSTED')
         resource['value']=max(resource['minimum'],round(resource['value']-cost,12));s['energy_spent']+=cost

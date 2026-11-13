@@ -14,7 +14,7 @@ OPTIONAL_SOURCE_FILES = ('package.json', 'start.bat')
 SUFFIXES = {'.py', '.json', '.jsonl', '.md', '.html', '.css', '.js', '.mjs', '.toml', '.yml', '.jpg', '.png', '.webp', '.gltf', '.glb'}
 MEDIA_FILES = ('explanatory_note.docx', 'explanatory_note.pdf', 'test_protocol.docx', 'test_protocol.pdf', 'run_guide.docx', 'run_guide.pdf', 'essay.docx', 'essay.pdf', 'screencast')
 ASSET_FILES = ('scene.png', 'flood.png', 'pressure.png', 'peer.png')
-EXTRA_MEDIA = ('missions_evidence.zip', 'campaign_evidence.zip', 'verification_evidence.zip', 'defense.pptx', 'screencast.mp4', 'screencast.vtt')
+EXTRA_MEDIA = ('cosmic_evidence.zip', 'missions_evidence.zip', 'campaign_evidence.zip', 'verification_evidence.zip', 'defense.pptx', 'screencast.mp4', 'screencast.vtt')
 MAX_FILES = 2000
 MAX_BYTES = 256*1024*1024
 

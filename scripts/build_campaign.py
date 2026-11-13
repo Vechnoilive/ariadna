@@ -19,7 +19,7 @@ def build(trial,final,branches):
     legacy=read(ROOT/'viewer/legacy-data.js');entries=[];results=[];sources={};payloads={}
     def include(name,path):
         raw=Path(path).read_bytes();payloads[name]=raw;sources[name]=hashlib.sha256(raw).hexdigest()
-    for item in catalog:
+    for item in (item for item in catalog if item['id'] != 'cosmic'):
         name=item['id'];definition=json.loads((ROOT/'scenarios/missions'/item['file']).read_text(encoding='utf-8'))
         parent=final if name in ('quarry','delta') else trial
         folder=parent/f"{name}_{definition['seed']}_portable"

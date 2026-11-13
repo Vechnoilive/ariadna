@@ -13,6 +13,11 @@ async function decodeAriadnaPacket(packet){
 if(window.ARIADNA_PACK||window.ARIADNA_DEMO)window.ARIADNA_READY=(async()=>{
  const data=window.ARIADNA_DEMO ?? await decodeAriadnaPacket(window.ARIADNA_PACK);
  if(window.ARIADNA_INCIDENT_PACK)data.incident=await decodeAriadnaPacket(window.ARIADNA_INCIDENT_PACK);
+ if(window.ARIADNA_COSMIC_PACK){
+  const cosmic=await decodeAriadnaPacket(window.ARIADNA_COSMIC_PACK);
+  data.episodes.push(cosmic.episode);data.cosmic_research=cosmic.research;data.cosmic_comparison=cosmic.comparison;
+  Object.assign(data.source_sha256,cosmic.source_sha256);
+ }
  window.ARIADNA_DEMO=data;
  return data;
 })();

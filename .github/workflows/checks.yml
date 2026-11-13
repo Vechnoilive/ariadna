@@ -53,6 +53,8 @@ jobs:
           node-version: "22"
       - name: Re-audit shipped evidence and presentation data
         run: python scripts/check_delivery.py
+      - name: Audit satellite pair and measured replay
+        run: python scripts/check_cosmic.py
       - name: Install browser test tool
         run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.62.1
       - name: Install Chromium

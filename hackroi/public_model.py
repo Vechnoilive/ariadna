@@ -213,9 +213,13 @@ def predicted_connections(observation, moves):
         if point is None:
             continue
         for other, destination in positions.items():
-            if key == other or destination is None or math.dist(point, destination) > radius:
+            if key == other or destination is None:
                 continue
-            shadow = any(z['type'] == 'low_connectivity' and z['geometry'].get('type') == 'axis_aligned_box' and
+            from .cosmic import link as cosmic_link
+            satellite = cosmic_link(nodes[key], nodes[other], point, destination)
+            if satellite is False or (satellite is None and math.dist(point, destination) > radius):
+                continue
+            shadow = satellite is None and  any(z['type'] == 'low_connectivity' and z['geometry'].get('type') == 'axis_aligned_box' and
                          intersects(point, destination, z['geometry']['min'], z['geometry']['max']) for z in observation['zones'])
             if not shadow:
                 graph[key].append(other)

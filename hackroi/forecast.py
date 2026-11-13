@@ -43,13 +43,17 @@ def rebuild_network(observation, range_factor=1.):
             continue
         for other in sorted(nodes)[index+1:]:
             q = positions[other]
-            if q is None or math.dist(p, q) > radius*range_factor:
+            if q is None:
                 continue
-            if any(z['type'] == 'low_connectivity' and z['geometry'].get('type') == 'axis_aligned_box' and
+            from .cosmic import link as cosmic_link
+            satellite = cosmic_link(nodes[identifier], nodes[other], p, q, range_factor)
+            if satellite is False or (satellite is None and math.dist(p, q) > radius*range_factor):
+                continue
+            if satellite is None and any(z['type'] == 'low_connectivity' and z['geometry'].get('type') == 'axis_aligned_box' and
                    intersects(p, q, z['geometry']['min'], z['geometry']['max']) for z in observation['zones']):
                 continue
             graph[identifier].append(other); graph[other].append(identifier)
-            links.append({'source': identifier, 'target': other, 'quality': observation['network']['average_link_quality'], 'delay': 1.})
+            links.append({'source': identifier, 'target': other, 'quality': observation['network']['average_link_quality'], 'delay': 2. if satellite else 1., **({'kind':'satellite'} if satellite else {})})
     roots = sorted(i for i,n in nodes.items() if n.get('kind') == 'base_station')
     if not roots:
         return
