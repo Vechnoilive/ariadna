@@ -1,6 +1,7 @@
 'use strict';
 (() => {
 const T=window.THREE,Orbit=window.OrbitControls;let sequence=0;
+const FIELD_MODEL_SCALE=1.7;
 const colors={aerial:'#4f83c5',ground:'#267c61',underground:'#d2994a',surface_water:'#138a9b',underwater:'#d1a83d',infrastructure:'#718889',digital:'#718889',operator:'#718889'};
 const valid=p=>Array.isArray(p)&&p.length===3&&p.every(Number.isFinite),mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
 const point=p=>new T.Vector3(p[0],p[2],-p[1]);
@@ -99,9 +100,11 @@ class MissionMap {
   g.scale.setScalar(1);const content=new T.Group();for(const child of [...g.children])content.add(child);g.add(content);
   const bounds=new T.Box3().setFromObject(content),size=new T.Vector3(),center=new T.Vector3();bounds.getSize(size);bounds.getCenter(center);
   const radius=Math.min(body.max[0]-body.min[0],body.max[1]-body.min[1])/2;
-  const scale=Math.min(radius*2/Math.max(.001,Math.hypot(size.x,size.z)),(body.max[2]-body.min[2])/Math.max(.001,size.y));
+  const visualScale=this.isHome||a.kind==='infrastructure'?1:FIELD_MODEL_SCALE;
+  const scale=visualScale*Math.min(radius*2/Math.max(.001,Math.hypot(size.x,size.z)),(body.max[2]-body.min[2])/Math.max(.001,size.y));
   const sy=a.kind==='infrastructure'?(body.max[2]-body.min[2])/Math.max(.001,size.y):scale;content.scale.set(scale,sy,scale);content.position.set(-center.x*scale,body.min[2]-bounds.min.y*sy,-center.z*scale);
-  if(halo){if(!this.isHome)halo.scale.setScalar(radius/2.5);g.add(halo);}if(outline)g.add(outline);
+  g.userData.visualScale=visualScale;
+  if(halo){if(!this.isHome)halo.scale.setScalar(radius*visualScale/2.5);g.add(halo);}if(outline)g.add(outline);
  }
  fitSolid(root,lo,hi){
   if(!root)return;
@@ -121,9 +124,9 @@ class MissionMap {
   line.position.copy(point(body.min.map((v,i)=>(v+body.max[i])/2)));line.raycast=()=>{};line.visible=false;g.add(line);g.userData.clearanceOutline=line;
  }
  bodyDescription(agent){
-  const body=agent.constraints?.find(c=>c.body)?.body;
-  if(body)return body.max.map((v,i)=>(v-body.min[i]).toFixed(2)).join(' × ')+' м · корпус';
-  const mesh=this.agentMeshes.get(agent.id),size=mesh?.userData.visualSize;
+  const body=agent.constraints?.find(c=>c.body)?.body,mesh=this.agentMeshes.get(agent.id);
+  if(body)return body.max.map((v,i)=>(v-body.min[i]).toFixed(2)).join(' × ')+' м · корпус'+(mesh?.userData.visualScale>1?' · модель ×'+mesh.userData.visualScale.toFixed(1).replace('.',','):'');
+  const size=mesh?.userData.visualSize;
   return size?size.map(v=>v.toFixed(1)).join(' × ')+' м · визуальная модель':'Габариты корпуса не опубликованы';
  }
  addBodyOutline(g,a){

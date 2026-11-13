@@ -69,13 +69,15 @@ def check():
     field=[r for r in report['results'] if r['domain']=='field']
     for mission in {r['mission'] for r in field}:
         assert len({r['map_sha256'] for r in field if r['mission']==mission})==1
-    with zipfile.ZipFile(media/'defense.pptx') as archive:
-        slides=[n for n in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
-        assert len(slides)==12,'presentation slide count'
-        slide_text=' '.join(' '.join(ET.fromstring(archive.read(n)).itertext()) for n in slides)
-        for expected in ('206/206','24 + 2','ОРБИТАЛЬНЫЙ МОСТ','ДВУМЕРНЫЕ ВЕТВИ','110 м','75 м','31 с'):
-            assert expected in slide_text,('presentation content',expected)
-        assert archive.testzip() is None
+    presentation=media/'defense.pptx'
+    if presentation.is_file():
+        with zipfile.ZipFile(presentation) as archive:
+            slides=[n for n in archive.namelist() if re.fullmatch(r'ppt/slides/slide\d+\.xml',n)]
+            assert len(slides)==12,'presentation slide count'
+            slide_text=' '.join(' '.join(ET.fromstring(archive.read(n)).itertext()) for n in slides)
+            for expected in ('206/206','24 + 2','ОРБИТАЛЬНЫЙ МОСТ','ДВУМЕРНЫЕ ВЕТВИ','110 м','75 м','31 с'):
+                assert expected in slide_text,('presentation content',expected)
+            assert archive.testzip() is None
     return {'status':'passed','documents':4,'historical_runs':24,'cosmic_runs':2,'tests_reported':206,
-            'revision':REVISION,'screencast':'external_link','presentation':'included','external_teams_tested':0}
+            'revision':REVISION,'screencast':'external_link','presentation':'included' if presentation.is_file() else 'separate','external_teams_tested':0}
 if __name__=='__main__':print(json.dumps(check(),ensure_ascii=False))
