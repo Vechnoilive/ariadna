@@ -79,8 +79,8 @@
       "bytes": 1455
     },
     "docs/TEST_PROTOCOL.md": {
-      "sha256": "6bed87ed90b632ccf3e186700ccecd7d85d1b04528ac2e61a07e4ae0e3ead975",
-      "bytes": 17890
+      "sha256": "2b191716a3a8199de1aedede8c1e50f826a3e7dcaf52680898941e5e45b2e53d",
+      "bytes": 17978
     },
     "docs/figures/architecture.png": {
       "sha256": "3df153b94b9444ae2a43444c62624c9695b19416781b2f47bdfb63f8328f158d",
@@ -515,19 +515,19 @@
       "bytes": 39968620
     },
     "submission/ПЗ.pdf": {
-      "sha256": "2a9b2b3ec9c168c5f5cf5a36274fa37c02ed669fd9cb21321208aa02b858c135",
+      "sha256": "9cc7340701101cc21a3ea7cd0fc6021b2df346289c226744c1be68cc1e0051da",
       "bytes": 297310
     },
     "submission/Протокол_испытаний.pdf": {
-      "sha256": "7f909c6bb0194d7b5c491932e952cda987d8e3eef7d454c23f49eb5ad503bf7a",
-      "bytes": 115381
+      "sha256": "8399548654e2fac85d2b2531bfd3f0a39204f0b608de2dfdf8b038f9d27d48d9",
+      "bytes": 115626
     },
     "submission/Руководство_оператора.pdf": {
-      "sha256": "18d16132b61b2fbc702b05bf63b1085bf22af5542068a8c697088df9695b5e78",
+      "sha256": "c7134a8bccc9c6d9ab85c73ab76fd623c0f0964114270328c7162de1d862f005",
       "bytes": 98937
     },
     "submission/Эссе.pdf": {
-      "sha256": "14e0eb4e5068f248ecfa7836a731d3e2d48239585345b604f261d845843d9a9e",
+      "sha256": "394862a2bc64a06b3385acd67675f276e9ed64d1fe4017f39796a00d184ff607",
       "bytes": 58440
     },
     "tests/__init__.py": {
