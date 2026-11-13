@@ -19,8 +19,8 @@
       "bytes": 148
     },
     "README.md": {
-      "sha256": "a981ff88035d913a2920f88189c18d245b136eb2ec1ca79d140f15b6feae23d6",
-      "bytes": 9528
+      "sha256": "b4dac3184d035df59545bd2d9467992b4413b758b92da1185c66c7f21223a2ae",
+      "bytes": 9476
     },
     "contracts/close.schema.json": {
       "sha256": "5e1da60c8466c1ae75960849afb104234d0bc6ff54e9201df40bc02f6f3dcbad",
@@ -514,6 +514,10 @@
       "sha256": "384241543ce625ef27327dab927f7cdfe65e6890294f3de414db3fd4a916551f",
       "bytes": 39968620
     },
+    "submission/Видео.txt": {
+      "sha256": "4cf6ed4d3abae68ab3fabe149e58b02fdee17d2d71f856fa871149e3b9dff496",
+      "bytes": 83
+    },
     "submission/ПЗ.pdf": {
       "sha256": "9cc7340701101cc21a3ea7cd0fc6021b2df346289c226744c1be68cc1e0051da",
       "bytes": 297310
@@ -741,8 +745,8 @@
   },
   "material_status": {
     "documents": true,
-    "screencast": false,
-    "screencast_kind": null,
+    "screencast": true,
+    "screencast_kind": "external_link",
     "presentation": "separate",
     "raw_evidence": true
   },
